@@ -9,26 +9,21 @@ and open the template in the editor.
 */
 body {
     margin: 10px;
-    background-color: rgb(16,27,44);}
-.thisisclass{
-
-    background-color: #0099ff;
-    color: #ffff00;
-
+    background-color: rgb(16,27,44);
 }
 
-.add-on-nav{
-    margin-right: 50px;
+
+.nav-link:selected{
+    background-color: #6DD4F9;
 }
 
-.add-on-nav-link {
-    padding-left: 10px;
-    color: #ffff00;
+.nav-link:hover{
+    background-color: #314CAA;
 }
 
-@media only screen and (max-width: 600px) {
-    .add-on-nav-link {
-        padding-left: 10px;
-        color: #ffff00;
+@media screen and (max-width: 600px) and (max-width:978px){
+    .pl-3{
+        padding-left:auto;
+
     }
 }
