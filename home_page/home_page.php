@@ -33,11 +33,12 @@ and open the template in the editor.
                 integrity=
                 "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
+
     </head>
     <body>
 
-
         <?php
+        include '../nav_bar/navigation_bar.php';
         ?>
     </body>
 </html>
