@@ -16,3 +16,19 @@ body {
     color: #ffff00;
 
 }
+
+.add-on-nav{
+    margin-right: 50px;
+}
+
+.add-on-nav-link {
+    padding-left: 10px;
+    color: #ffff00;
+}
+
+@media only screen and (max-width: 600px) {
+    .add-on-nav-link {
+        padding-left: 10px;
+        color: #ffff00;
+    }
+}
