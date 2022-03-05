@@ -60,7 +60,7 @@
             <div class=" collapse navbar-collapse col-lg justify-content-center pr-lg-0" id="navbarSupportedContent">
                 <ul class="nav nav-pills  navbar-nav col-lg-9 " id="pills-tab" role="tablist">
                     <li class="nav-item mr-lg col-lg ">
-                        <a class="nav-link active pl-sm-3 pl-3 mt-lg-1 mt-sm-3 mt-3 text-lg-center" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                        <a class="nav-link active pl-sm-3 pl-3 mt-lg-1 mt-sm-3 mt-3 text-lg-center " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
                     </li>
                     <li class="nav-item mr-lg col-lg ">
                         <a class="nav-link  pl-sm-3 pl-3 mt-lg-1 mt-sm-3 mt-3 text-lg-center" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
@@ -77,10 +77,7 @@
                 </div>
             </div>
         </nav>
-        <div class="col-lg-12 input-group mt-3 justify-content-center">
-            <input type="search" class="form-control rounded mr-3 col-lg-4 srchBar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary srchBtn ">search</button>
-        </div>
+
 
         <?php
         // put your code here
