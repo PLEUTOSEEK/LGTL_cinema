@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Mar 6, 2022, 12:34:28 AM
+    Author     : Tee Zhuo Xuan
+*/
+
+
+.add-on-timeslot-btn{
+    color:rgb(154,157,160)!important;
+    background-color: rgb(52,58,64)!important;
+    border:none!important;
+}
+
+.add-on-timeslot-btn:hover, .add-on-timeslot-btn:active{
+    color:white!important;
+
+}
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {
+    h4 {font-size:0.5rem;} /*1rem = 16px*/
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+    h4 {font-size:1rem;} /*1rem = 16px*/
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    h4 {font-size:1.5rem;} /*1rem = 16px*/
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    h4 {font-size:2rem;} /*1rem = 16px*/
+}
+
+.add-on-next-btn{
+    color:rgb(154,157,160)!important;
+    background-color: rgb(52,58,64)!important;
+    border:none!important;
+}
+
+.add-on-next-btn:hover, .add-on-next-btn:active{
+    color:white!important;
+
+}

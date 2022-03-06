@@ -23,7 +23,6 @@
                 background-color: #314CAA;
             }
 
-
             .btn-outline-primary:hover{
                 background-color: #314CAA !important;
             }
@@ -32,20 +31,47 @@
                 background: rgb(0,123,255) !important;
             }
 
-            .srchBar{
-                background-color : #F7F7F7 !important;
-            }
-
             @media screen and (max-width: 600px) and (max-width:978px){
                 .pl-3{
                     padding-left:auto;
                 }
             }
+
+            /* width */
+            ::-webkit-scrollbar {
+                width: 2px;
+                margin-left: 30px;
+                float: left;
+                height: 4px;
+                background: #fff;
+                overflow-y: scroll;
+                margin-bottom: 25px;
+                border-radius:5px;
+                background-color: yellow;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track { /*whole scroll bar*/
+
+                background-color: rgb(16,27,44);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: rgb(0,123,255);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: white;
+            }
+            @media screen and (max-width: 992px){
+                .scrolling-wrapper {    overflow: hidden;  white-space: nowrap;}
+
+            }
         </style>
     </head>
     <body>
-
-
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -60,13 +86,13 @@
             <div class=" collapse navbar-collapse col-lg justify-content-center pr-lg-0" id="navbarSupportedContent">
                 <ul class="nav nav-pills  navbar-nav col-lg-9 " id="pills-tab" role="tablist">
                     <li class="nav-item mr-lg col-lg ">
-                        <a class="nav-link active pl-sm-3 pl-3 mt-lg-1 mt-sm-3 mt-3 text-lg-center " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                        <a class="nav-link active  mt-lg-1 mt-sm-3 mt-3 text-lg-center  pl-2 pl-lg-0" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
                     </li>
                     <li class="nav-item mr-lg col-lg ">
-                        <a class="nav-link  pl-sm-3 pl-3 mt-lg-1 mt-sm-3 mt-3 text-lg-center" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                        <a class="nav-link   mt-lg-1 mt-sm-3 mt-3 text-lg-center pl-2 pl-lg-0" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
                     </li>
                     <li class="nav-item mr-lg col-lg ">
-                        <a class="nav-link   pl-sm-3 pl-3 mt-lg-1 mt-sm-3 mt-3 text-lg-center" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                        <a class="nav-link    mt-lg-1 mt-sm-3 mt-3 text-lg-center pl-2 pl-lg-0" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
                     </li>
 
                 </ul>

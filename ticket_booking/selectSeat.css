@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Mar 6, 2022, 3:38:25 PM
+    Author     : Tee Zhuo Xuan
+*/
+
+
+
+
+.add-on-next-btn{
+    color:rgb(154,157,160)!important;
+    background-color: rgb(52,58,64)!important;
+    border:none!important;
+}
+
+.add-on-next-btn:hover, .add-on-next-btn:active{
+    color:white!important;
+
+}
+
+.add-on-seat-btn:active, .add-on-seat-btn.selectedSeat{
+
+    color:white!important;
+    background-color: #5cb85c!important;
+    border-color: #5cb85c!important;
+    outline: #5cb85c!important;
+}
+
+@media screen and (max-width: 992px){
+
+    .seats-box:hover{
+        overflow-x: scroll;
+    }
+}
