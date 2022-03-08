@@ -14,13 +14,13 @@ and open the template in the editor.
             .srchBar{
                 background-color : #F7F7F7 !important;
             }
-
-
+            
         </style>
     </head>
     <body>
         <?php
         include '../nav_bar/navigation_bar.php';
+        include 'connection.php';
         ?>
 
         <div class="col-lg-12 input-group mt-3 justify-content-center">
@@ -28,6 +28,7 @@ and open the template in the editor.
             <button type="button" class="btn btn-outline-primary srchBtn ">search</button>
         </div>
 
+       
 
         <?php
         include '../nav_bar/footer.php';
