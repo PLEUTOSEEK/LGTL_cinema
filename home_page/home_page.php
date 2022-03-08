@@ -6,7 +6,9 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Hello, world!</title>
+        <link rel="stylesheet" href="home_page.css"/>
         <style>
 
 
@@ -14,6 +16,33 @@ and open the template in the editor.
             .srchBar{
                 background-color : #F7F7F7 !important;
             }
+            
+            .card-img-top{
+                width: 200%;
+                /*height: 15vw;*/
+                height: 230px;
+                object-fit: cover;
+            }
+            
+/*            .column {
+                float: left;
+                width: 33.33%;
+                padding: 5px;
+            }
+
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+                float: left;
+            }
+            
+            @media screen and (max-width: 500px) {
+                .column {
+                    width: 100%;
+                }
+            }*/
+          
             
         </style>
     </head>
@@ -61,11 +90,40 @@ and open the template in the editor.
             <input type="search" class="form-control rounded mr-3 col-lg-4 srchBar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
             <button type="button" class="btn btn-outline-primary srchBtn ">search</button>
         </div>
+        
+        <div>
+        <h1 class="text-info mt-lg-4 col-lg-6">Now Showing</h1>
+        </div>
+        
+        <div class="row">
+            <?php
+            $result = mysqli_connect($host, $uname) or die("Could not connect to database." . mysqli_error());
+            mysqli_select_db($result, $db_name) or die("Could not select the databse." . mysqli_error());
+            $image_query = mysqli_query($result, "select imageID, imageName, imageData from homeimage");
+            if (mysqli_num_rows($image_query) > 0) {
+                while ($rows = mysqli_fetch_array($image_query)) {
+                    $img_name = $rows['imageName'];
+                    $img_src = $rows['imageData'];
+                    ?>
+            
+                    <div class="column col-lg-3 col-md-4 col-xs-6 p-lg-6">
+                        <!--<form method="post" action="index.php?action=add&id=<?php echo $row["imageID"]; ?>">-->  
+                        <div style="border:1px solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;" align="center" class="rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11"> 
+                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="card-img-top img-responsive img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br> 
+                            <h5 class="text-info mt-lg-2"><?php echo $img_name; ?></h5>  
+                            <!--<input type="hidden" name="movie_name" value="<?php echo $img_name; ?>" />-->    
+                            <input type="submit" name="movie_detail" style="margin-top:5px;" class="btn btn-outline-primary" value="Movie Detail"/>  
+                            <input type="submit" name="Book_now" style="margin-top:5px; margin-left: 4px;" class="btn btn-outline-success" value="Book Now"/>
+                        </div>  
+                        <!--</form>-->  
+                    </div>
 
-       
 
-
-
+                    <?php
+                }
+            }
+            ?>
+        </div>
         <?php
         include '../nav_bar/footer.php';
         ?>
