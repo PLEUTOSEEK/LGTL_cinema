@@ -54,7 +54,7 @@ and open the template in the editor.
         <!<!-- 39, 44, 48 copyright -->
 
         <!-- Footer -->
-        <footer class=" page-footer col-12  mt-3">
+        <footer class=" page-footer col-12  mt-3" style="z-index:-1;">
 
             <!-- Footer Links -->
             <div class="container text-center text-md-left col-12">
