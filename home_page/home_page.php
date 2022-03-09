@@ -25,8 +25,36 @@ and open the template in the editor.
             }
             
             .tab-space {
-                padding-left:2em;
+                padding-left:1em;
             }
+            
+            .title{
+                color: #6DD4F9;
+            }
+            
+            .title:hover{
+                color: #314CAA;
+                
+            }
+          
+            
+            @media screen and (min-width: 544px){
+                h5 { font-size: calc( 20px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
+            }
+
+             /*Safari <8 and IE <11*/ 
+            @media screen and (min-width: 768px){
+                h5 { font-size: calc( 1px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
+            }
+            
+            @media screen and (min-width: 1200px){
+                h5 { font-size: calc( 30px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
+            }
+
+            @media screen and (min-width: 50em){
+                h5 { font-size: calc( 5px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
+            }
+            
             
 /*            .column {
                 float: left;
@@ -41,7 +69,8 @@ and open the template in the editor.
                 float: left;
             }
             
-            @media screen and (max-width: 500px) {
+*/            
+/*            @media screen and (max-width: 500px) {
                 .column {
                     width: 100%;
                 }
@@ -60,6 +89,7 @@ and open the template in the editor.
             <div class="carousel-inner">
 
                 <?php
+                
                 $totalTrendMv = 3;
                 $mvImg = "food-sample.jpg";
                 $captionHeader = "This is header";
@@ -96,7 +126,7 @@ and open the template in the editor.
         </div>
         
         <div> 
-            <h2 class="text-info mt-lg-3 col-lg-6"><b>Now Showing</b> <span class="tab-space">Coming Soon</span></h2>
+            <h2 class="mt-lg-3 mt-md-3 mt-sm-6 col-lg-6 col-md-8 col-xs-4"><b class="title">Now Showing</b> <span class="title tab-space">Coming Soon</span></h2>
         </div>
         
         <div class="py-2 my-1 text-center position-relative mx-2">
@@ -120,11 +150,13 @@ and open the template in the editor.
                     <div class="column col-lg-3 col-md-4 col-xs-6 p-lg-6">
                         <!--<form method="post" action="index.php?action=add&id=<?php echo $row["imageID"]; ?>">-->  
                         <div style="border:1px solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;" align="center" class="rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11 "> 
-                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br> 
-                            <h5 class="text-info mt-lg-2"><?php echo $img_name; ?></h5>  
+                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br>                             
+                            <h5 class="text-info mt-lg-2 mt-sm-3 mt-md-2 text-responsive"><?php echo $img_name; ?></h5>  
                             <!--<input type="hidden" name="movie_name" value="<?php echo $img_name; ?>" />-->    
+                            <button type="button" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;"></button>
                             <input type="submit" name="movie_detail" style="margin-top:5px;" class="btn btn-outline-primary" value="Movie Detail"/>  
-                            <input type="submit" name="Book_now" style="margin-top:5px; margin-left: 4px;" class="btn btn-outline-success" value="Book Now"/>
+                            <input type="submit" name="Book_now" style="margin-top:5px; " class="btn btn-outline-success" value="  Book Now  "/>
+                            
                         </div>  
                         <!--</form>-->  
                     </div>
@@ -135,6 +167,7 @@ and open the template in the editor.
             }
             ?>
         </div>
+        
         <?php
         include '../nav_bar/footer.php';
         ?>

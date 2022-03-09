@@ -9,3 +9,57 @@ and open the template in the editor.
 */
 
 
+
+/*
+@keyframes pulse-border {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+    opacity: 0;
+  }*/
+
+/*.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+    background-color: black;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    background-color: black;
+}*/
+
+
+.btn-circle.btn-xl {
+    width: 40px;
+    height: 40px;
+    padding: 8px 10px;
+    border-radius: 35px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 20px;
+    height: 20px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.42857;
+}
+
