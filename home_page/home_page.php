@@ -24,6 +24,10 @@ and open the template in the editor.
                 object-fit: cover;
             }
             
+            .tab-space {
+                padding-left:2em;
+            }
+            
 /*            .column {
                 float: left;
                 width: 33.33%;
@@ -91,8 +95,15 @@ and open the template in the editor.
             <button type="button" class="btn btn-outline-primary srchBtn ">search</button>
         </div>
         
-        <div>
-        <h1 class="text-info mt-lg-4 col-lg-6">Now Showing</h1>
+        <div> 
+            <h2 class="text-info mt-lg-3 col-lg-6"><b>Now Showing</b> <span class="tab-space">Coming Soon</span></h2>
+        </div>
+        
+        <div class="py-2 my-1 text-center position-relative mx-2">
+            <div class="position-absolute w-100 top-50 start-50 translate-middle" style="z-index: 2">
+                <span class="d-inline-block bg-white px-2 text-muted"></span>
+            </div>
+            <div class="position-absolute w-100 top-50 start-0 border-muted border-top"></div>
         </div>
         
         <div class="row">
@@ -108,8 +119,8 @@ and open the template in the editor.
             
                     <div class="column col-lg-3 col-md-4 col-xs-6 p-lg-6">
                         <!--<form method="post" action="index.php?action=add&id=<?php echo $row["imageID"]; ?>">-->  
-                        <div style="border:1px solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;" align="center" class="rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11"> 
-                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="card-img-top img-responsive img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br> 
+                        <div style="border:1px solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;" align="center" class="rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11 "> 
+                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br> 
                             <h5 class="text-info mt-lg-2"><?php echo $img_name; ?></h5>  
                             <!--<input type="hidden" name="movie_name" value="<?php echo $img_name; ?>" />-->    
                             <input type="submit" name="movie_detail" style="margin-top:5px;" class="btn btn-outline-primary" value="Movie Detail"/>  
