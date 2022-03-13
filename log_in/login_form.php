@@ -28,10 +28,10 @@
         <div class="h4 text-muted text-center pt-2">Enter your login details</div>
         <form class="pt-3">
             <div class="form-group py-2">
-                <div class="input-field"> <span class="far fa-user p-2"></span> <input type="email" placeholder="Enter your Email Address" required class=""> </div>
+                <div class="input-field"> <span class="fas fa-envelope p-2"></span> <input type="email" placeholder="Enter your Email Address" required class=""> </div>
             </div>
             <div class="form-group py-1 pb-2">
-                <div class="input-field"> <span class="fas fa-lock p-2"></span> <input type="password" id="password" placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
+                <div class="input-field"> <span class="fas fa-lock p-2"></span> <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
                         <i class="fas fa-eye" id="show_eye"></i>
                         <i class="fas fa-eye-slash d-none" id="hide_eye"></i> </button>
                 </div>
