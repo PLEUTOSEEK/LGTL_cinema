@@ -2,11 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/login_form.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.css</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/login_form.css</file>
         </group>
+>>>>>>> 916611144687248d8e3c303d9a9284facbf3136b
     </open-files>
 </project-private>
