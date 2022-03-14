@@ -41,70 +41,31 @@ and open the template in the editor.
             <div class=" d-flex flex-row-reverse  <?php echo $borderDanger ?>  " style="height:50px">
                 <button class="btn btn-outline-primary  position-fixed " id="toggle-panel-btn" data-toggle="collapse" data-target="#mySidepanel" aria-controls ="mySidepanel" class="mobile" style="z-index:112;">&#9776; Food Cart</button>
 
-                <div id="mySidepanel" class="collapse  position-fixed  col-12 mt-5   add-on-foodCartPanel overflow-auto"aria-expanded="false" style=" transition: 0.5s; ">
+                <div id="mySidepanel" class="collapse  position-fixed  col-12 mt-5   add-on-foodCartPanel overflow-auto bg-dark"aria-expanded="false" style=" transition: 0.5s; ">
 
                     <table class="table table-striped table-dark txt_cent" id="food-table" >
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th  scope="col">#</th>
+                                <th  scope="col">First</th>
+                                <th  scope="col">Last</th>
+                                <th  scope="col">Handle</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td class="col-lg-1 col-1"><input type='button' value='-' class='col-lg-12 col-12 qtyminus ' field='quantity'/>
-                                    <input type='text' name='quantity' value='5' class='qty col-lg-12 col-12 text-center'/>
-                                    <input type='button' value='+' class='col-lg-12 col-12 qtyplus ' field='quantity'/></td>
-                                <td>
-                                    <button type="button" class="btn btn-danger del-row-food-btn"><i class="far fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td><button type="button" class="btn btn-danger del-row-food-btn"><i class="far fa-trash-alt"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td class="col-lg-1 col-1"><input type='button' value='-' class='col-lg-12 col-12 qtyminus ' field='quantity'/>
-                                    <input type='text' name='quantity' value='5' class='qty col-lg-12 col-12 text-center'/>
-                                    <input type='button' value='+' class='col-lg-12 col-12 qtyplus ' field='quantity'/></td>
-                                <td>
-                                    <button type="button" class="btn btn-danger del-row-food-btn"><i class="far fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td><button type="button" class="btn btn-danger del-row-food-btn"><i class="far fa-trash-alt"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td><button type="button" class="btn btn-danger del-row-food-btn"><i class="far fa-trash-alt"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td><button type="button" class="btn btn-danger del-row-food-btn"><i class="far fa-trash-alt"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td class="align-middle">the Bird</td>
-                                <td > <button type="button" class="btn btn-danger del-row-food-btn"><i class="far fa-trash-alt"></i></button></td>
+
+
+                            <tr >
+
                             </tr>
                         </tbody>
                     </table>
+                    <div class=" d-flex flex-row-reverse">
+                        <button class="btn btn-outline-primary font-weight-bold text-uppercase col-lg-2 col-4 my-lg-3 my-sm-3 my-3 rounded-0 add-on-next-btn " id="next-btn">
+                            next
+                        </button>
+                    </div>
+
                 </div>
             </div>
             <div class="container-fluid  px-lg-auto px-auto <?php echo $borderDanger ?> d-flex justify-content-center " >
@@ -160,12 +121,23 @@ and open the template in the editor.
                 </div>
 
             </div>
+            <select class="browser-default custom-select col-1 mx-5 ticket-type-drop-down">
+                <option selected="">Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
         </div>
 
         <?php
         include '../nav_bar/footer.php';
         ?>
+
         <script >
+            $(document).on('click', '.ticket-type-drop-down', function (e) {
+                var value = this.options[e.selectedIndex].value;
+            });
+
             $('#toggle-panel-btn').on('click', function () {
 
                 console.log($('#mySidePanel').attr("aria-expanded"));
@@ -178,7 +150,7 @@ and open the template in the editor.
 
             });
 
-            $('.qtyplus').click(function (e) {
+            $(document).on('click', '.qtyplus', function (e) {
                 e.preventDefault();
                 var $this = $(this);
                 var $target = $this.prev('input[name=' + $this.attr('field') + ']');
@@ -191,7 +163,8 @@ and open the template in the editor.
                     $target.val(0);
                 }
             });
-            $(".qtyminus").click(function (e) {
+
+            $(document).on('click', '.qtyminus', function (e) {
                 e.preventDefault();
                 var $this = $(this);
                 var $target = $this.next('input[name=' + $this.attr('field') + ']');
@@ -202,11 +175,10 @@ and open the template in the editor.
                     $target.val(0);
                 }
             });
-            $('.del-row-food-btn').on('click', function () {
+
+            $(document).on('click', '.del-row-food-btn', function () {
                 var index = $('.del-row-food-btn').index(this);
                 document.getElementById("food-table").deleteRow(index + 1);
-
-                console.log(index);
             });
 
             $('.food-obj').on('submit', function (e) {
@@ -214,7 +186,43 @@ and open the template in the editor.
                 const data = Object.fromEntries(new FormData(e.target).entries());
                 console.log(data);
 
+
+                // add to table row
+                var table = document.getElementById("food-table");
+                var foodRow = table.insertRow(1);
+                var minPlusCtrl = "";
+
+                var y = 0;
+                for (var x = 0; x < 2; x++) {
+                    var cell = foodRow.insertCell(x);
+                    cell.innerHTML = data["col".concat('', (x + 1))];
+                    cell.classList.add("align-middle");
+                    y++;
+                }
+
+                var cell = foodRow.insertCell(y);
+                minPlusCtrl = minPlusCtrl.concat('', "<input type='button' value='-' class='col-lg-12 col-12 qtyminus ' field='quantity'/>");
+                minPlusCtrl = minPlusCtrl.concat('', "<input type='text' onchange='handleChange(this);' name='quantity' value='1' class='qty col-lg-12 col-12 text-center'/>");
+                minPlusCtrl = minPlusCtrl.concat('', "<input type='button' value='+' class='col-lg-12 col-12 qtyplus ' field='quantity'/>");
+                cell.innerHTML = minPlusCtrl;
+                cell.classList.add("col-lg-1");
+                cell.classList.add("col-1");
+                cell.classList.add("align-middle");
+
+                cell = foodRow.insertCell(y + 1);
+                cell.innerHTML = '<button type="button" class="btn btn-danger del-row-food-btn"><i class="far fa-trash-alt"></i></button>';
+                cell.classList.add("align-middle");
+
             });
+
+            function handleChange(input) {
+                if (input.value < 0)
+                    input.value = 0;
+                if (input.value > 10)
+                    input.value = 10;
+            }
+
+
         </script>
 
     </body>

@@ -1,56 +1,66 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>LGTL Cineplex - Log In</title>
-        <meta name="viewport" content "width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="login_form.css">
-        <!-- Bootstrap CSS library -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        
-        <style>
-            body{
-                background-color: rgb(16,27,44);
-                width: 100%;
-                height: 100vh;
-            }
-            
-            .form-container{
-                padding:50px 60px;
-                margin-top: 20vh;
-                -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-                -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-                box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12"></div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <form class="form-container bg-dark text-white">
-                        <h1>Welcome back!</h1>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Input your email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Input your password">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
-                    </form>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"/>
+    
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    
+    <!-- login form CSS -->
+    <link rel="stylesheet" href="login_form.css?v=<?php echo time(); ?>">
+    
+    <title>LGTL Cineplex - Log In</title>
+  </head>
+  <body style="background-color: rgb(16,27,44)">
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <div class="wrapper bg-white">
+        <div class="h2 text-center">Welcome back!</div>
+        <div class="h4 text-muted text-center pt-2">Enter your login details</div>
+        <form class="pt-3">
+            <div class="form-group py-2">
+                <div class="input-field"> <span class="fas fa-envelope p-2"></span> <input type="email" placeholder="Enter your Email Address" required class=""> </div>
             </div>
-        </div>
-    </body>
+            <div class="form-group py-1 pb-2">
+                <div class="input-field"> <span class="fas fa-lock p-2"></span> <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
+                        <i class="fas fa-eye" id="show_eye"></i>
+                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i> </button>
+                </div>
+            </div>
+            <div class="d-flex align-items-start">
+                <div class="remember"> <label class="option text-muted"> Remember me <input type="checkbox" name="checkbox"> <span class="checkmark"></span> </label> </div>
+                <div class="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
+            </div > 
+            <button class="btn btn-block text-center my-3">Log in</button>
+            <div class="text-center pt-3 text-muted">Not a member? <a href="#">JOIN NOW</a></div>
+        </form>
+    </div>
+    
+    <script>
+        function password_show_hide() {
+            var x = document.getElementById("password");
+            var show_eye = document.getElementById("show_eye");
+            var hide_eye = document.getElementById("hide_eye");
+            hide_eye.classList.remove("d-none");
+            if (x.type === "password") {
+              x.type = "text";
+              show_eye.style.display = "none";
+              hide_eye.style.display = "block";
+            } else {
+              x.type = "password";
+              show_eye.style.display = "block";
+              hide_eye.style.display = "none";
+            }
+        }
+    </script>
+  </body>
 </html>

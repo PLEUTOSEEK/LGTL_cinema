@@ -18,7 +18,7 @@ body {
     border-radius: 10px;
     margin: 50px auto;
     padding: 30px 40px;
-    box-shadow: 20px 20px 80px rgb(206, 206, 206);
+    box-shadow: 20px 20px 80px rgb(206, 206, 206)
 }
 
 .h2 {
@@ -130,13 +130,38 @@ a:hover {
 }
 
 .btn.btn-block {
-    border-radius: 20px;
+    border-radius: 15px;
     background-color: #400485;
-    color: #fff
+    color: #fff;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .btn.btn-block:hover {
     background-color: #55268be0
+}
+
+.btn.btn-danger {
+    border-radius: 20px;
+    text-align: center;
+}
+
+.card {
+    border: none;
+    border-bottom: 1px solid;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 2px solid red
 }
 
 @media(max-width: 575px) {
