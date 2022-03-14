@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2022 at 11:05 AM
+-- Generation Time: Mar 14, 2022 at 09:38 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -33,6 +33,7 @@ CREATE TABLE `customer` (
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
   `phone_no` int(11) NOT NULL,
+  `customer_image` longblob NOT NULL,
   `date_modified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
