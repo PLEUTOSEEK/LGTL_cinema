@@ -188,6 +188,11 @@ and open the template in the editor.
                         </div>
                     </div>
                 </form>
+                <div class=" container-fluid justify-content-end align-items-right clearfix">
+                    <button class="btn btn-outline-primary float-right font-weight-bold text-uppercase col-lg-4 col-sm-4 col-4 my-lg-3 my-sm-3 my-3 rounded" id="next-btn">
+                        next
+                    </button>
+                </div>
             </div>
 
         </div>
