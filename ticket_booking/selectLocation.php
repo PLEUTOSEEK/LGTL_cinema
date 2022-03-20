@@ -9,12 +9,6 @@ and open the template in the editor.
     <?php
     // Initialize the session
     session_start();
-
-    if (isset($_COOKIE['Seats'])) {
-        echo "<h1>HIII</h1>";
-    } else {
-        echo "<h1>NPPP</h1>";
-    }
     ?>
 
     <head>
