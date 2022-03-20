@@ -55,7 +55,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         //include 'connection.php';
         ?>
         
-        <div class="container-fluid justify-content-center col-md-8">
+        <div class="container-fluid justify-content-center col-md-5">
             <form>
                 <div class="form-group">
                     <big id="customer_ID" class="form-text text-muted">Customer ID :</big>
@@ -73,7 +73,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 
                 <div class="form-group">
-                    <big id="customer_ID" class="form-text text-muted">Name :</big>
+                    <big id="customer_ID" class="form-text text-muted ">Name :</big>
                     <input class="form-control form-control-lg" type="text" placeholder="*Optional">
                 </div>
                 
@@ -111,7 +111,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </label>
                 </div>
                <div class="buttonPosition">
-                <button type="submit" class="btn btn-primary btn-primary btn-lg">Submit</button>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
                </div>
             </form>
         </div>

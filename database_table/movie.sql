@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2022 at 11:06 AM
+-- Generation Time: Mar 14, 2022 at 09:39 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -37,7 +37,10 @@ CREATE TABLE `movie` (
   `movie_ synopsis` varchar(500) NOT NULL,
   `movie_ genre` varchar(50) NOT NULL,
   `movie_ director` varchar(50) NOT NULL,
-  `unit_price` double NOT NULL
+  `unit_price` double NOT NULL,
+  `movie_category` varchar(50) NOT NULL,
+  `available_status` varchar(50) NOT NULL,
+  `video_link` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
