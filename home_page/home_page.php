@@ -16,37 +16,37 @@ and open the template in the editor.
             .srchBar{
                 background-color : #F7F7F7 !important;
             }
-            
+
             .card-img-top{
                 width: 200%;
                 /*height: 15vw;*/
                 height: 230px;
                 object-fit: cover;
             }
-            
+
             .tab-space {
                 padding-left:1em;
             }
-            
+
             .title{
                 color: #6DD4F9;
             }
-            
+
             .title:hover{
                 color: #314CAA;
-                
+
             }
-          
-            
+
+
             @media screen and (min-width: 544px){
                 h5 { font-size: calc( 20px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
             }
 
-             /*Safari <8 and IE <11*/ 
+            /*Safari <8 and IE <11*/
             @media screen and (min-width: 768px){
                 h5 { font-size: calc( 1px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
             }
-            
+
             @media screen and (min-width: 1200px){
                 h5 { font-size: calc( 30px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
             }
@@ -54,29 +54,29 @@ and open the template in the editor.
             @media screen and (min-width: 50em){
                 h5 { font-size: calc( 5px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
             }
-            
-            
-/*            .column {
-                float: left;
-                width: 33.33%;
-                padding: 5px;
-            }
 
-            .row::after {
-                content: "";
-                clear: both;
-                display: table;
-                float: left;
-            }
-            
-*/            
-/*            @media screen and (max-width: 500px) {
-                .column {
-                    width: 100%;
-                }
-            }*/
-          
-            
+
+            /*            .column {
+                            float: left;
+                            width: 33.33%;
+                            padding: 5px;
+                        }
+
+                        .row::after {
+                            content: "";
+                            clear: both;
+                            display: table;
+                            float: left;
+                        }
+
+            */
+            /*            @media screen and (max-width: 500px) {
+                            .column {
+                                width: 100%;
+                            }
+                        }*/
+
+
         </style>
     </head>
     <body>
@@ -89,7 +89,6 @@ and open the template in the editor.
             <div class="carousel-inner">
 
                 <?php
-                
                 $totalTrendMv = 3;
                 $mvImg = "food-sample.jpg";
                 $captionHeader = "This is header";
@@ -124,18 +123,24 @@ and open the template in the editor.
             <input type="search" class="form-control rounded mr-3 col-lg-4 srchBar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
             <button type="button" class="btn btn-outline-primary srchBtn ">search</button>
         </div>
+<<<<<<< HEAD
         
         <div> 
             <h2 class="mt-lg-3 mt-md-3 mt-sm-6 col-lg-6 col-md-8 col-xs-4"><b class="title" onclick="pageNow()" type="Post" id="nshow">Now Showing</b> <span class="title tab-space" onclick="page()" type="Post" id="csoon"/>Coming Soon </span></h2>
+=======
+
+        <div>
+            <h2 class="mt-lg-3 mt-md-3 mt-sm-6 col-lg-6 col-md-8 col-xs-4"><b class="title">Now Showing</b> <span class="title tab-space">Coming Soon</span></h2>
+>>>>>>> 0f86f80719cc0b257fa62ac002da7a8da5636f91
         </div>
-        
+
         <div class="py-2 my-1 text-center position-relative mx-2">
             <div class="position-absolute w-100 top-50 start-50 translate-middle" style="z-index: 2">
                 <span class="d-inline-block bg-white px-2 text-muted"></span>
             </div>
             <div class="position-absolute w-100 top-50 start-0 border-muted border-top"></div>
         </div>
-        
+
         <div class="row">
             <?php
             $result = mysqli_connect($host, $uname) or die("Could not connect to database." . mysqli_error());
@@ -150,8 +155,9 @@ and open the template in the editor.
                     $videourl = $rows['video_link'];
                     
                     ?>
-            
+
                     <div class="column col-lg-3 col-md-4 col-xs-6 p-lg-6">
+<<<<<<< HEAD
                         <!--<form method="post" action="index.php?action=add&id=<?php echo $row["imageID"]; ?>">-->  
                         <div style="border:1px solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;" align="center" class="rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11 "> 
                             <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br>                             
@@ -167,6 +173,19 @@ and open the template in the editor.
                         </div>  
                          
                          <!--</form>-->  
+=======
+                        <!--<form method="post" action="index.php?action=add&id=<?php echo $row["imageID"]; ?>">-->
+                        <div style="border:1px solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;" align="center" class="rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11 ">
+                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br>
+                            <h5 class="text-info mt-lg-2 mt-sm-3 mt-md-2 text-responsive"><?php echo $img_name; ?></h5>
+                            <!--<input type="hidden" name="movie_name" value="<?php echo $img_name; ?>" />-->
+                            <button type="button" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;"></button>
+                            <input type="submit" name="movie_detail" style="margin-top:5px;" class="btn btn-outline-primary" value="Movie Detail"/>
+                            <input type="submit" name="Book_now" style="margin-top:5px; " class="btn btn-outline-success" value="  Book Now  "/>
+
+                        </div>
+                        <!--</form>-->
+>>>>>>> 0f86f80719cc0b257fa62ac002da7a8da5636f91
                     </div>
                     
 
@@ -177,6 +196,7 @@ and open the template in the editor.
             
             ?>
         </div>
+<<<<<<< HEAD
         
        //<?php
 //       $result = mysqli_connect($host, $uname) or die("Could not connect to database." . mysqli_error());
@@ -217,6 +237,9 @@ and open the template in the editor.
         
         ?>
         
+=======
+
+>>>>>>> 0f86f80719cc0b257fa62ac002da7a8da5636f91
         <?php
         include '../nav_bar/footer.php';
         ?>

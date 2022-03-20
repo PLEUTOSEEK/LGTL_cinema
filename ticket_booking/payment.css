@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Mar 15, 2022, 4:01:03 PM
+    Author     : Tee Zhuo Xuan
+*/
+
+
+.seat-btn {
+    font-size: 16px;
+}
+
+.seat-btn-form
+{
+    padding:0;
+    margin:0;
+}
+
+.label {
+    color:rgb(0,123,255);
+    font-size: 1rem !important;
+    border:1px solid blue;
+}
+.content{
+    color: rgb(52,58,64) !important;
+
+}
+.content-div{
+    background-color: rgb(242, 244, 247);
+}
+/*
+####################################################
+M E D I A  Q U E R I E S
+####################################################
+*/
+
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+Bootstrap 4 breakpoints
+*/
+/* Small devices (landscape phones, 544px and up) */
+@media (max-width: 544px) {
+    .label {
+        font-size: 1rem !important;
+    } /*1rem = 16px*/
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+    .label {
+        font-size:1rem !important; ;
+    } /*1rem = 16px*/
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .label {font-size:1rem !important;;} /*1rem = 16px*/
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .label {font-size:1rem !important; ;} /*1rem = 16px*/
+}
+
+.invoice-box{
+    background-color: rgb(23, 39, 64);
+}
