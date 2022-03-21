@@ -2,6 +2,6 @@
 
 $host = "localhost";
 $uname = "root";
-$db_name = "lgtl_cinema";
+$db_name = "movie_image";
 
 ?>
