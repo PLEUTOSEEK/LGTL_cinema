@@ -9,8 +9,10 @@ and open the template in the editor.
     <?php
     // Initialize the session
     session_start();
-    ?>
 
+    include '../db_connection.php';
+    $conn = OpenCon();
+    ?>
     <head>
         <meta charset="UTF-8">
         <title></title>
@@ -24,58 +26,28 @@ and open the template in the editor.
         ?>
 
         <?php
-        if (empty($_POST["movie_id"])) {
-            echo "this page canot direct access";
-        } else {
-            $movieID = $_POST["movie_id"];
-            $scheduleList = getSchedule($movieID, 'available', $conn);
+        $movieID = 'M1001';
+        $scheduleList = getSchedule($movieID, 'Available', $conn);
 
-            //get unique date
-            $showDates = array();
-            $showDates = getUniqueList($scheduleList, 'show_date');
-
-            //get unique location
-            $locationNames = array();
-            $locationNames = getUniqueList($scheduleList, 'location_name');
-        }
+        //get unique date
+        $showDates = array();
+        $showDates = getUniqueList($scheduleList, 'show_date');
         ?>
 
-
         <div class="container-fluid  py-3 ">
+            <div class="container-fluid col-lg-8 col-sm-12 " id="date-selection-div">
+                <select id = "date-selection" class="browser-default custom-select col-3 ticket-type-drop-down"  onchange="dynamicFilter();" >
+                    <?php
+                    foreach ($showDates as $date) {
+                        $dateFormatted = date_format(date_create($date), "Y-F-d");
+                        echo "<option value='$date'>$dateFormatted</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+
             <div class="container-fluid col-lg-8 col-sm-12 " id="location-time-selection">
 
-                <?php
-                $locations = array("LGTL KLCC", "LGTL Suria");
-                $geo = "zz";
-                $times = array("10:30 pm", "11:30 pm");
-                $counter = 1;
-
-                foreach ($locations as $location) {
-                    echo " <button class=\"btn btn-outline-primary  h-10 btn-block py-3 my-3 rounded-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#timeSlotsBox$counter\" aria-controls=\"timeSlotsBox$counter\" aria-expanded=\"false\" aria-label=\"Toggle time slots\">";
-
-                    echo " <h4 class = \"float-left font-weight-bold text-uppercase text-left my-auto\">$location</h4>";
-
-                    echo " <h4 class = \"float-right font-weight-bold my-auto\">+</h4>";
-
-                    echo " </button>";
-
-                    echo "<div class=\"collapse  rounded-0 p-lg-3 text-center\" id=\"timeSlotsBox$counter\" >";
-                    echo "<button class = \"btn btn-outline-primary font-weight-bold text-uppercase float-right my-3\">";
-                    echo "location ";
-                    echo "</button>";
-
-                    echo "<div class=\"row  align-items-center justify-content-center w-100 mx-auto\">";
-                    foreach ($times as $time) {
-                        echo "<button class=\"btn btn-outline-primary font-weight-bold text-uppercase col-4 mr-lg-5 mr-4 my-lg-3 my-sm-3 my-3 rounded-0 add-on-timeslot-btn  \" >";
-                        echo $time;
-                        echo " </button>";
-                    }
-                    echo "</div>";
-
-                    echo "</div>";
-                    $counter++;
-                }
-                ?>
             </div>
         </div>
 
@@ -83,26 +55,35 @@ and open the template in the editor.
         include '../nav_bar/footer.php';
         ?>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script>
-            function clearContent(elementID) {
-                document.getElementById(elementID).innerHTML = '';
-            }
+                    $('#date-selection').ready(function () {
+                        dynamicFilter();
+                    })
 
-            function dynamicFilter(date) {
-                clearContent('location-time-selection');
-                var scheduleList = <?php echo json_encode($scheduleList); ?>;
+                    function clearContent(elementID) {
+                        document.getElementById(elementID).innerHTML = '';
+                    }
 
-                if (element['show_date'] == date) {
-                }
+                    function dynamicFilter() {
+                        clearContent('location-time-selection');
+                        var scheduleListArr = <?php echo json_encode($scheduleList); ?>;
+                        scheduleListArr = JSON.stringify(scheduleListArr);
 
-                });
-            }
+                        $.ajax({
+                            url: "selectLocationBackEnd.php",
+                            type: "POST",
+                            data: {"action": "dynamicFilterFunc", "scheduleList": scheduleListArr, "date_selected": $("#date-selection").val()},
+                            error: function (xhr, status, error) {
+                                console.log("Error: " + error);
+                            },
+                            success: function (result, status, xhr) {
+                                document.getElementById("location-time-selection").innerHTML = result;
+                            }
+                        });
+                    }
 
-            function getLocationTimeByDate(scheduleList, date) {
-                scheduleList.forEach(element => {
-
-                });
-            }
         </script>
     </body>
 </html>
+

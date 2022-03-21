@@ -9,7 +9,7 @@
 function getSchedule($movieID, $status, $conn) {
     $scheduleList = array();
 
-    $sql = "SELECT L.location_name, SCH.show_date, SCH.show_time, SCH.schedule_id
+    $sql = "SELECT L.location_id, L.location_name, SCH.show_date, SCH.show_time, SCH.schedule_id
 
                     FROM movie M, schedule SCH, seat S, cinema_room CR, location L
 
@@ -21,21 +21,19 @@ function getSchedule($movieID, $status, $conn) {
                             AND SCH.status = ?
 
                     ORDER BY L.location_name ASC;";
-
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $movieID, $status);
-    $result = $conn->query($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         // output data of each row
         while ($schedule = $result->fetch_assoc()) {
             array_push($scheduleList, $schedule);
         }
-        print_r($scheduleList);
     } else {
         echo "0 results";
     }
-
-    $conn->close();
 
     return $scheduleList;
 }
@@ -46,5 +44,6 @@ function getUniqueList($list, $colName) {
         array_push($uniList, $element[$colName]);
     }
     $uniList = array_unique($uniList);
+
     return $uniList;
 }

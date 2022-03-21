@@ -1,0 +1,16 @@
+        
+        $query = "SELECT * FROM `movie` WHERE `movie_id` = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('s', $movieID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            echo $result->num_rows;
+            while ($row = $result->fetch_assoc()) {
+                $name = $row['movie_name'];
+                echo $name;
+            }
+        } else {
+            echo 'cannot';
+        }
