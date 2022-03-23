@@ -9,9 +9,6 @@ and open the template in the editor.
     <?php
     // Initialize the session
     session_start();
-
-    include '../db_connection.php';
-    $conn = OpenCon();
     ?>
     <head>
         <meta charset="UTF-8">
@@ -22,12 +19,12 @@ and open the template in the editor.
     <body>
         <?php
         include '../nav_bar/navigation_bar.php';
-        include "back_end/back_end.php";
+        include "selectLocationBackEnd.php";
         ?>
 
         <?php
         $movieID = 'M1001';
-        $scheduleList = getSchedule($movieID, 'Available', $conn);
+        $scheduleList = getSchedule($movieID, 'Available');
 
         //get unique date
         $showDates = array();

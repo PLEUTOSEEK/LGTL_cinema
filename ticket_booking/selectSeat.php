@@ -12,10 +12,14 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        if (isset($_POST['seat'])) {
-            echo "<h1>HIII</h1>";
-        } else {
-            echo "<h1>NPPP</h1>";
+        include 'selectSeatBackEnd.php';
+        if (isset($_POST['cinema_room_id']) && !empty($_POST['cinema_room_id'])) {
+            $cinemaRoomID = $_POST['cinema_room_id'];
+            $showDate = $_POST['show_date'];
+            $showTime = $_POST['show_time'];
+            $movieID = $_POST['movie_id'];
+
+            $seatList = getSeats($cinemaRoomID, $showDate, $showTime, $movieID);
         }
         ?>
         <?php
@@ -41,19 +45,59 @@ and open the template in the editor.
                 $seatNo = 1;
                 $alpha = 65;
 
-                for ($x = 0; $x < 3; $x++) {
-                    echo "<div class=\"row py-3 $borderWaring flex-nowrap  px-lg-auto\">"; // big row
+                $ttlSeat = count($seatList);
+                $ttlCluster = ceil($ttlSeat / 16);
 
-                    for ($y = 0; $y < 3; $y++) {
+                $ttlbigRows = ceil($ttlCluster / 3); // 2 correct -- used
+
+                $bigColArr = array(); //-- used
+
+                for ($i = 1; $i <= floor($ttlCluster / 3); $i++) {
+                    array_push($bigColArr, 3);
+                }
+                if ($ttlCluster % 3 != 0)
+                    array_push($bigColArr, $ttlCluster % 3);
+
+                $lastTtlSeats = $ttlSeat - (16 * ($ttlCluster - 1));
+
+                $ttlSmallRows = 4;
+                $lastTtlSmallRows = ceil($lastTtlSeats / 4);
+
+                $ttlSmallCols = array(4, 4, 4, 4);
+
+                $lastTtlSmallColArr = array();
+                for ($i = 1; $i <= floor($lastTtlSeats / 4); $i++) {
+                    array_push($lastTtlSmallColArr, 4);
+                }
+                if ($lastTtlSeats % 4 != 0)
+                    array_push($lastTtlSmallColArr, $lastTtlSeats % 4);
+
+                $counter = 0;
+                for ($x = 0; $x < $ttlbigRows; $x++) {// ceiling (? cluster / 3) = answer;
+                    echo "<div class=\"row py-3 $borderWaring flex-nowrap px-lg-auto\">"; // big row
+
+                    for ($y = 0; $y < $bigColArr[$x]; $y++) {// do for loop to minus three and insert into array
                         echo "<div class=\"container-fluid  p-2 $borderDanger col-lg-3 col-8 px-0 flex-nowrap mx-lg-auto mx-5\">";
-                        for ($z = 0; $z < 4; $z++) {
+
+                        if ($x == $ttlbigRows - 1 && $y == $bigColArr[$x] - 1) {
+                            $ttlSmallRows = $lastTtlSmallRows;
+
+                            $ttlSmallCols = $lastTtlSmallColArr;
+                        }
+
+                        for ($z = 0; $z < $ttlSmallRows; $z++) {// for loop to minus 16 and insert and insert into array
                             echo "<div class=\"row my-3 flex-nowrap\">";
-                            for ($a = 0; $a < 4; $a++) {
+                            for ($a = 0; $a < $ttlSmallCols[$z]; $a++) {
+                                $uniFormID = uniqid();
                                 $seatText = chr($alpha) . str_pad($seatNo, 2, '0', STR_PAD_LEFT);
-                                echo "<button class=\"btn btn-outline-primary col col-sm-2 mx-sm-auto mx-2 add-on-seat-btn seat-btn\" id=\"$seatText\">"; //Unavailable - bg-danger text-white border-danger disabled
+                                if ($seatList[$counter]['status'] == "Booked")
+                                    echo "<button class=\"btn bg-danger text-white col col-sm-2 mx-sm-auto mx-2 add-on-seat-btn seat-btn\"  disabled id=\"" . $seatList[$counter]['seat_id'] . "\">"; //Unavailable - bg-danger text-white border-danger disabled
+                                else
+                                    echo "<button class=\"btn btn-outline-primary col col-sm-2 mx-sm-auto mx-2 add-on-seat-btn seat-btn\" id=\"" . $seatList[$counter]['seat_id'] . "\">"; //Unavailable - bg-danger text-white border-danger disabled
                                 echo $seatText;
                                 echo "</button>";
                                 $seatNo++;
+                                $counter++;
                             }
 
                             $seatNo -= 4;
@@ -96,7 +140,6 @@ and open the template in the editor.
                         seats.splice(index, 1);
                     }
 
-
                 } else {
                     $(this).addClass('selectedSeat');
                     seats.push(this.id);
@@ -108,14 +151,19 @@ and open the template in the editor.
 
             function sendSeatData(seats, url) {
 
+
                 $.ajax({
                     type: "POST", //type of method
-                    url: "selectSeat.php", //your page
-                    data: {seat: seats}, // passing the values
+                    url: "selectSeatBackEnd.php", //your page
+                    data: {action: "setSeatsBookedFunc",
+                        seat: JSON.stringify(seats),
+                        'show_date': '<?php echo $showDate; ?>',
+                        'show_time': '<?php echo $showTime; ?>',
+                        'movie_id': '<?php echo $movieID; ?>'
+                    }, // passing the values
                     success: function (res) {
                         //do what you want here...
-
-                        window.location = "selectLocation.php";
+                        console.log(res);
                     }
                 });
             }
