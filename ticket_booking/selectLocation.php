@@ -73,14 +73,19 @@ and open the template in the editor.
                         $.ajax({
                             url: "selectLocationBackEnd.php",
                             type: "POST",
-                            data: {"action": "dynamicFilterFunc", "scheduleList": scheduleListArr, "date_selected": $("#date-selection").val()},
+                            data: {"action": "dynamicFilterFunc",
+                                "scheduleList": scheduleListArr,
+                                "date_selected": $("#date-selection").val()
+                            },
                             error: function (xhr, status, error) {
                                 console.log("Error: " + error);
-                            },
+                            }
+                            ,
                             success: function (result, status, xhr) {
                                 document.getElementById("location-time-selection").innerHTML = result;
                             }
-                        });
+                        }
+                        );
                     }
 
         </script>

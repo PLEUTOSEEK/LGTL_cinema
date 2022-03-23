@@ -32,7 +32,6 @@ function dynamicFilter() {
     $locationNames = array_unique($locationNames);
 
     $htmlCode = "";
-
     foreach ($locationNames as $location) {
         $htmlCode .= " <button class=\"btn btn-outline-primary  h-10 btn-block py-3 my-3 rounded-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#timeSlotsBox$counter\" aria-controls=\"timeSlotsBox$counter\" aria-expanded=\"false\" aria-label=\"Toggle time slots\">";
 
@@ -55,10 +54,16 @@ function dynamicFilter() {
             if ($schedule['show_date'] == $dateSelected && $schedule['location_name'] == $location) {
 
                 if (in_array($schedule['show_time'], $uniTimes) == false) {
-                    $htmlCode .= "<button class=\"btn btn-outline-primary font-weight-bold text-uppercase col-4 mr-lg-5 mr-4 my-lg-3 my-sm-3 my-3 rounded-0 add-on-timeslot-btn  \" >";
-                    $htmlCode .= $schedule['show_time'];
+                    $uniFormID = uniqid();
+                    $htmlCode .= "<form action = 'selectSeat.php' method = 'POST' name = \"ticket-info\" class = \"time-obj py-0\" id=$uniFormID >";
+                    $htmlCode .= "<input type = \"hidden\" name = \"cinema_room_id\" value = \"" . $schedule['cinema_room_id'] . "\" />";
+                    $htmlCode .= "<input type = \"hidden\" name = \"movie_id\" value = \"" . $schedule['movie_id'] . "\" />";
+                    $htmlCode .= "<input type = \"hidden\" name = \"show_date\" value = \"" . $schedule['show_date'] . "\" />";
+                    $htmlCode .= "<input type = \"hidden\" name = \"show_time\" value = \"" . $schedule['show_time'] . "\" />";
+                    $htmlCode .= "</form>";
+                    $htmlCode .= "<button type='submit' form='$uniFormID' value='Submit' class=\"btn btn-outline-primary font-weight-bold text-uppercase col-4 mr-lg-5 mr-4 my-lg-3 my-sm-3 my-3 rounded-0 add-on-timeslot-btn\" >";
+                    $htmlCode .= date("h:i a", strtotime($schedule['show_time']));
                     $htmlCode .= " </button>";
-
                     array_push($uniTimes, $schedule['show_time']);
                 }
             }

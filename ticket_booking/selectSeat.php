@@ -124,7 +124,7 @@ and open the template in the editor.
 
             $('#next-btn').on('click', function () {
                 createCookie("Seats", seats, "10");
-                delete_cookie("Seats");
+                //delete_cookie("Seats");
                 sendSeatData(seats, 'selectLocation.php');
             });
 

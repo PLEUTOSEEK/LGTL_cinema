@@ -9,7 +9,7 @@
 function getSchedule($movieID, $status, $conn) {
     $scheduleList = array();
 
-    $sql = "SELECT L.location_id, L.location_name, SCH.show_date, SCH.show_time, SCH.schedule_id
+    $sql = "SELECT L.location_id, L.location_name, CR.cinema_room_id,M.movie_id, SCH.show_date, SCH.show_time, SCH.schedule_id
 
                     FROM movie M, schedule SCH, seat S, cinema_room CR, location L
 
