@@ -78,42 +78,75 @@
         include '../nav_bar/navigation_bar.php';
         include 'connection.php';
         ?>
-        <div id="carouselExampleIndicators" class="carousel slide mt-3" data-ride="carousel">
+         
+        <!-- Carousel -->
+        <div class="container-fluid mt-3 mt-md-3 mt-sm-6 justify-content-center">
+            <!--<div class="row">-->
+                <div id="demo" class="carousel slide mt-lg-3 mt-md-3 mt-sm-6" data-bs-ride="carousel">
 
-            <div class="carousel-inner">
+                    <!-- Indicators/dots -->
+                    <ul class="carousel-indicators">
+                        <?php
+                        $image_query1 = mysqli_query($result, "select * from movie WHERE available_status = 'Coming Soon' ORDER BY RAND()");
+//                        if (mysqli_num_rows($image_query1) > 0) {
+                            while ($rows = mysqli_fetch_array($image_query1)) {
+                                $img_name = $rows['movie_name'];
+                                $img_src = $rows['movie_image'];
+                                $i = 0;
+                                foreach ($image_query1 as $row) {
+                                    $actives = '';
+                                    if ($i == 0) {
+                                        $actives = 'active';
+                                    }
+                                    ?>
+                                    <li type="button" data-bs-target="#demo" data-bs-slide-to="<?= $i; ?>" class="<?= $actives; ?>"></li>
+                                    <?php $i++;
+                                }
+//                            }
+                        } ?>
+                    </ul>
 
-                <?php
-                
-                $totalTrendMv = 3;
-                $mvImg = "food-sample.jpg";
-                $captionHeader = "This is header";
-                $caption = "This is caption paragraph";
+                    <!-- The slideshow/carousel -->
+                    <div class="carousel-inner">
+                        <?php
+//               $result2 = mysqli_connect($host, $uname) or die("Could not connect to database." . mysqli_error());
+//               mysqli_select_db($result2, $db_name) or die("Could not select the databse." . mysqli_error());
+//               $image_query2 = mysqli_query($result2, "select * from movie WHERE available_status = 'Now Showing' ORDER BY RAND()");
+//                while ($rows = mysqli_fetch_array($image_query2)) {
+//                    $img_src2 = $rows['movie_image'];
+                        $i = 0;
+                        foreach ($image_query1 as $row) {
+                            $actives = '';
+                            if ($i == 0) {
+                                $actives = 'active';
+                            }
+                            ?>
+                            <div class="carousel-item <?= $actives; ?>">
+                                <img src="data:image/jpg;charset=utf8;base64, <?= base64_encode($row['movie_banner']) ?>" style = "width: 100%; height:500px;"> 
+                                <div class="carousel-caption">
+                                <h1 class="mt-lg-2 mt-sm-3 mt-md-2 text-responsive py-2 font-weight-bold text-white"><?= $row['movie_name'] ?></h1> 
+                                <button id="youtube" onclick="play()" type="submit" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;"></button>
+                                <input id="mdetail" onclick="mdetails()" type="submit" style="margin-top:5px;" class="btn btn-primary" value="Movie Detail"/>  
+                                <input type="submit" name="Book_now" style="margin-top:5px; " class="btn btn-success" value="  Book Now  "/>
+                                </div>
+                               
+                            </div>
+                                <?php $i++; } ?>
+                    </div>
 
-                for ($x = 0; $x < $totalTrendMv; $x++) {
-                    if ($x == 0) {
-                        $currentMv = "active";
-                    } else {
-                        $currentMv = "";
-                    }
-                    echo "<div class=\"carousel-item $currentMv\">";
-                    echo "<img class = \"d-block w-100\" src = \"images/$mvImg\" alt = \"First slide\" style = \"height:500px;object-fit: fill;\">";
-                    echo "<div class = \"carousel-caption d-none d-md-block\">";
-                    echo "<h1 class=\"py-2 font-weight-bold bg-white text-primary\">" . $captionHeader . $x . "</h1>";
-                    echo "</div>";
-                    echo "</div>";
-                }
-                ?>
-
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                    <!-- Left and right controls/icons -->
+                    <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            <!--</div>-->
         </div>
+        
         <div class="col-lg-12 input-group mt-3 justify-content-center">
             <input type="search" class="form-control rounded mr-3 col-lg-4 srchBar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
             <button type="button" class="btn btn-outline-primary srchBtn ">search</button>

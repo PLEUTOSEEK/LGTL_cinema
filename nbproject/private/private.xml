@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectFood.css</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/movie_details/New%20Text%20Document.txt</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/movie_details/connection.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/home_page.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/home_page.css</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectLocation.php</file>
@@ -20,11 +20,6 @@
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectSeat.css</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectFood.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/newEmptyPHP.php</file>
-=======
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/selectFood.css</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/selectFood.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/payment.php</file>
->>>>>>> 0f86f80719cc0b257fa62ac002da7a8da5636f91
         </group>
     </open-files>
 </project-private>

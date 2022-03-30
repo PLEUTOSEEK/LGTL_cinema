@@ -49,7 +49,9 @@
                 h5 { font-size: calc( 5px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
             }
             
-            
+            .tab-space {
+                padding-left:1em;
+            }
 /*            .column {
                 float: left;
                 width: 33.33%;
@@ -79,43 +81,40 @@
         include 'connection.php';
         ?>
        
-         <div class="row">
+        <!--<div class="row">-->
             <?php
-            $result = mysqli_connect($host, $uname) or die("Could not connect to database." . mysqli_error());
-            mysqli_select_db($result, $db_name) or die("Could not select the databse." . mysqli_error());
-            $image_query = mysqli_query($result, "select * from movie");
-            if (mysqli_num_rows($image_query) > 0) {
-                while ($rows = mysqli_fetch_array($image_query)) {
+            $image_query2 = mysqli_query($result, "select * from movie WHERE movie_name = 'The Batman'");
+            if (mysqli_num_rows($image_query2) > 0) {
+                while ($rows = mysqli_fetch_array($image_query2)) {
                     $img_name = $rows['movie_name'];
                     $img_src = $rows['movie_image'];
-                    $video = $rows['video_link'];
+//                    $video = $rows['video_link'];
+//                    str_replace("watch?v=", "embed/",$video);
+                    $videourl = $rows['video_link'];
                     ?>
-            
-                    <div class="column col-lg-3 col-md-4 col-xs-6 p-lg-6">
-                        <!--<form method="post" action="index.php?action=add&id=<?php echo $row["imageID"]; ?>">-->  
-                        <div style="border:1px solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;" align="center" class="rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11 "> 
-                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br>                             
-                            <h5 class="text-info mt-lg-2 mt-sm-3 mt-md-2 text-responsive"><?php echo $img_name; ?></h5>  
-                            <!--<input type="hidden" name="movie_name" value="<?php echo $img_name; ?>" />-->    
-                            <button onclick="play()" value="Input Button" type="button" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;"></button>
-                            <input id="mdetail" onclick="mdetails()" type="submit" style="margin-top:5px;" class="btn btn-outline-primary" value="Movie Detail"/>  
-                            <input type="submit" name="Book_now" style="margin-top:5px; " class="btn btn-outline-success" value="  Book Now  "/>
-<!--                            <video id="myvideo" data-id="<?php echo $video ?>"  style="width:100%; height:400px;" type="video/mp4" controls   />
-                                    <source  style="width:100%; height:400px;" src="video/<?php // echo $video; ?>"  />
-                                     <iframe class="embed-responsive-item" src="style="width:100%; height:400px;" src="video/<?php echo $video; ?>" allowfullscreen></iframe>
-                            </video>-->
-                        </div>  
-                        <!--</form>-->  
+
+                    <div class="row ml-lg-3">
+                        <div class="rounded mt-md-2 mt-lg-3 mt-sm-4 ml-lg-1 col-lg-3 col-md-4 col-sm-8"> 
+                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img img-fluid mt-lg-3 mt-4 mt-md-2 my-sm-3 rounded " style = "width: 350px; height:450px;">                      
+                        </div>
+                        <div class="col-md-6 col-lg-8 mt-4">
+                                <h3 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:8px;"> <?php echo $img_name; ?></h3>  
+                                <p class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:6px;"> Genre: <?= $rows['movie_ genre'] ?> <span class="tab-space"> Duration: <?= $rows['movie_duration'] ?></span> <span class="tab-space">Language: <?= $rows['movie_language'] ?> </span> </p>
+                                <p class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Subtitle: <?= $rows['movie_subtitle'] ?> <span class="tab-space"> Release Date: <?= $rows['movie_release_date'] ?> </span></p>
+                                <p class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Cast <span class="tab-space"> Director </span> <br> <?= $rows['movie_cast'] ?><span class="tab-space"><?= $rows['movie_ director'] ?> </p>
+                                <p class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Synopsis <br> <?= $rows['movie_ synopsis'] ?> </p>
+
+                        </div>
                     </div>
-
-
                     <?php
                 }
             }
-            
-            
             ?>
-        </div>
+        <!--</div>-->
+        
+    <div class="row justify-content-center mt-lg-4 mt-sm-3 mt-md-2">
+        <iframe width="750" height="400" src="https://www.youtube.com/embed/<?php echo $videourl; ?>?autoplay=1&autohide=1&controls=1&showinfo=0&modestbranding=1&rel=0"></iframe>
+    </div>
         
         <?php
         include '../nav_bar/footer.php';
