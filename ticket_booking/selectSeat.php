@@ -91,9 +91,9 @@ and open the template in the editor.
                                 $uniFormID = uniqid();
                                 $seatText = chr($alpha) . str_pad($seatNo, 2, '0', STR_PAD_LEFT);
                                 if ($seatList[$counter]['status'] == "Booked")
-                                    echo "<button class=\"btn bg-danger text-white col col-sm-2 mx-sm-auto mx-2 add-on-seat-btn seat-btn\"  disabled id=\"" . $seatList[$counter]['seat_id'] . "\">"; //Unavailable - bg-danger text-white border-danger disabled
+                                    echo "<button class=\"btn bg-danger text-white col col-sm-2 mx-sm-auto mx-2 add-on-seat-btn seat-btn\"  disabled id=\"" . $seatList[$counter]['schedule_id'] . "\">"; //Unavailable - bg-danger text-white border-danger disabled
                                 else
-                                    echo "<button class=\"btn btn-outline-primary col col-sm-2 mx-sm-auto mx-2 add-on-seat-btn seat-btn\" id=\"" . $seatList[$counter]['seat_id'] . "\">"; //Unavailable - bg-danger text-white border-danger disabled
+                                    echo "<button class=\"btn btn-outline-primary col col-sm-2 mx-sm-auto mx-2 add-on-seat-btn seat-btn\" id=\"" . $seatList[$counter]['schedule_id'] . "\">"; //Unavailable - bg-danger text-white border-danger disabled
                                 echo $seatText;
                                 echo "</button>";
                                 $seatNo++;
@@ -128,73 +128,59 @@ and open the template in the editor.
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="cookies.js"></script>
 
         <script>
-            var seats = [];
+            var sch_seats = [];
 
             $('.seat-btn').on('click', function () {
                 if (this.classList.contains('selectedSeat')) {
                     $(this).removeClass('selectedSeat');
-                    var index = seats.indexOf(this.id);
+
+
+                    var index = sch_seats.findIndex(p => p.sch_id == this.id);
+
                     if (index !== -1) {
-                        seats.splice(index, 1);
+                        sch_seats.splice(index, 1);
                     }
 
                 } else {
                     $(this).addClass('selectedSeat');
-                    seats.push(this.id);
-                    console.log(this.id);
+                    sch_seats.push({"sch_id": this.id, "seat_name": this.innerText});
                 }
-                console.log(seats);
             });
-            //
-
-            function sendSeatData(seats, url) {
-
-
-                $.ajax({
-                    type: "POST", //type of method
-                    url: "selectSeatBackEnd.php", //your page
-                    data: {action: "setSeatsBookedFunc",
-                        seat: JSON.stringify(seats),
-                        'show_date': '<?php echo $showDate; ?>',
-                        'show_time': '<?php echo $showTime; ?>',
-                        'movie_id': '<?php echo $movieID; ?>'
-                    }, // passing the values
-                    success: function (res) {
-                        //do what you want here...
-                        console.log(res);
-                    }
-                });
-            }
-
-            //
 
             $('#next-btn').on('click', function () {
-                createCookie("Seats", seats, "10");
                 //delete_cookie("Seats");
-                sendSeatData(seats, 'selectLocation.php');
+                if (sch_seats.length != 0) {
+                    createCookie('seatsSelected', JSON.stringify(sch_seats), '1');
+                    window.location = 'selectFood.php';
+                } else {
+                    alert("At least one seat must be select");
+                }
             });
 
-            // Function to create the cookie
-            function createCookie(name, value, days) {
-                var expires;
+            //
 
-                if (days) {
-                    var date = new Date();
-                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                    expires = "; expires=" + date.toGMTString();
-                } else {
-                    expires = "";
-                }
+            /*
+             function sendSeatData(sch_seats, url) {
+             $.ajax({
+             type: "POST", //type of method
+             url: "selectSeatBackEnd.php", //your page
+             data: {action: "setSeatsBookedFunc",
+             schedule_seats: JSON.stringify(seats)
+             }, // passing the values
+             success: function (res) {
+             //do what you want here...
+             createCookie('seatsSelected', JSON.stringify(sch_seats), '1');
+             window.location = url;
+             }
+             });
+             }
+             *
+             */
 
-                document.cookie = escape(name) + "=" +
-                        escape(value) + expires + "; path=/";
-            }
 
-            function delete_cookie(name) {
-                document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-            }
 
 
         </script>
