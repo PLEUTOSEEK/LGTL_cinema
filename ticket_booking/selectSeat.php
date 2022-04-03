@@ -94,7 +94,7 @@ and open the template in the editor.
                                     echo "<button class=\"btn bg-danger text-white col col-sm-2 mx-sm-auto mx-2 add-on-seat-btn seat-btn\"  disabled id=\"" . $seatList[$counter]['schedule_id'] . "\">"; //Unavailable - bg-danger text-white border-danger disabled
                                 else
                                     echo "<button class=\"btn btn-outline-primary col col-sm-2 mx-sm-auto mx-2 add-on-seat-btn seat-btn\" id=\"" . $seatList[$counter]['schedule_id'] . "\">"; //Unavailable - bg-danger text-white border-danger disabled
-                                echo $seatText;
+                                echo $seatList[$counter]['seat_name'];
                                 echo "</button>";
                                 $seatNo++;
                                 $counter++;

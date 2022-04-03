@@ -15,4 +15,15 @@ function OpenCon() {
 function CloseCon($conn) {
     $conn->close();
 }
+
+function RefreshCon($conn) {
+    mysqli_refresh($conn, MYSQLI_REFRESH_GRANT);
+    mysqli_refresh($conn, MYSQLI_REFRESH_LOG);
+    mysqli_refresh($conn, MYSQLI_REFRESH_TABLES);
+    mysqli_refresh($conn, MYSQLI_REFRESH_HOSTS);
+    mysqli_refresh($conn, MYSQLI_REFRESH_STATUS);
+    mysqli_refresh($conn, MYSQLI_REFRESH_THREADS);
+    mysqli_refresh($conn, MYSQLI_REFRESH_SLAVE);
+    mysqli_refresh($conn, MYSQLI_REFRESH_MASTER);
+}
 ?>

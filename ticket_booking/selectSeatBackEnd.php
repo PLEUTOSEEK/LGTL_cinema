@@ -36,7 +36,6 @@ function setSeatsBooked() {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $showDate, $showTime, $movieID);
     $stmt->execute();
-    $result = $stmt->get_result();
 
     CloseCon($conn);
 }
@@ -49,20 +48,22 @@ function getSeats($cinemaRoomID, $showDate, $showTime, $movieID) {
     $sql = "SELECT
                     S.schedule_id,
                     S.seat_id,
-                    S.status
+                    ST.seat_name,
+                    S.status,
+		    ST.INDEX_SPLIT
             FROM
                     SCHEDULE S
                     JOIN MOVIE M USING (MOVIE_ID)
                     JOIN SEAT ST USING (SEAT_ID)
                     JOIN CINEMA_ROOM CR USING (CINEMA_ROOM_ID)
-                    JOIN LOCATION L USING (LOCATION_ID)
             WHERE
                     CR.CINEMA_ROOM_ID = ?
                     AND S.SHOW_DATE = ?
                     AND S.SHOW_TIME = ?
                     AND S.MOVIE_ID = ?
             ORDER BY
-                    S.seat_id;";
+                    ST.INDEX_SPLIT,
+		    ST.seat_name;";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssss", $cinemaRoomID, $showDate, $showTime, $movieID);

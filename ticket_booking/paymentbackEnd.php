@@ -11,6 +11,10 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == "retrieveFoods") {
         getFoodsCompleteInfo();
     }
+
+    if ($_POST['action'] == "completeFoodsFunc") {
+        completeOrder($_POST['totalPr']);
+    }
 }
 
 function getSeatsCompleteInfo() {
