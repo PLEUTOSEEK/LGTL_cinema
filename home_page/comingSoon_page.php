@@ -145,22 +145,21 @@
         
        <div class="row">
             <?php
-            $result = mysqli_connect($host, $uname) or die("Could not connect to database." . mysqli_error());
-            mysqli_select_db($result, $db_name) or die("Could not select the databse." . mysqli_error());
+//            $result = mysqli_connect($host, $uname) or die("Could not connect to database." . mysqli_error());
+//            mysqli_select_db($result, $db_name) or die("Could not select the databse." . mysqli_error());
             $image_query = mysqli_query($result, "select * from movie WHERE available_status = 'Coming Soon' ");
             if (mysqli_num_rows($image_query) > 0) {
                 while ($rows = mysqli_fetch_array($image_query)) {
+                    $img_id = $rows['movie_id'];
                     $img_name = $rows['movie_name'];
                     $img_src = $rows['movie_image'];
                     $videourl = $rows['video_link'];
                     ?>
             
                     <div class="column col-lg-3 col-md-4 col-xs-6 p-lg-6">
-                        <!--<form method="post" action="index.php?action=add&id=<?php echo $row["imageID"]; ?>">-->  
                         <div style="border:1px solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;" align="center" class="rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11 "> 
                             <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br>                             
                             <h5 class="text-info mt-lg-2 mt-sm-3 mt-md-2 text-responsive"><?php echo $img_name; ?></h5>  
-                            <!--<input type="hidden" name="movie_name" value="<?php echo $img_name; ?>" />-->    
                             <button type="button" id="trailer" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;" data-toggle="modal" data-target="#myModal2<?php echo $videourl?>"></button>        
                             <div class="modal fade" id="myModal2<?php echo $videourl?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                    <div class="modal-dialog modal-lg modal-xl-1140" role="document">
@@ -172,7 +171,6 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                   
                                                 </div>
                                                 <iframe class="ml-lg-2 mt-lg-8 mt-4 mt-md-2 my-sm-3 mr-2" height="400px" src="https://www.youtube.com/embed/<?php echo $videourl?>?autoplay=1&autohide=1&controls=1&showinfo=0&modestbranding=1&rel=0"></iframe>
                                             </div>
@@ -186,9 +184,6 @@
                                 <input  type="hidden"  name = "movie_id"  value="<?php echo $img_id; ?>"/>
                                 <input type="submit"  style="margin-top:5px; " class="btn btn-outline-success" value="  Book Now  "/>
                             </form>
-<!--                            
-                        </div>  
-                        <!--</form>-->  
                     </div>
                     </div>    
 
