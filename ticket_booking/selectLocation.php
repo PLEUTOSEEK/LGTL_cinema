@@ -23,7 +23,7 @@ and open the template in the editor.
         ?>
 
         <?php
-        $movieID = 'M1001';
+        $movieID = $_POST['movie_id'];
         $scheduleList = getSchedule($movieID, 'Available');
 
         //get unique date
