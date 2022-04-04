@@ -100,12 +100,12 @@
                         <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img img-fluid mt-lg-3 mt-4 mt-md-2 my-sm-3 rounded " style = "width: 350px; height:450px;">
                     </div>
                     <div class="col-md-6 col-lg-8 mt-4">
-                        <h3 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:8px;"> <?php echo $img_name; ?></h3>
-                        <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:6px;"> Genre: <?= $rows['movie_ genre'] ?> <span class="tab-space"> Duration: <?= $rows['movie_duration'] ?></span> <span class="tab-space">Language: <?= $rows['movie_language'] ?> </span> </h5>
-                        <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Subtitle: <?= $rows['movie_subtitle'] ?> <span class="tab-space"> Release Date: <?= $dateFormatted ?> </span></h5>
-                        <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Cast: <br> <?= $rows['movie_cast'] ?></h5>
-                        <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Director: <br> <?= $rows['movie_ director'] ?> </h5>
-                        <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Synopsis: <br> <?= $rows['movie_ synopsis'] ?> </h5>
+                        <h3 class="text-light mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:8px;"> <?php echo $img_name; ?></h3>
+                        <h5 class="text-light mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:6px;"> Genre: <?= $rows['movie_ genre'] ?> <span class="tab-space"> Duration: <?= $rows['movie_duration'] ?></span> <span class="tab-space">Language: <?= $rows['movie_language'] ?> </span> </h5>
+                        <h5 class="text-light mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Subtitle: <?= $rows['movie_subtitle'] ?> <span class="tab-space"> Release Date: <?= $dateFormatted ?> </span></h5>
+                        <h5 class="text-light mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Cast: <br> <?= $rows['movie_cast'] ?></h5>
+                        <h5 class="text-light mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Director: <br> <?= $rows['movie_ director'] ?> </h5>
+                        <h5 class="text-light mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Synopsis: <br> <?= $rows['movie_ synopsis'] ?> </h5>
 
                     </div>
                 </div>

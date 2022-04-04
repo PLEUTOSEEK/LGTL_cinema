@@ -130,8 +130,10 @@
             <button type="button" class="btn btn-outline-primary srchBtn ">search</button>
         </div>
         
-        <div> 
-            <h2 class="mt-lg-3 mt-md-3 mt-sm-6 col-lg-6 col-md-8 col-xs-4"><b class="title" onclick="pageNow()" type="Post" id="nshow">Now Showing</b> <span class="title tab-space" onclick="page()" type="Post" id="csoon"/>Coming Soon </span></h2>
+        <div class="row col-7">
+            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light" onclick="window.location.href='home_page.php'">Now Showing</h2>
+            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light">Coming Soon</h2>
+         
         </div>
         
         <div class="py-2 my-1 text-center position-relative mx-2">
@@ -176,8 +178,14 @@
                                             </div>
                                         </div>
                                     </div>
-                            <input id="mdetail" onclick="mdetails()" type="submit" style="margin-top:5px;" class="btn btn-outline-primary" value="Movie Detail"/>  
-                            <input type="submit" name="Book_now" style="margin-top:5px; " class="btn btn-outline-success" value="  Book Now  "/>
+                             <form action ="../movie_details/movie_page.php" method="post">
+                                <input  type="hidden"  name = "movie_id"  value="<?php echo $img_id; ?>"/>
+                                <input  type="submit" style="margin-top:5px;" class="btn btn-outline-primary" value="Movie Detail"/>
+                            </form>
+                            <form action ="../ticket_booking/selectLocation.php" method="post">
+                                <input  type="hidden"  name = "movie_id"  value="<?php echo $img_id; ?>"/>
+                                <input type="submit"  style="margin-top:5px; " class="btn btn-outline-success" value="  Book Now  "/>
+                            </form>
 <!--                            
                         </div>  
                         <!--</form>-->  
@@ -203,21 +211,6 @@
         
        <script>
         
-            document.getElementById("csoon").addEventListener("click", page);
-            function page() {
-            window.location.href = "http://localhost:8088/LGTL/LGTL_cinema/home_page/comingSoon_page.php";
-            }
-            
-            document.getElementById("nshow").addEventListener("click", pageNow);
-            function pageNow() {
-            window.location.href = "http://localhost:8088/LGTL/LGTL_cinema/home_page/home_page.php";
-            }
-            
-            document.getElementById("mdetail").addEventListener("click", mdetails);
-            function mdetails() {
-            window.location.href = "http://localhost:8088/LGTL/LGTL_cinema/movie_details/movie_page.php";
-            }
-            
        </script>
 
         

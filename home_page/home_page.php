@@ -159,12 +159,14 @@ and open the template in the editor.
 
         <div class="col-lg-12 input-group mt-3 justify-content-center">
             <input type="search" class="form-control rounded mr-3 col-lg-4 srchBar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <!--<button type="button" class="btn btn-outline-primary srchBtn ">search</button>-->
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+            <button type="button" class="btn btn-outline-primary srchBtn ">search</button>
+            <!--<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">-->
         </div>
 
-        <div>
-            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6"><b class="title" onclick="pageNow()" type="Post" id="nshow">Now Showing</b> <span class="title tab-space" onclick="page()" type="Post" id="csoon"/>Coming Soon </span></h2>
+        <div class="row col-7">
+            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light">Now Showing</h2>
+            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light" onclick="window.location.href='comingSoon_page.php'">Coming Soon</h2>
+         
         </div>
 
         <div class="py-2 my-1 text-center position-relative mx-2">
