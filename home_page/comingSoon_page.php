@@ -49,28 +49,6 @@
                 h5 { font-size: calc( 5px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
             }
             
-            
-/*            .column {
-                float: left;
-                width: 33.33%;
-                padding: 5px;
-            }
-
-            .row::after {
-                content: "";
-                clear: both;
-                display: table;
-                float: left;
-            }
-            
-*/            
-/*            @media screen and (max-width: 500px) {
-                .column {
-                    width: 100%;
-                }
-            }*/
-          
-            
         </style>
     </head>
      <body>
@@ -172,7 +150,7 @@
                 while ($rows = mysqli_fetch_array($image_query)) {
                     $img_name = $rows['movie_name'];
                     $img_src = $rows['movie_image'];
-                    $video = $rows['video_link'];
+                    $videourl = $rows['video_link'];
                     ?>
             
                     <div class="column col-lg-3 col-md-4 col-xs-6 p-lg-6">
@@ -181,17 +159,30 @@
                             <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br>                             
                             <h5 class="text-info mt-lg-2 mt-sm-3 mt-md-2 text-responsive"><?php echo $img_name; ?></h5>  
                             <!--<input type="hidden" name="movie_name" value="<?php echo $img_name; ?>" />-->    
-                            <button onclick="play()" value="Input Button" type="button" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;"></button>
+                            <button type="button" id="trailer" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;" data-toggle="modal" data-target="#myModal2<?php echo $videourl?>"></button>        
+                            <div class="modal fade" id="myModal2<?php echo $videourl?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                   <div class="modal-dialog modal-lg modal-xl-1140" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-info" id="exampleModalLabel"><?php echo $img_name; ?></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                   
+                                                </div>
+                                                <iframe class="ml-lg-2 mt-lg-8 mt-4 mt-md-2 my-sm-3 mr-2" height="400px" src="https://www.youtube.com/embed/<?php echo $videourl?>?autoplay=1&autohide=1&controls=1&showinfo=0&modestbranding=1&rel=0"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
                             <input id="mdetail" onclick="mdetails()" type="submit" style="margin-top:5px;" class="btn btn-outline-primary" value="Movie Detail"/>  
                             <input type="submit" name="Book_now" style="margin-top:5px; " class="btn btn-outline-success" value="  Book Now  "/>
-<!--                            <video id="myvideo" data-id="<?php echo $video ?>"  style="width:100%; height:400px;" type="video/mp4" controls   />
-                                    <source  style="width:100%; height:400px;" src="video/<?php // echo $video; ?>"  />
-                                     <iframe class="embed-responsive-item" src="style="width:100%; height:400px;" src="video/<?php echo $video; ?>" allowfullscreen></iframe>
-                            </video>-->
+<!--                            
                         </div>  
                         <!--</form>-->  
                     </div>
-
+                    </div>    
 
                     <?php
                 }
@@ -211,12 +202,7 @@
 //        ?>
         
        <script>
-        function play(){
-            var videolink = $('#myvideo').data('video');
-            vidd.get(0).play();
-        }
         
-//         $('#csoon').click(function) {
             document.getElementById("csoon").addEventListener("click", page);
             function page() {
             window.location.href = "http://localhost:8088/LGTL/LGTL_cinema/home_page/comingSoon_page.php";

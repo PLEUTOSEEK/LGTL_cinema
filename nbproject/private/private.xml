@@ -3,10 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/dragADrop.js</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/movie_details/connection.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/home_page.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectFood.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectFoodBackEnd.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectSeatBackEnd.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/home_page.css</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectLocation.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectLocationBackEnd.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectSeat.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/comingSoon_page.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/movie_details/movie_page.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectLocation.css</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/dragADrop.js</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectFood.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectSeat.css</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/connection.php</file>
         </group>
     </open-files>
 </project-private>

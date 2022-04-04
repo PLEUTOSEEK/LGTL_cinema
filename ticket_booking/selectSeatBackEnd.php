@@ -13,13 +13,17 @@ if (isset($_POST['action'])) {
 }
 
 function setSeatsBooked() {
-    $showDate = $_POST['show_date'];
-    $showTime = $_POST['show_time'];
-    $movieID = $_POST['movie_id'];
-
     $conn = OpenCon();
-    $seatsInStr = implode("', '", json_decode($_POST['seat'], true));
-    $seatsInStr = "'" . $seatsInStr . "'";
+
+    $scheduleSeats = json_decode($_COOKIE['seatsSelected'], true);
+    $justsSchIDs = array();
+
+    foreach ($scheduleSeats as $scheduleSeat) {
+        array_push($justsSchIDs, $scheduleSeat['sch_id']);
+    }
+
+    $scheIDsInStr = implode("', '", $justsSchIDs);
+    $scheIDsInStr = "'" . $scheIDsInStr . "'";
 
     $sql = "
             UPDATE
@@ -27,10 +31,7 @@ function setSeatsBooked() {
             SET
                 STATUS = 'Booked'
             WHERE
-                SHOW_DATE = ?
-                AND SHOW_TIME = ?
-                AND MOVIE_ID = ?
-                AND SEAT_ID IN ($seatsInStr)";
+                SCHEDULE_ID IN ($scheIDsInStr)";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $showDate, $showTime, $movieID);
@@ -38,7 +39,6 @@ function setSeatsBooked() {
     $result = $stmt->get_result();
 
     CloseCon($conn);
-    return $seatsInStr;
 }
 
 function getSeats($cinemaRoomID, $showDate, $showTime, $movieID) {
@@ -47,11 +47,15 @@ function getSeats($cinemaRoomID, $showDate, $showTime, $movieID) {
     $seatList = array();
 
     $sql = "SELECT
-                    S.seat_id, S.status
+                    S.schedule_id,
+                    S.seat_id,
+                    S.status
             FROM
                     SCHEDULE S
+                    JOIN MOVIE M USING (MOVIE_ID)
                     JOIN SEAT ST USING (SEAT_ID)
                     JOIN CINEMA_ROOM CR USING (CINEMA_ROOM_ID)
+                    JOIN LOCATION L USING (LOCATION_ID)
             WHERE
                     CR.CINEMA_ROOM_ID = ?
                     AND S.SHOW_DATE = ?

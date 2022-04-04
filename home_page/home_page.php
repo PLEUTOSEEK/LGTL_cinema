@@ -58,29 +58,7 @@ and open the template in the editor.
             @media screen and (min-width: 50em){
                 h5 { font-size: calc( 5px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
             }
-
-
-            /*            .column {
-                            float: left;
-                            width: 33.33%;
-                            padding: 5px;
-                        }
-
-                        .row::after {
-                            content: "";
-                            clear: both;
-                            display: table;
-                            float: left;
-                        }
-
-            */
-            /*            @media screen and (max-width: 500px) {
-                            .column {
-                                width: 100%;
-                            }
-                        }*/
-
-
+            
         </style>
     </head>
     <body>
@@ -102,6 +80,7 @@ and open the template in the editor.
                             while ($rows = mysqli_fetch_array($image_query1)) {
                                 $img_name = $rows['movie_name'];
                                 $img_src = $rows['movie_image'];
+                                $videourl = $rows['video_link'];
                                 $i = 0;
                                 foreach ($image_query1 as $row) {
                                     $actives = '';
@@ -135,15 +114,30 @@ and open the template in the editor.
                                 <img src="data:image/jpg;charset=utf8;base64, <?= base64_encode($row['movie_banner']) ?>" style = "width: 100%; height:500px;"> 
                                 <div class="carousel-caption">
                                 <h1 class="mt-lg-2 mt-sm-3 mt-md-2 text-responsive py-2 font-weight-bold text-white"><?= $row['movie_name'] ?></h1> 
-                                <button id="youtube" onclick="play()" type="submit" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;"></button>
+                                <button type="button" id="trailer" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;" data-toggle="modal" data-target="#myModal2<?= $videourl ?>"></button>        
+                                <div class="modal fade" id="myModal2<?= $videourl ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-xl-1140" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-info" id="exampleModalLabel"><?= $img_name ?></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                   
+                                                </div>
+                                                <iframe class="ml-lg-2 mt-lg-8 mt-4 mt-md-2 my-sm-3 mr-2" height="400px" src="https://www.youtube.com/embed/<?= $videourl ?>?autoplay=1&autohide=1&controls=1&showinfo=0&modestbranding=1&rel=0"></iframe>
+                                            </div>
+                                        </div>
+                                </div>    
                                 <input id="mdetail" onclick="mdetails()" type="submit" style="margin-top:5px;" class="btn btn-primary" value="Movie Detail"/>  
                                 <input type="submit" name="Book_now" style="margin-top:5px; " class="btn btn-success" value="  Book Now  "/>
                                 </div>
                                
                             </div>
                                 <?php $i++; } ?>
-                    </div>
-
+                             </div>
                     <!-- Left and right controls/icons -->
                     <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -160,7 +154,8 @@ and open the template in the editor.
        
         <div class="col-lg-12 input-group mt-3 justify-content-center">
             <input type="search" class="form-control rounded mr-3 col-lg-4 srchBar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary srchBtn ">search</button>
+            <!--<button type="button" class="btn btn-outline-primary srchBtn ">search</button>-->
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
         </div>
 
         <div> 
@@ -173,49 +168,57 @@ and open the template in the editor.
             </div>
             <div class="position-absolute w-100 top-50 start-0 border-muted border-top"></div>
         </div>
-
+        
         <div class="row">
             <?php
             $image_query = mysqli_query($result, "select * from movie WHERE available_status = 'Now Showing'");
             if (mysqli_num_rows($image_query) > 0) {
                 while ($rows = mysqli_fetch_array($image_query)) {
+                    $img_id = $rows['movie_id'];
                     $img_name = $rows['movie_name'];
                     $img_src = $rows['movie_image'];
-//                    $video = $rows['video_link'];
-//                    str_replace("watch?v=", "embed/",$video);
                     $videourl = $rows['video_link'];
                     
                     ?>
 
                     <div class=" col-lg-3 col-md-4 col-xs-6 p-lg-6">
+                        <!--$uniFormID = uniqid();-->
                         <!--<form method="post" action="index.php?action=add&id=<?php echo $row["imageID"]; ?>">-->  
                         <div style="border:1px solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;" align="center" class="rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11 "> 
                             <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($img_src); ?>" alt="" title="<?php echo $img_name; ?>" class="img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start " <br>                             
                             <h5 class="text-info mt-lg-2 mt-sm-3 mt-md-2 text-responsive"><?php echo $img_name; ?></h5>  
                             <!--<input type="hidden" name="movie_name" value="<?php echo $img_name; ?>" />-->    
-                            <button id="youtube" onclick="play()" type="submit" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;"></button>
+                            <button type="button" id="trailer" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;" data-toggle="modal" data-target="#myModal2<?php echo $videourl?>"></button>        
+                            <div class="modal fade" id="myModal2<?php echo $videourl?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                   <div class="modal-dialog modal-lg modal-xl-1140" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-info" id="exampleModalLabel"><?php echo $img_name; ?></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                   
+                                                </div>
+                                                <iframe class="ml-lg-2 mt-lg-8 mt-4 mt-md-2 my-sm-3 mr-2" height="400px" src="https://www.youtube.com/embed/<?php echo $videourl?>?autoplay=1&autohide=1&controls=1&showinfo=0&modestbranding=1&rel=0"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
                             <input id="mdetail" onclick="mdetails()" type="submit" style="margin-top:5px;" class="btn btn-outline-primary" value="Movie Detail"/>  
                             <input type="submit" name="Book_now" style="margin-top:5px; " class="btn btn-outline-success" value="  Book Now  "/>
                            
-<!--                            <video id="myvideo" data-id="<?php echo $videourl ?>"  style="width:100%; height:400px;" type="video/mp4" controls />
-                                    <source  style="width:100%; height:400px;" src="video/<?php // echo $video;   ?>"  />
-                            </video>-->
-                       
-                        </div>  
-                        
-                         <!--</form>-->  
-
                     </div>
-                    
-
+                    </div>
+            
                     <?php
+                 
                 }
             }
             
-            
             ?>
+            
         </div>
-        
        //<?php
 //       $result = mysqli_connect($host, $uname) or die("Could not connect to database." . mysqli_error());
 //            mysqli_select_db($result, $db_name) or die("Could not select the databse." . mysqli_error());
@@ -224,13 +227,8 @@ and open the template in the editor.
 //            $vid =$rows["videolink"];
 //        }
 //        ?>
-        
        <script>
-       
-//        document.getElementById("youtube").addEventListener("click", page);
-//        function videoplay(){
-//            echo[ <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $videourl; ?>?autoplay=1&autohide=1&controls=1&showinfo=0&modestbranding=1&rel=0"></iframe>]
-//        }
+           
             document.getElementById("csoon").addEventListener("click", page);
             function page() {
             window.location.href = "http://localhost:8088/LGTL/LGTL_cinema/home_page/comingSoon_page.php";

@@ -91,6 +91,8 @@
 //                    $video = $rows['video_link'];
 //                    str_replace("watch?v=", "embed/",$video);
                     $videourl = $rows['video_link'];
+                    $releaseDate = $rows['movie_release_date'];
+                    $dateFormatted = date_format(date_create($releaseDate), "d-F-Y");
                     ?>
 
                     <div class="row ml-lg-3">
@@ -99,10 +101,11 @@
                         </div>
                         <div class="col-md-6 col-lg-8 mt-4">
                                 <h3 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:8px;"> <?php echo $img_name; ?></h3>  
-                                <p class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:6px;"> Genre: <?= $rows['movie_ genre'] ?> <span class="tab-space"> Duration: <?= $rows['movie_duration'] ?></span> <span class="tab-space">Language: <?= $rows['movie_language'] ?> </span> </p>
-                                <p class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Subtitle: <?= $rows['movie_subtitle'] ?> <span class="tab-space"> Release Date: <?= $rows['movie_release_date'] ?> </span></p>
-                                <p class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Cast <span class="tab-space"> Director </span> <br> <?= $rows['movie_cast'] ?><span class="tab-space"><?= $rows['movie_ director'] ?> </p>
-                                <p class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Synopsis <br> <?= $rows['movie_ synopsis'] ?> </p>
+                                <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:6px;"> Genre: <?= $rows['movie_ genre'] ?> <span class="tab-space"> Duration: <?= $rows['movie_duration'] ?></span> <span class="tab-space">Language: <?= $rows['movie_language'] ?> </span> </h5>
+                                <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Subtitle: <?= $rows['movie_subtitle'] ?> <span class="tab-space"> Release Date: <?= $dateFormatted ?> </span></h5>
+                                <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Cast: <br> <?= $rows['movie_cast'] ?></h5>
+                                <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Director: <br> <?= $rows['movie_ director'] ?> </h5>
+                                <h5 class="text-info mt-lg-4 mt-sm-3 mt-md-2 text-responsive" style="padding:2px;"> Synopsis: <br> <?= $rows['movie_ synopsis'] ?> </h5>
 
                         </div>
                     </div>
@@ -112,7 +115,7 @@
             ?>
         <!--</div>-->
         
-    <div class="row justify-content-center mt-lg-4 mt-sm-3 mt-md-2">
+    <div class="row justify-content-center mt-lg-3 mt-4 mt-md-2 my-sm-3">
         <iframe width="750" height="400" src="https://www.youtube.com/embed/<?php echo $videourl; ?>?autoplay=1&autohide=1&controls=1&showinfo=0&modestbranding=1&rel=0"></iframe>
     </div>
         
