@@ -2,23 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-<<<<<<< HEAD
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/contact_us/contact_us.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/home_page.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectFood.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/nav_bar/footer.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/home_page.css</file>
-=======
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/login_form.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.css</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/login_form.css</file>
->>>>>>> d86181ab941f3591d88aacc689e208e970b8ccf2
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/contact_us/insertMovieComment.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/contact_us/comment_section.php</file>
         </group>
->>>>>>> 916611144687248d8e3c303d9a9284facbf3136b
     </open-files>
 </project-private>
