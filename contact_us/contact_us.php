@@ -83,7 +83,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 }
             }
 
-            function checkRate() {
+            $(".rateOption").on("click", function () {
+                alert("as");
                 var rateOption1 = document.getElementById("rateOption1");
                 var rateOption2 = document.getElementById("rateOption2");
                 var rateOption3 = document.getElementById("rateOption3");
@@ -103,7 +104,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 else(rateOption5.checked){
                     rating.value = 5;
                 }
-            }
+
+                alert(rating.value);
+
+            })
+
         </script>
     </head>
     <body>
@@ -156,23 +161,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <big class="form-text form-check-inline text-muted"></big>
                 <div class="rateOptionBox">
                     <label>
-                        <input type="radio" name="rateOption"id="rateOption1" class="rateOption" onclick="checkRate()">
+                        <input type="radio" name="rateOption"id="rateOption1" class="rateOption"/>
                         <img src="start_uncheck.png">
                     </label>
                     <label>
-                        <input type="radio" name="rateOption"id="rateOption2" class="rateOption" onclick="checkRate()">
+                        <input type="radio" name="rateOption"id="rateOption2" class="rateOption"/>
                         <img src="start_uncheck.png">
                     </label>
                     <label>
-                        <input type="radio" name="rateOption"id="rateOption3" class="rateOption" onclick="checkRate()">
+                        <input type="radio" name="rateOption"id="rateOption3" class="rateOption"/>
                         <img src="start_uncheck.png">
                     </label>
                     <label>
-                        <input type="radio" name="rateOption"id="rateOption4" class="rateOption" onclick="checkRate()">
+                        <input type="radio" name="rateOption"id="rateOption4" class="rateOption" />
                         <img src="start_uncheck.png">
                     </label>
                     <label>
-                        <input type="radio" name="rateOption"id="rateOption5" class="rateOption" onclick="checkRate()">
+                        <input type="radio" name="rateOption"id="rateOption5" class="rateOption"  />
                         <img src="start_uncheck.png">
                     </label>
                 </div>
@@ -191,28 +196,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script>
-                            $("#serviceCommentForm").on("submit", function (e) {
-                                e.preventDefault();
-                                $.ajax({
-                                    url: "insertServiceComment.php",
-                                    type: "POST",
-                                    data: {"submit": "submitted",
-                                        "customer_ID": $("#customer_ID").val(),
-                                        "customer_name": $("#customer_name").val(),
-                                        "contact_number": $("#contact_number").val(),
-                                        "comment": $("#comment").val()
-                                    },
-                                    error: function (xhr, status, error) {
-                                        console.log("Error: " + error);
-                                    }
-                                    ,
-                                    success: function (result, status, xhr) {
-                                        sendEmail();
-                                        reset();
-                                        return false;
-                                    }
-                                });
-                            })
+                        $("#serviceCommentForm").on("submit", function (e) {
+                            e.preventDefault();
+                            $.ajax({
+                                url: "insertServiceComment.php",
+                                type: "POST",
+                                data: {"submit": "submitted",
+                                    "customer_ID": $("#customer_ID").val(),
+                                    "customer_name": $("#customer_name").val(),
+                                    "contact_number": $("#contact_number").val(),
+                                    "comment": $("#comment").val()
+                                },
+                                error: function (xhr, status, error) {
+                                    console.log("Error: " + error);
+                                }
+                                ,
+                                success: function (result, status, xhr) {
+                                    sendEmail();
+                                    reset();
+                                    return false;
+                                }
+                            });
+                        })
 
         </script>
 
