@@ -3,9 +3,8 @@
     <head>
         <title>title</title>
         <?php
-        include 'paypalSuccessPageBackEnd.php';
-
-        $orderID = $_GET['order_id'];
+        include 'invoiceDetailsBackEnd.php';
+        $orderID = $_POST['order_id'];
         $orderDtls = retrieveOrderDtls($orderID);
         $orderListFoodDtls = retrieveOrderListFoodDtls($orderID);
         $orderListSeatDtls = retrieveOrderListSeatDtls($orderID);
@@ -150,19 +149,29 @@
         </style>
     </head>
     <body>
+        <form onsubmit="" id="sendEmailForm">
+            <button type="submit" form="sendEmailForm">This is submti button</button>
+        </form>
+        <script>
+
+            $("#sendEmailForm").on("submit", function (e) {
+                e.preventDefault();
+                sendEmail();
+                reset();
+                return false;
+            })
+
+        </script>
 
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mx-auto mt-5">
                     <div class="payment">
                         <div class="payment_header">
-                            <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
+                            <h1 class="text-center">Invoice Details</h1>
                         </div>
 
                         <div class="content container-fluid pb-4">
-                            <h1>Payment Success !</h1>
-
-
                             <div class=" container-fluid justify-content-end align-items-right clearfix" onclick="window.print();">
                                 <button class="btn btn-outline-primary float-right font-weight-bold text-uppercase col-lg-3 col-sm-3 col-3 my-lg-3 my-sm-3 my-3 rounded" id="next-btn">
                                     Print
@@ -290,20 +299,44 @@
                                         </tr>
                                     </thead>
                                 </table>
-
+                                <div class= "d-flex justify-content-start clearfix col-12 text-right px-0 py-3 ">
+                                    <p  class= "label rounded px-3 py-2 mx-0  font-weight-bold m-0 text-white bg-dark">Total Price</p>
+                                </div>
                                 <div class= "d-flex justify-content-end clearfix col-12 text-left px-0 py-3 ">
                                     <p  class= "label rounded px-3 py-2 mx-0  font-weight-bold m-0 text-white bg-dark">Total Price&emsp;<span>RM&ensp;<?php echo number_format($orderDtls[0]['TOTAL_PRICE'], 2); ?></span></p>
                                 </div>
-
                             </div>
                             <hr>
-                            <a href="http://localhost/LGTL_Cineplex/LGTL_cinema/home_page/home_page.php" class = "h5 px-4">Go to Home</a>
+                            <a href="http://localhost/LGTL_Cineplex/LGTL_cinema/ticket_booking/refundsOverview.php" class = "h5 px-4">Go Back</a>
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
+
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+        <script>
+                                function sendEmail() {
+                                    Email.send({
+                                        Host: "smtp.gmail.com",
+                                        Username: "teezx-wm19@student.tarc.edu.my",
+                                        Password: "pashchyxtrtfopav",
+                                        To: 'ABC@gmail.com',
+                                        From: "Tee Zhuo Xuan",
+                                        Subject: "This is the subject",
+                                        Body: "Customer ID : " + "NONE"
+                                                + "<br>Name : " + "NONE"
+                                                + "<br> Email : " + "NONE"
+                                                + "<br> Contact Number : " + "NONE"
+                                                + "<br> Comment : " + "NONE"
+                                                //+"<br> Rate : " + document.getElementById("comment").value
+                                    }).then(
+                                            message => alert("Message Sent Successfully")
+                                    );
+                                }
+        </script>
     </body>
 </html>
 
