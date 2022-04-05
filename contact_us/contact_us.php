@@ -50,69 +50,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 border-color: red;
             }
         </style>
-<<<<<<< HEAD
 
-        <script>
-            function sendEmail() {
-                Email.send({
-                    Host: "smtp.gmail.com",
-                    Username: "ganwh-wm19@student.tarc.edu.my",
-                    Password: "fnlobujiqbdpvwcp",
-                    To: 'weihangan0@gmail.com',
-                    From: document.getElementById("email").value,
-                    Subject: "This is the subject",
-                    Body: "Customer ID : " + document.getElementById("customer_ID").value
-                            + "<br>Name : " + document.getElementById("customer_name").value
-                            + "<br> Email : " + document.getElementById("email").value
-                            + "<br> Contact Number : " + document.getElementById("contact_number").value
-                            + "<br> Comment : " + document.getElementById("comment").value
-                            //+"<br> Rate : " + document.getElementById("comment").value
-                }).then(
-                        message => alert("Message Sent Successfully")
-                );
-            }
-
-            function EnableDisableTB() {
-                var realName = document.getElementById("realName");
-                var otherlan = document.getElementById("customer_name");
-                otherlan.disabled = realName.checked ? false : true;
-                otherlan.value = "";
-                if (!otherlan.disabled) {
-                    otherlan.focus();
-                } else {
-                    otherlan.value = "Anonymous";
-                }
-            }
-
-            $(".rateOption").on("click", function () {
-                alert("as");
-                var rateOption1 = document.getElementById("rateOption1");
-                var rateOption2 = document.getElementById("rateOption2");
-                var rateOption3 = document.getElementById("rateOption3");
-                var rateOption4 = document.getElementById("rateOption4");
-                var rateOption5 = document.getElementById("rateOption5");
-                var rating = document.getElementById("rating123");
-                rating.value = 5;
-                if (rateOption1.checked) {
-                    rating.value = 1;
-                } else if (rateOption2.checked) {
-                    rating.value = 2;
-                } else if (rateOption3.checked) {
-                    rating.value = 3;
-                } else if (rateOption4.checked) {
-                    rating.value = 4;
-                }
-                else(rateOption5.checked){
-                    rating.value = 5;
-                }
-
-                alert(rating.value);
-
-            })
-
-        </script>
-=======
->>>>>>> 2f17a2819ae5d9396a21cc7f82f2c4a0c3421f51
     </head>
     <body>
 
@@ -164,7 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <big class="form-text form-check-inline text-muted"></big>
                 <div class="rateOptionBox">
                     <label>
-<<<<<<< HEAD
+
                         <input type="radio" name="rateOption"id="rateOption1" class="rateOption"/>
                         <img src="start_uncheck.png">
                     </label>
@@ -182,25 +120,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </label>
                     <label>
                         <input type="radio" name="rateOption"id="rateOption5" class="rateOption"  />
-=======
-                        <input type="radio" name="rateOption"id="rateOption1" class="rateOption" onclick="checkRate();">
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption"id="rateOption2" class="rateOption" onclick="checkRate();">
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption"id="rateOption3" class="rateOption" onclick="checkRate();">
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption"id="rateOption4" class="rateOption" onclick="checkRate();">
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption"id="rateOption5" class="rateOption" onclick="checkRate();">
->>>>>>> 2f17a2819ae5d9396a21cc7f82f2c4a0c3421f51
+
                         <img src="start_uncheck.png">
                     </label>
                 </div>
@@ -236,8 +156,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 ,
                                 success: function (result, status, xhr) {
                                     sendEmail();
-                                    reset();
-                                    return false;
                                 }
                             });
                         })
@@ -275,10 +193,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     otherlan.value = "Anonymous";
                 }
             }
-            </script>
-            
-            <script>
-            function checkRate() {
+        </script>
+
+        <script>
+            $(".rateOption").on('click', function (e) {
+                alert("s");
                 var rateOption1 = document.getElementById("rateOption1");
                 var rateOption2 = document.getElementById("rateOption2");
                 var rateOption3 = document.getElementById("rateOption3");
@@ -294,10 +213,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     rating.value = 3;
                 } else if (rateOption4.checked) {
                     rating.value = 4;
-                }else(rateOption5.checked){
+                }
+                else(rateOption5.checked){
                     rating.value = 5;
                 }
-            }
+            })
         </script>
     </body>
 </html>
