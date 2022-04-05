@@ -70,9 +70,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         message => alert("Message Sent Successfully")
                 );
             }
-        </script>
 
-        <script type="text/javascript">
             function EnableDisableTB() {
                 var realName = document.getElementById("realName");
                 var otherlan = document.getElementById("customer_name");
@@ -84,11 +82,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     otherlan.value = "Anonymous";
                 }
             }
-        </script>
 
-
-
-        <script>
             function checkRate() {
                 var rateOption1 = document.getElementById("rateOption1");
                 var rateOption2 = document.getElementById("rateOption2");
@@ -120,33 +114,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         //email or add data only can perform either one
         //cannot perform checkRate() function
         ?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script>
-            $("#serviceCommentForm").on("submit", function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: "insertServiceComment.php",
-                    type: "POST",
-                    data: {"submit": "submitted",
-                        "customer_ID": $("#customer_ID").val(),
-                        "customer_name": $("#customer_name").val(),
-                        "contact_number": $("#contact_number").val(),
-                        "comment": $("#comment").val()
-                    },
-                    error: function (xhr, status, error) {
-                        console.log("Error: " + error);
-                    }
-                    ,
-                    success: function (result, status, xhr) {
-                        sendEmail();
-                        reset();
-                        return false;
-                    }
-                }
-                );
-            })
-
-        </script>
 
         <div class="formdesign container-fluid justify-content-center col-md-5">
             <h3 class="m-1">Service Rating</h3><br/>
@@ -211,16 +178,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <p  name="rating" id="rating123">123</p>
                 <div class="buttonPosition col-md-12 ml-12 m-1">
-                    <button type="submit" form="serviceCommentForm" class="buttonStyle btn btn-primary btn-block col-md-7 ml-auto mr-auto rounded-pill">Submit</button>
+                    <button  type="submit" form="serviceCommentForm" class="buttonStyle btn btn-primary btn-block col-md-7 ml-auto mr-auto rounded-pill" id="formSubmitBtn">Submit</button>
                 </div>
             </form>
         </div>
         <script src="https://smtpjs.com/v3/smtp.js"></script>
 
-
         <?php
         include '../nav_bar/footer.php';
         ?>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+                            $("#serviceCommentForm").on("submit", function (e) {
+                                e.preventDefault();
+                                $.ajax({
+                                    url: "insertServiceComment.php",
+                                    type: "POST",
+                                    data: {"submit": "submitted",
+                                        "customer_ID": $("#customer_ID").val(),
+                                        "customer_name": $("#customer_name").val(),
+                                        "contact_number": $("#contact_number").val(),
+                                        "comment": $("#comment").val()
+                                    },
+                                    error: function (xhr, status, error) {
+                                        console.log("Error: " + error);
+                                    }
+                                    ,
+                                    success: function (result, status, xhr) {
+                                        sendEmail();
+                                        reset();
+                                        return false;
+                                    }
+                                });
+                            })
+
+        </script>
 
     </body>
 </html>
