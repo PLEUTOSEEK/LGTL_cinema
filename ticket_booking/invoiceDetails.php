@@ -39,7 +39,7 @@
                     for (var key in rowData) {
                         var col = document.createElement('td');
                         var value = rowData[key];
-                        col.appendChild(document.createTextNode(value));
+                        col.appendChil d(document.createTextNode(value));
                         col.classList.add("text-truncate");
                         row.appendChild(col);
                     }
