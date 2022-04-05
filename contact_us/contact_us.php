@@ -124,7 +124,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <img src="start_uncheck.png">
                     </label>
                 </div>
-                <p  name="rating" id="rating123">123</p>
+                <input  name="ratingStar" value="1" type="hidden" id="ratingStar"/>
                 <div class="buttonPosition col-md-12 ml-12 m-1">
                     <button  type="submit" form="serviceCommentForm" class="buttonStyle btn btn-primary btn-block col-md-7 ml-auto mr-auto rounded-pill" id="formSubmitBtn">Submit</button>
                 </div>
@@ -144,11 +144,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             $.ajax({
                                 url: "insertServiceComment.php",
                                 type: "POST",
-                                data: {"submit": "submitted",
-                                    "customer_ID": $("#customer_ID").val(),
-                                    "customer_name": $("#customer_name").val(),
-                                    "contact_number": $("#contact_number").val(),
-                                    "comment": $("#comment").val()
+                                data: {
+                                    "comment": $("#comment").val(),
+                                    "ratingStar": $("#ratingStar").val()
                                 },
                                 error: function (xhr, status, error) {
                                     console.log("Error: " + error);
@@ -197,25 +195,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <script>
             $(".rateOption").on('click', function (e) {
-                alert("s");
                 var rateOption1 = document.getElementById("rateOption1");
                 var rateOption2 = document.getElementById("rateOption2");
                 var rateOption3 = document.getElementById("rateOption3");
                 var rateOption4 = document.getElementById("rateOption4");
                 var rateOption5 = document.getElementById("rateOption5");
-                var rating = document.getElementById("rating123");
-                rating.value = 5;
+                var rating = document.getElementById("ratingStar");
                 if (rateOption1.checked) {
-                    rating.value = 1;
+                    rating.value = "1";
                 } else if (rateOption2.checked) {
-                    rating.value = 2;
+                    rating.value = "2";
                 } else if (rateOption3.checked) {
-                    rating.value = 3;
+                    rating.value = "3";
                 } else if (rateOption4.checked) {
-                    rating.value = 4;
-                }
-                else(rateOption5.checked){
-                    rating.value = 5;
+                    rating.value = "4";
+                }else if(rateOption5.checked){
+                    rating.value = "5";
                 }
             })
         </script>

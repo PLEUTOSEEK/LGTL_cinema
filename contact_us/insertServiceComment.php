@@ -12,26 +12,18 @@ $host = "localhost";
         }
         else{
             echo "connected to database ($dbname)";
-            if(isset($_POST['submit'])){
-                $comment_id = "CM0001";
-                $customer_id = $_POST['customer_ID'];
-                $name = $_POST['customer_name'];
-                $status = "test";
-                $contactNumber = $_POST['contact_number'];
-                $rating = 1;
-                $comment = $_POST['comment'];
-                 $dateModify = date_format($date,"U = Y-m-d H:i:s");
-                
-                $query ="insert into service_comment(service_comment_id,customer_id,name,status,contact_number,rating,comment,date_modified)values('$comment_id', '$customer_id', '$name', '$status', '123', '4', '$comment', '$dateModify')";
-                $run = mysqli_query($conn,$query) or die(mysqli_error($conn));
-                
-                if($run){
-                    echo "Add successfully";
-                }else{
-                    echo"Failure add";
-                }
-            }else{
-                echo"Failure add";
-            }
+
+        $sql = "insert into service_comment(customer_id,rating,comment,date_modified) Values(?,?,?,?)";
+
+        //date("Y-m-d H:i:s"); currrent date
+        // $date=date_create("2013-03-15");
+        //echo date_format($date,"Y/m/d H:i:s"); self-made date
+        $customer_id = !empty ($_SESSION["logInCustomer"]) ? $_SESSION["logInCustomer"] : null;
+                    $comment = $_POST['comment'];
+                    $rating = $_POST['ratingStar'];
+                    $currentDate = date("Y-m-d H:i:s");
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss",$customer_id , $rating, $comment, $currentDate);
+        $stmt->execute();      
         }
 ?>
