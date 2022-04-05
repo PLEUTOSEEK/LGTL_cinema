@@ -123,27 +123,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script>
             $("#serviceCommentForm").on("submit", function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: "insertServiceComment.php",
-                    type: "POST",
-                    data: {"submit": "submitted",
-                        "customer_ID": $("#customer_ID").val(),
-                        "customer_name": $("#customer_name").val(),
-                        "contact_number": $("#contact_number").val(),
-                        "comment": $("#comment").val()
-                    },
-                    error: function (xhr, status, error) {
-                        console.log("Error: " + error);
-                    }
-                    ,
-                    success: function (result, status, xhr) {
-                        sendEmail();
-                        reset();
-                        return false;
-                    }
-                }
-                );
+                alert("test");
+                
+                
             })
 
         </script>
