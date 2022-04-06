@@ -31,6 +31,7 @@
                 <div class="form-group py-2">
                     <div class="input-field bg-white"> <span class="fas fa-envelope p-2"></span> <input type="email" id = "email" placeholder="Enter your Email Address" required class=""> </div>
                 </div>
+<<<<<<< HEAD
                 <div class="form-group py-1 pb-2">
                     <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="password"  placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
                             <i class="fas fa-eye" id="show_eye"></i>
@@ -228,4 +229,33 @@
                         });
         </script>
     </body>
+=======
+            </div>
+            <div class="d-flex align-items-start">
+                <div class="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
+            </div > 
+            <button class="btn btn-block text-center my-3">Log in</button>
+            <div class="text-center pt-3 text-muted">Not a member? <a href="#">JOIN NOW</a></div>
+        </form>
+    </div>
+    
+    <script>
+        function password_show_hide() {
+            var x = document.getElementById("password");
+            var show_eye = document.getElementById("show_eye");
+            var hide_eye = document.getElementById("hide_eye");
+            hide_eye.classList.remove("d-none");
+            if (x.type === "password") {
+              x.type = "text";
+              show_eye.style.display = "none";
+              hide_eye.style.display = "block";
+            } else {
+              x.type = "password";
+              show_eye.style.display = "block";
+              hide_eye.style.display = "none";
+            }
+        }
+    </script>
+  </body>
+>>>>>>> 34d744e5348aa2859141f67f41ed28d944b22f2a
 </html>
