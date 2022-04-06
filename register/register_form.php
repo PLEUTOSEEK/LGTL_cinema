@@ -112,8 +112,58 @@
                                 <button type="button" class="btn btn-warning" id="otp-confirm">Confirm</button>
                             </div>
                         </div>
+<<<<<<< HEAD
+=======
+                  </div>
+                </div>
+            </div>
+            
+            <div class="form-group py-2">
+                <div class="input-field bg-white"> <span class="fas fa-user p-2"></span> <input type="text" placeholder="Enter your Username" required class=""> </div>
+            </div>
+            <div class="form-group py-2">
+                <div class="input-field bg-white"> <span class="fas fa-envelope p-2"></span> <input type="email" placeholder="Enter your Email Address" required class=""> </div>
+            </div>
+            <div class="form-group py-2 pb-2">
+                <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
+                        <i class="fas fa-eye" id="show_eye"></i>
+                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i> </button>
+                </div>
+            </div>
+            <div class="form-group py-2 pb-2">
+                <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="retypepassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Repeat your Password" required class=""> <button class="btn bg-white text-muted" onclick="retypepassword_show_hide();">
+                        <i class="fas fa-eye" id="show_eye2"></i>
+                        <i class="fas fa-eye-slash d-none" id="hide_eye2"></i> </button>
+                </div>
+            </div>
+            <div id="passwordHelpBlock" class="form-text">
+                Password must:<br>Contain minimum 8 characters<br>Include at least one number and symbol.<br>Include both upper and lower case letters.
+            </div>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                        
+                        We will be sending your LGTL OTP code to the email address, example@gmail.com.
+                        
+                        <div class="card p-2 text-center mb-3 mt-1 text-white">
+                            <div class="form-text text-left">Verification</div>
+                                <div id="otp" class="inputs d-flex flex-row justify-content-center"> 
+                                    <input class="ms-5 me-3 text-center form-control rounded" type="text" id="first" maxlength="1" /> 
+                                    <input class="me-3 text-center form-control rounded" type="text" id="second" maxlength="1" /> 
+                                    <input class="me-3 text-center form-control rounded" type="text" id="third" maxlength="1" /> 
+                                    <input class="me-3 text-center form-control rounded" type="text" id="fourth" maxlength="1" /> 
+                                    <input class="me-3 text-center form-control rounded" type="text" id="fifth" maxlength="1" /> 
+                                    <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" /> 
+                                </div>
+                            </div>
+                      
+>>>>>>> d46ba282517a3dc58f4d67685b9ca2cb159fcbbb
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <div class="d-flex align-items-start">
                     <div class="form-text"> <label class="option text-muted"> By submitting this form, I agree to LGTL Cineplex's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I hereby confirm that the information provided is accurate, complete and up-to-date. <input type="checkbox" name="checkbox"> <span class="checkmark"></span> </label> </div>
@@ -122,6 +172,51 @@
                 <div class="text-center pt-3 text-muted">Already Member? <a href="#">Login here</a></div>
             </form>
         </div>
+=======
+            </div>
+            <br>
+            <div class="form-text"> 
+                By submitting this form, I agree to LGTL Cineplex's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I hereby confirm that the information provided is accurate, complete and up-to-date.
+            </div>
+            <button class="btn btn-block text-center my-3 fs-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Submit</button>
+            <div class="text-center pt-3 text-muted">Already Member? <a href="#">Login here</a></div>
+        </form>
+    </div>
+    
+    <script>
+        function password_show_hide() {
+            var x = document.getElementById("password");
+            var show_eye = document.getElementById("show_eye");
+            var hide_eye = document.getElementById("hide_eye");
+            hide_eye.classList.remove("d-none");
+            if (x.type === "password") {
+              x.type = "text";
+              show_eye.style.display = "none";
+              hide_eye.style.display = "block";
+            } else {
+              x.type = "password";
+              show_eye.style.display = "block";
+              hide_eye.style.display = "none";
+            }
+        }
+        function retypepassword_show_hide() {
+            var y = document.getElementById("retypepassword");
+            var show_eye2 = document.getElementById("show_eye2");
+            var hide_eye2 = document.getElementById("hide_eye2");
+            hide_eye2.classList.remove("d-none");
+            if (y.type === "password") {
+              y.type = "text";
+              show_eye2.style.display = "none";
+              hide_eye2.style.display = "block";
+            } else {
+              y.type = "password";
+              show_eye2.style.display = "block";
+              hide_eye2.style.display = "none";
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(event) {
+>>>>>>> d46ba282517a3dc58f4d67685b9ca2cb159fcbbb
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
