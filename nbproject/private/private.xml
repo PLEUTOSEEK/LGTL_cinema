@@ -4,6 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/login_form.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.css</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.php</file>
@@ -43,18 +45,23 @@
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paypalEnv/paypalSuccessPageBackEnd.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paypalEnv/response.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/selectLocation.php</file>
+>>>>>>> 07bd7eaeb600e181640ec56fd262dc55d2391582
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paymentbackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paypalTest/response.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/selectSeat.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paypalEnv/request.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/selectFood.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/payment.php</file>
+<<<<<<< HEAD
+            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/invoiceDetailsBackEnd.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/refundsOverview.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/invoiceDetails.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paypalEnv/response.php</file>
+=======
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/selectSeatBackEnd.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paypalEnv/config.php</file>
 >>>>>>> bc3d37ddcab4e23fa69bb7c53396f9860ada5461
 >>>>>>> 71d89c6854ad7bef8081ca5dc19c363007422780
 >>>>>>> 21a5b917bc406d9300d0d2a49a5ee34daef2d56b
 >>>>>>> 516c8550dacd3d0646600d1601f902b9fcebb4e0
+>>>>>>> 07bd7eaeb600e181640ec56fd262dc55d2391582
         </group>
     </open-files>
 </project-private>
