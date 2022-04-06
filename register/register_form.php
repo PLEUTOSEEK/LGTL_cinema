@@ -119,7 +119,7 @@
                 <div class="form-text">
                     By submitting this form, I agree to LGTL Cineplex's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I hereby confirm that the information provided is accurate, complete and up-to-date.
                 </div>
-                <button class="btn btn-block text-center my-3 fs-5" id = "submit-registerform-btn"data-bs-toggle="modal" data-bs-target="#staticBackdrop">Submit</button>
+                <button class="btn btn-block text-center my-3 fs-5" id = "submit-registerform-btn" >Submit</button>
                 <div class="text-center pt-3 text-muted">Already Member? <a href="#">Login here</a></div>
             </form>
         </div>
@@ -182,7 +182,6 @@
                 e.preventDefault();
 
                 $("#avatar-img").attr('src', selectImg);
-                $("#staticPicture").modal('hide');
             })
 
             $("#resend-otp-link").on('click', function (e) {
@@ -209,8 +208,7 @@
                         "pass": $("#password").val(),
                         "phone": $("#phone").val()
                     };
-                    alert(custObj);
-                    console.log(custObj);
+
                     $.ajax({
                         type: "POST",
                         url: "register_form_backend.php",
@@ -244,7 +242,26 @@
 
             $("#submit-registerform-btn").on('click', function (e) {
                 e.preventDefault();
-                readySendEmail();
+                $.ajax({
+                    type: "POST",
+                    url: "register_form_backend.php",
+                    data: {
+                        "action": "checkUniqueEmailFunc",
+                        "email": $("#email").val()
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error: " + error);
+                    },
+                    success: function (result, status, xhr) {
+                        if (result == 0) {
+                            $("#staticBackdrop").modal('show');
+                            readySendEmail();
+                        } else {
+                            alert("Email existed, please try again...");
+                        }
+                    }
+                });
+
             })
 
             function password_show_hide() {

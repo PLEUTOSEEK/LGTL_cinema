@@ -13,6 +13,9 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == "insertNewRegisterCustFunc") {
         insertNewRegisterCust($_POST['custDtls']);
     }
+    if ($_POST['action'] == "checkUniqueEmailFunc") {
+        checkUniqueEmail($_POST['email']);
+    }
 }
 
 function generateCustID() {
@@ -38,9 +41,26 @@ function generateCustID() {
     return $newCustID;
 }
 
+function checkUniqueEmail($email) {
+    $conn = OpenCon();
+    $stmt = $conn->prepare("SELECT email FROM CUSTOMER where email = ?");
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $value = $result->fetch_object();
+    if (!is_null($value)) {
+        echo "1";
+    } else {
+        echo "0";
+    }
+}
+
 function insertNewRegisterCust($custDetails) {
     $custDetails = json_decode($custDetails, true);
+
     if (!is_null($custDetails)) {
+
+
         $newCustID = generateCustID();
         $conn = OpenCon();
         $sql = "INSERT INTO "
