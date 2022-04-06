@@ -23,24 +23,56 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
-    <div class="wrapper bg-white">
-        <div class="h2 text-center">Sign Up</div>
+    <div class="wrapper bg-dark">
+        <div class="h2 text-center text-white">Sign Up</div>
         <div class="h4 text-muted text-center pt-2">Enter your account details</div>
         <form class="pt-3">
+            <div class="text-center"><img src="./img/avatar0.png" alt="Avatar" class="avatar avatar0"/></div>
+            <!-- Button trigger modal -->
+            <div class="text-center"><button class="btn btn-outline-light text-center mt-3 px-4" data-bs-toggle="modal" data-bs-target="#staticPicture">Choose Profile Picture</button></div>
+            <!-- Modal -->
+            <div class="modal fade" id="staticPicture" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">Pick an Avatar</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row pb-2">
+                                  <div class="col-md-4"><img src="./img/avatar1.png" alt="Avatar" class="avatar avatar1"/></div>
+                                  <div class="col-md-4"><img src="./img/avatar2.png" alt="Avatar" class="avatar avatar2"/></div>
+                                  <div class="col-md-4"><img src="./img/avatar3.png" alt="Avatar" class="avatar avatar3"/></div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4"><img src="./img/avatar4.png" alt="Avatar" class="avatar avatar4"/></div>
+                                  <div class="col-md-4"><img src="./img/avatar5.png" alt="Avatar" class="avatar avatar5"/></div>
+                                  <div class="col-md-4"><img src="./img/avatar6.png" alt="Avatar" class="avatar avatar6"/></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-warning">Confirm</button>
+                        </div>
+                  </div>
+                </div>
+            </div>
+            
             <div class="form-group py-2">
-                <div class="input-field"> <span class="fas fa-user p-2"></span> <input type="text" placeholder="Enter your Username" required class=""> </div>
+                <div class="input-field bg-white"> <span class="fas fa-user p-2"></span> <input type="text" placeholder="Enter your Username" required class=""> </div>
             </div>
             <div class="form-group py-2">
-                <div class="input-field"> <span class="fas fa-envelope p-2"></span> <input type="email" placeholder="Enter your Email Address" required class=""> </div>
+                <div class="input-field bg-white"> <span class="fas fa-envelope p-2"></span> <input type="email" placeholder="Enter your Email Address" required class=""> </div>
             </div>
-            <div class="form-group py-1 pb-2">
-                <div class="input-field"> <span class="fas fa-lock p-2"></span> <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
+            <div class="form-group py-2 pb-2">
+                <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
                         <i class="fas fa-eye" id="show_eye"></i>
                         <i class="fas fa-eye-slash d-none" id="hide_eye"></i> </button>
                 </div>
             </div>
-            <div class="form-group py-1 pb-2">
-                <div class="input-field"> <span class="fas fa-lock p-2"></span> <input type="password" id="retypepassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Repeat your Password" required class=""> <button class="btn bg-white text-muted" onclick="retypepassword_show_hide();">
+            <div class="form-group py-2 pb-2">
+                <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="retypepassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Repeat your Password" required class=""> <button class="btn bg-white text-muted" onclick="retypepassword_show_hide();">
                         <i class="fas fa-eye" id="show_eye2"></i>
                         <i class="fas fa-eye-slash d-none" id="hide_eye2"></i> </button>
                 </div>
@@ -66,7 +98,7 @@
                 </div>
             </div>
 
-            <div class="card p-2 text-center mb-3 mt-1">
+            <div class="card p-2 text-center mb-3 mt-1 bg-dark text-white">
                 <div class="form-text text-left">Verification</div>
                 <div id="otp" class="inputs d-flex flex-row justify-content-center"> 
                     <input class="ms-5 me-3 text-center form-control rounded" type="text" id="first" maxlength="1" /> 
