@@ -31,6 +31,10 @@ body {
     font-family: 'Poppins', sans-serif
 }
 
+.image:hover {
+    background-color: #eee;
+}
+
 .avatar {
     vertical-align: middle;
     width: 100px;

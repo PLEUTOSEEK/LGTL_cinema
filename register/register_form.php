@@ -40,14 +40,14 @@
                             <div class="modal-body">
                                 <div class="container-fluid">
                                     <div class="row pb-2">
-                                        <div class="col-md-4"><img src="./img/avatar1.png" alt="Avatar" class="avatar avatar1"/></div>
-                                        <div class="col-md-4"><img src="./img/avatar2.png" alt="Avatar" class="avatar avatar2"/></div>
-                                        <div class="col-md-4"><img src="./img/avatar3.png" alt="Avatar" class="avatar avatar3"/></div>
+                                        <div class="image col-md-4"><img src="./img/avatar1.png" alt="Avatar" class="avatar avatar1"/></div>
+                                        <div class="image col-md-4"><img src="./img/avatar2.png" alt="Avatar" class="avatar avatar2"/></div>
+                                        <div class="image col-md-4"><img src="./img/avatar3.png" alt="Avatar" class="avatar avatar3"/></div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-4"><img src="./img/avatar4.png" alt="Avatar" class="avatar avatar4"/></div>
-                                        <div class="col-md-4"><img src="./img/avatar5.png" alt="Avatar" class="avatar avatar5"/></div>
-                                        <div class="col-md-4"><img src="./img/avatar6.png" alt="Avatar" class="avatar avatar6"/></div>
+                                        <div class="image col-md-4"><img src="./img/avatar4.png" alt="Avatar" class="avatar avatar4"/></div>
+                                        <div class="image col-md-4"><img src="./img/avatar5.png" alt="Avatar" class="avatar avatar5"/></div>
+                                        <div class="image col-md-4"><img src="./img/avatar6.png" alt="Avatar" class="avatar avatar6"/></div>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                             <div class="modal-body">
                                 <p id = "otp-msg">We will be sending your LGTL OTP code to the email address, example@gmail.com.</p>
 
-                                <div class="card p-2 text-center mb-3 mt-1 bg-dark text-white">
+                                <div class="card p-2 text-center mb-3 mt-1 text-white">
                                     <div class="form-text text-left">Verification</div>
                                     <div id="otp" class="inputs d-flex flex-row justify-content-center">
                                         <input class="ms-5 me-3 text-center form-control rounded" type="text" id="first" maxlength="1" />

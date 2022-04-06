@@ -38,7 +38,6 @@
                 </div>
             </div>
             <div class="d-flex align-items-start">
-                <div class="remember"> <label class="option text-muted"> Remember me <input type="checkbox" name="checkbox"> <span class="checkmark"></span> </label> </div>
                 <div class="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
             </div > 
             <button class="btn btn-block text-center my-3">Log in</button>
