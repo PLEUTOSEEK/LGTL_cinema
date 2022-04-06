@@ -81,14 +81,26 @@
                 Password must:<br>Contain minimum 8 characters<br>Include at least one number and symbol.<br>Include both upper and lower case letters.
             </div>
             
-            <!-- Button trigger modal -->
-            <div class="text-center"><button class="btn btn-danger text-center mt-3 px-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Send</button></div>
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-body">
-                      We will be sending your LGTL OTP code to the email address, example@gmail.com.
+                        
+                        We will be sending your LGTL OTP code to the email address, example@gmail.com.
+                        
+                        <div class="card p-2 text-center mb-3 mt-1 text-white">
+                            <div class="form-text text-left">Verification</div>
+                                <div id="otp" class="inputs d-flex flex-row justify-content-center"> 
+                                    <input class="ms-5 me-3 text-center form-control rounded" type="text" id="first" maxlength="1" /> 
+                                    <input class="me-3 text-center form-control rounded" type="text" id="second" maxlength="1" /> 
+                                    <input class="me-3 text-center form-control rounded" type="text" id="third" maxlength="1" /> 
+                                    <input class="me-3 text-center form-control rounded" type="text" id="fourth" maxlength="1" /> 
+                                    <input class="me-3 text-center form-control rounded" type="text" id="fifth" maxlength="1" /> 
+                                    <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" /> 
+                                </div>
+                            </div>
+                      
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -97,23 +109,11 @@
                   </div>
                 </div>
             </div>
-
-            <div class="card p-2 text-center mb-3 mt-1 bg-dark text-white">
-                <div class="form-text text-left">Verification</div>
-                <div id="otp" class="inputs d-flex flex-row justify-content-center"> 
-                    <input class="ms-5 me-3 text-center form-control rounded" type="text" id="first" maxlength="1" /> 
-                    <input class="me-3 text-center form-control rounded" type="text" id="second" maxlength="1" /> 
-                    <input class="me-3 text-center form-control rounded" type="text" id="third" maxlength="1" /> 
-                    <input class="me-3 text-center form-control rounded" type="text" id="fourth" maxlength="1" /> 
-                    <input class="me-3 text-center form-control rounded" type="text" id="fifth" maxlength="1" /> 
-                    <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" /> 
-                </div>
+            <br>
+            <div class="form-text"> 
+                By submitting this form, I agree to LGTL Cineplex's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I hereby confirm that the information provided is accurate, complete and up-to-date.
             </div>
-            
-            <div class="d-flex align-items-start">
-                <div class="form-text"> <label class="option text-muted"> By submitting this form, I agree to LGTL Cineplex's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I hereby confirm that the information provided is accurate, complete and up-to-date. <input type="checkbox" name="checkbox"> <span class="checkmark"></span> </label> </div>
-            </div > 
-            <button class="btn btn-block text-center my-3 fs-5">Submit</button>
+            <button class="btn btn-block text-center my-3 fs-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Submit</button>
             <div class="text-center pt-3 text-muted">Already Member? <a href="#">Login here</a></div>
         </form>
     </div>
