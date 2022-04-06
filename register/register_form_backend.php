@@ -48,6 +48,7 @@ function checkUniqueEmail($email) {
     $stmt->execute();
     $result = $stmt->get_result();
     $value = $result->fetch_object();
+    CloseCon($conn);
     if (!is_null($value)) {
         echo "1";
     } else {
@@ -59,8 +60,6 @@ function insertNewRegisterCust($custDetails) {
     $custDetails = json_decode($custDetails, true);
 
     if (!is_null($custDetails)) {
-
-
         $newCustID = generateCustID();
         $conn = OpenCon();
         $sql = "INSERT INTO "

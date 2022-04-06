@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-$_SESSION['logInCustomer'] = "C10001";
 
 include '../db_connection.php';
 
@@ -123,7 +122,7 @@ function retrieveOrderListSeatDtls($orderID) {
 }
 
 function retrieveCustInfor() {
-    $custID = !empty($_SESSION['logInCustomer']) ? $_SESSION['logInCustomer'] : null;
+    $custID = !empty($_SESSION['logInCustomer']) ? $_SESSION['logInCustomer']['cust_id'] : null;
     $conn = OpenCon();
 
     $custDtls = array();

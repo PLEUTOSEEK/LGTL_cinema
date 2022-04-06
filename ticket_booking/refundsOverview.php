@@ -21,7 +21,6 @@ and open the template in the editor.
     <body>
         <?php
         session_start();
-        $_SESSION['logInCustomer'] = "C10001";
         include '../nav_bar/navigation_bar.php';
         ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
