@@ -10,7 +10,6 @@ body {
     background-color: #eee;
     height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to top, #fff 10%, rgba(93, 42, 141, 0.4) 90%) no-repeat
 }
 
 .wrapper {
@@ -18,7 +17,6 @@ body {
     border-radius: 10px;
     margin: 50px auto;
     padding: 30px 40px;
-    box-shadow: 20px 20px 80px rgb(206, 206, 206);
 }
 
 .h2 {
@@ -65,13 +63,13 @@ input {
 
 a {
     text-decoration: none;
-    color: #400485;
+    color: white;
     font-weight: 700
 }
 
 a:hover {
     text-decoration: none;
-    color: #7b4ca0
+    color: red;
 }
 
 .option {
@@ -131,12 +129,13 @@ a:hover {
 
 .btn.btn-block {
     border-radius: 20px;
-    background-color: #400485;
+    background-color: red;
     color: #fff
 }
 
 .btn.btn-block:hover {
-    background-color: #55268be0
+    background-color: white;
+    color: red;
 }
 
 @media(max-width: 575px) {
