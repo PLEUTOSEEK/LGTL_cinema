@@ -112,111 +112,53 @@
                                 <button type="button" class="btn btn-warning" id="otp-confirm">Confirm</button>
                             </div>
                         </div>
-<<<<<<< HEAD
-=======
-                  </div>
-                </div>
-            </div>
-            
-            <div class="form-group py-2">
-                <div class="input-field bg-white"> <span class="fas fa-user p-2"></span> <input type="text" placeholder="Enter your Username" required class=""> </div>
-            </div>
-            <div class="form-group py-2">
-                <div class="input-field bg-white"> <span class="fas fa-envelope p-2"></span> <input type="email" placeholder="Enter your Email Address" required class=""> </div>
-            </div>
-            <div class="form-group py-2 pb-2">
-                <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
-                        <i class="fas fa-eye" id="show_eye"></i>
-                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i> </button>
-                </div>
-            </div>
-            <div class="form-group py-2 pb-2">
-                <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="retypepassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Repeat your Password" required class=""> <button class="btn bg-white text-muted" onclick="retypepassword_show_hide();">
-                        <i class="fas fa-eye" id="show_eye2"></i>
-                        <i class="fas fa-eye-slash d-none" id="hide_eye2"></i> </button>
-                </div>
-            </div>
-            <div id="passwordHelpBlock" class="form-text">
-                Password must:<br>Contain minimum 8 characters<br>Include at least one number and symbol.<br>Include both upper and lower case letters.
-            </div>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-body">
-                        
-                        We will be sending your LGTL OTP code to the email address, example@gmail.com.
-                        
-                        <div class="card p-2 text-center mb-3 mt-1 text-white">
-                            <div class="form-text text-left">Verification</div>
-                                <div id="otp" class="inputs d-flex flex-row justify-content-center"> 
-                                    <input class="ms-5 me-3 text-center form-control rounded" type="text" id="first" maxlength="1" /> 
-                                    <input class="me-3 text-center form-control rounded" type="text" id="second" maxlength="1" /> 
-                                    <input class="me-3 text-center form-control rounded" type="text" id="third" maxlength="1" /> 
-                                    <input class="me-3 text-center form-control rounded" type="text" id="fourth" maxlength="1" /> 
-                                    <input class="me-3 text-center form-control rounded" type="text" id="fifth" maxlength="1" /> 
-                                    <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" /> 
-                                </div>
-                            </div>
-                      
->>>>>>> d46ba282517a3dc58f4d67685b9ca2cb159fcbbb
+
                     </div>
                 </div>
-<<<<<<< HEAD
-
-                <div class="d-flex align-items-start">
-                    <div class="form-text"> <label class="option text-muted"> By submitting this form, I agree to LGTL Cineplex's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I hereby confirm that the information provided is accurate, complete and up-to-date. <input type="checkbox" name="checkbox"> <span class="checkmark"></span> </label> </div>
-                </div >
-                <button id = "submit-registerform-btn" class="btn btn-block text-center my-3 fs-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Submit</button>
+                <br>
+                <div class="form-text">
+                    By submitting this form, I agree to LGTL Cineplex's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I hereby confirm that the information provided is accurate, complete and up-to-date.
+                </div>
+                <button class="btn btn-block text-center my-3 fs-5" id = "submit-registerform-btn"data-bs-toggle="modal" data-bs-target="#staticBackdrop">Submit</button>
                 <div class="text-center pt-3 text-muted">Already Member? <a href="#">Login here</a></div>
             </form>
         </div>
-=======
-            </div>
-            <br>
-            <div class="form-text"> 
-                By submitting this form, I agree to LGTL Cineplex's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I hereby confirm that the information provided is accurate, complete and up-to-date.
-            </div>
-            <button class="btn btn-block text-center my-3 fs-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Submit</button>
-            <div class="text-center pt-3 text-muted">Already Member? <a href="#">Login here</a></div>
-        </form>
-    </div>
-    
-    <script>
-        function password_show_hide() {
-            var x = document.getElementById("password");
-            var show_eye = document.getElementById("show_eye");
-            var hide_eye = document.getElementById("hide_eye");
-            hide_eye.classList.remove("d-none");
-            if (x.type === "password") {
-              x.type = "text";
-              show_eye.style.display = "none";
-              hide_eye.style.display = "block";
-            } else {
-              x.type = "password";
-              show_eye.style.display = "block";
-              hide_eye.style.display = "none";
+
+
+        <script>
+            function password_show_hide() {
+                var x = document.getElementById("password");
+                var show_eye = document.getElementById("show_eye");
+                var hide_eye = document.getElementById("hide_eye");
+                hide_eye.classList.remove("d-none");
+                if (x.type === "password") {
+                    x.type = "text";
+                    show_eye.style.display = "none";
+                    hide_eye.style.display = "block";
+                } else {
+                    x.type = "password";
+                    show_eye.style.display = "block";
+                    hide_eye.style.display = "none";
+                }
             }
-        }
-        function retypepassword_show_hide() {
-            var y = document.getElementById("retypepassword");
-            var show_eye2 = document.getElementById("show_eye2");
-            var hide_eye2 = document.getElementById("hide_eye2");
-            hide_eye2.classList.remove("d-none");
-            if (y.type === "password") {
-              y.type = "text";
-              show_eye2.style.display = "none";
-              hide_eye2.style.display = "block";
-            } else {
-              y.type = "password";
-              show_eye2.style.display = "block";
-              hide_eye2.style.display = "none";
+            function retypepassword_show_hide() {
+                var y = document.getElementById("retypepassword");
+                var show_eye2 = document.getElementById("show_eye2");
+                var hide_eye2 = document.getElementById("hide_eye2");
+                hide_eye2.classList.remove("d-none");
+                if (y.type === "password") {
+                    y.type = "text";
+                    show_eye2.style.display = "none";
+                    hide_eye2.style.display = "block";
+                } else {
+                    y.type = "password";
+                    show_eye2.style.display = "block";
+                    hide_eye2.style.display = "none";
+                }
             }
-        }
-        
-        document.addEventListener("DOMContentLoaded", function(event) {
->>>>>>> d46ba282517a3dc58f4d67685b9ca2cb159fcbbb
+        </script>
+
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -227,149 +169,147 @@
 
         <?php include "register_form_backend.php" ?>
         <script>
-                        var OTP = "";
-                        var selectImg = $("#avatar-img").attr('src');
+            var OTP = "";
+            var selectImg = $("#avatar-img").attr('src');
 
-                        $(".avatar").on('click', function (e) {
-                            e.preventDefault();
-                            selectImg = e.target.getAttribute('src');
-                            console.log(selectImg);
-                        })
+            $(".avatar").on('click', function (e) {
+                e.preventDefault();
+                selectImg = e.target.getAttribute('src');
+                console.log(selectImg);
+            })
 
-                        $("#img-confirm").on('click', function (e) {
-                            e.preventDefault();
-                            $("#avatar-img").attr('src', selectImg);
-                            $("#staticPicture").modal('hide');
-                        })
+            $("#img-confirm").on('click', function (e) {
+                e.preventDefault();
 
-                        $("#resend-otp-link").on('click', function (e) {
-                            e.preventDefault();
-                            readySendEmail();
-                        })
+                $("#avatar-img").attr('src', selectImg);
+                $("#staticPicture").modal('hide');
+            })
 
-                        $("#otp-confirm").on('click', function (e) {
-                            e.preventDefault();
-                            var completeOTPInput = "";
-                            completeOTPInput = completeOTPInput.concat(
-                                    $("#first").val(),
-                                    $("#second").val(),
-                                    $("#third").val(),
-                                    $("#fourth").val(),
-                                    $("#fifth").val(),
-                                    $("#sixth").val());
+            $("#resend-otp-link").on('click', function (e) {
+                e.preventDefault();
+                readySendEmail();
+            })
 
-                            if (completeOTPInput == OTP && OTP != "") {
+            $("#otp-confirm").on('click', function (e) {
+                e.preventDefault();
+                var completeOTPInput = "";
+                completeOTPInput = completeOTPInput.concat(
+                        $("#first").val(),
+                        $("#second").val(),
+                        $("#third").val(),
+                        $("#fourth").val(),
+                        $("#fifth").val(),
+                        $("#sixth").val());
+                if (completeOTPInput == OTP && OTP != "") {
 
-                                var custObj = {
-                                    "cust_img": $("#avatar-img").attr('src'),
-                                    "user_name": $("#userName").val(),
-                                    "email": $("#email").val(),
-                                    "pass": $("#password").val(),
-                                    "phone": $("#phone").val()
-                                };
-                                alert(custObj);
-                                console.log(custObj);
-                                $.ajax({
-                                    type: "POST",
-                                    url: "register_form_backend.php",
-                                    data: {
-                                        "action": "insertNewRegisterCustFunc",
-                                        "custDtls": JSON.stringify(custObj)
-                                    },
-                                    error: function (xhr, status, error) {
-                                        console.log("Error: " + error);
-                                    },
-                                    success: function (result, status, xhr) {
-                                        alert("Register successfully");
-                                        window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/home_page/home_page.php";
-                                    }
-                                });
-                            } else {
-                                alert("OTP incorrect, please try again.");
-                            }
-                        })
-
-                        function readySendEmail() {
-                            OTP = Math.floor(100000 + Math.random() * 900000);
-                            var dataObj = {
-                                "email": $("#email").val(),
-                                "subj": "LGTL Account activation",
-                                "msgBody": "Dear : " + $("#userName").val() + " Your OTP is " + OTP
-                            };
-
-                            sendEmail(dataObj);
-
-                            $("#otp-msg").textContent = "We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".";
+                    var custObj = {
+                        "cust_img": $("#avatar-img").attr('src'),
+                        "user_name": $("#userName").val(),
+                        "email": $("#email").val(),
+                        "pass": $("#password").val(),
+                        "phone": $("#phone").val()
+                    };
+                    alert(custObj);
+                    console.log(custObj);
+                    $.ajax({
+                        type: "POST",
+                        url: "register_form_backend.php",
+                        data: {
+                            "action": "insertNewRegisterCustFunc",
+                            "custDtls": JSON.stringify(custObj)
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Error: " + error);
+                        },
+                        success: function (result, status, xhr) {
+                            alert("Register successfully");
+                            window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php";
                         }
+                    });
+                } else {
+                    alert("OTP incorrect, please try again.");
+                }
+            })
 
-                        $("#submit-registerform-btn").on('click', function (e) {
-                            e.preventDefault();
-                            readySendEmail();
-                        })
+            function readySendEmail() {
+                OTP = Math.floor(100000 + Math.random() * 900000);
+                var dataObj = {
+                    "email": $("#email").val(),
+                    "subj": "LGTL Account activation",
+                    "msgBody": "Dear : " + $("#userName").val() + " Your OTP is " + OTP
+                };
+                sendEmail(dataObj);
+                $("#otp-msg").textContent = "We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".";
+            }
 
-                        function password_show_hide() {
-                            var x = document.getElementById("password");
-                            var show_eye = document.getElementById("show_eye");
-                            var hide_eye = document.getElementById("hide_eye");
-                            hide_eye.classList.remove("d-none");
-                            if (x.type === "password") {
-                                x.type = "text";
-                                show_eye.style.display = "none";
-                                hide_eye.style.display = "block";
+            $("#submit-registerform-btn").on('click', function (e) {
+                e.preventDefault();
+                readySendEmail();
+            })
+
+            function password_show_hide() {
+                var x = document.getElementById("password");
+                var show_eye = document.getElementById("show_eye");
+                var hide_eye = document.getElementById("hide_eye");
+                hide_eye.classList.remove("d-none");
+                if (x.type === "password") {
+                    x.type = "text";
+                    show_eye.style.display = "none";
+                    hide_eye.style.display = "block";
+                } else {
+                    x.type = "password";
+                    show_eye.style.display = "block";
+                    hide_eye.style.display = "none";
+                }
+            }
+
+            function retypepassword_show_hide() {
+                var y = document.getElementById("retypepassword");
+                var show_eye2 = document.getElementById("show_eye2");
+                var hide_eye2 = document.getElementById("hide_eye2");
+                hide_eye2.classList.remove("d-none");
+                if (y.type === "password") {
+                    y.type = "text";
+                    show_eye2.style.display = "none";
+                    hide_eye2.style.display = "block";
+                } else {
+                    y.type = "password";
+                    show_eye2.style.display = "block";
+                    hide_eye2.style.display = "none";
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function (event) {
+
+                function OTPInput() {
+                    const inputs = document.querySelectorAll('#otp > *[id]');
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].addEventListener('keydown', function (event) {
+                            if (event.key === "Backspace") {
+                                inputs[i].value = '';
+                                if (i !== 0)
+                                    inputs[i - 1].focus();
                             } else {
-                                x.type = "password";
-                                show_eye.style.display = "block";
-                                hide_eye.style.display = "none";
-                            }
-                        }
-                        function retypepassword_show_hide() {
-                            var y = document.getElementById("retypepassword");
-                            var show_eye2 = document.getElementById("show_eye2");
-                            var hide_eye2 = document.getElementById("hide_eye2");
-                            hide_eye2.classList.remove("d-none");
-                            if (y.type === "password") {
-                                y.type = "text";
-                                show_eye2.style.display = "none";
-                                hide_eye2.style.display = "block";
-                            } else {
-                                y.type = "password";
-                                show_eye2.style.display = "block";
-                                hide_eye2.style.display = "none";
-                            }
-                        }
-
-                        document.addEventListener("DOMContentLoaded", function (event) {
-
-                            function OTPInput() {
-                                const inputs = document.querySelectorAll('#otp > *[id]');
-                                for (let i = 0; i < inputs.length; i++) {
-                                    inputs[i].addEventListener('keydown', function (event) {
-                                        if (event.key === "Backspace") {
-                                            inputs[i].value = '';
-                                            if (i !== 0)
-                                                inputs[i - 1].focus();
-                                        } else {
-                                            if (i === inputs.length - 1 && inputs[i].value !== '') {
-                                                return true;
-                                            } else if (event.keyCode > 47 && event.keyCode < 58) {
-                                                inputs[i].value = event.key;
-                                                if (i !== inputs.length - 1)
-                                                    inputs[i + 1].focus();
-                                                event.preventDefault();
-                                            } else if (event.keyCode > 64 && event.keyCode < 91) {
-                                                inputs[i].value = String.fromCharCode(event.keyCode);
-                                                if (i !== inputs.length - 1)
-                                                    inputs[i + 1].focus();
-                                                event.preventDefault();
-                                            }
-                                        }
-                                    });
+                                if (i === inputs.length - 1 && inputs[i].value !== '') {
+                                    return true;
+                                } else if (event.keyCode > 47 && event.keyCode < 58) {
+                                    inputs[i].value = event.key;
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
+                                } else if (event.keyCode > 64 && event.keyCode < 91) {
+                                    inputs[i].value = String.fromCharCode(event.keyCode);
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
                                 }
                             }
-                            OTPInput();
-                        });</script>
+                        });
+                    }
+                }
+                OTPInput();
+            });
 
-        <script>
             function sendEmail(data) {
                 Email.send({
                     Host: "smtp.gmail.com",
@@ -383,6 +323,7 @@
                 }).then(
                         message => alert("Message Sent Successfully")
                 );
-            }</script>
+            }
+        </script>
     </body>
 </html>
