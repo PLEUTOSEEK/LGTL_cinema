@@ -142,7 +142,7 @@ a:hover {
 
 .btn.btn-block {
     border-radius: 15px;
-    background-color: red;
+    background-color: blue;
     color: #fff;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -150,7 +150,7 @@ a:hover {
 
 .btn.btn-block:hover {
     background-color: white;
-    color: red;
+    color: blue;
 }
 
 .btn.btn-danger {
