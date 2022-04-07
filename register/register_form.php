@@ -237,7 +237,7 @@
                     "msgBody": "Dear : " + $("#userName").val() + " Your OTP is " + OTP
                 };
                 sendEmail(dataObj);
-                $("#otp-msg").textContent = "We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".";
+                $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".");
             }
 
             $("#submit-registerform-btn").on('click', function (e) {

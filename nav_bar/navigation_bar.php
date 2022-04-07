@@ -2,6 +2,9 @@
 <html>
 
     <head>
+        <?php
+        session_start();
+        ?>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -94,17 +97,48 @@
 
                 </ul>
                 <div class="col-lg-3 col-sm-6 align-self-lg-end float-lg-right" >
-                    <button type="button" class=" btn btn-light float-lg-right  mt-lg-0 mt-sm-3 mt-3 col-sm-4 col-4 d-sm-block ">
-                        LOG IN
+                    <button type="button" id="log-in-btn" class=" btn btn-light float-lg-right  mt-lg-0 mt-sm-3 mt-3 col-sm-4 col-4 d-sm-block ">
+                        <?php
+                        if (isset($_SESSION['logInCustomer'])) {
+                            echo "LOG OUT";
+                        } else {
+                            echo "LOG IN";
+                        }
+                        ?>
                     </button>
                 </div>
             </div>
         </nav>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-        <?php
-        // put your code here
-        ?>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <script>
+            $("#log-in-btn").on('click', function (e) {
+                if ($("#log-in-btn").text().trim() == "LOG OUT") {
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost/LGTL_Cineplex/LGTL_cinema/nav_bar/navBar_backend.php",
+                        data: {
+                            "action": "unassignCustSESSIONFunc"
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Error: " + error);
+                        },
+                        success: function (result, status, xhr) {
+                            alert("you have been logged out");
+                            location.reload();
+                        }
+                    });
+                } else {
+                    window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php";
+                }
+            })
+        </script>
+
+
+
     </body>
 
 </html>
