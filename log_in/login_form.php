@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-start">
-                    <div class="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
+                    <div class="ml-auto"> <a href="forget_password_form.php" id="forgot">Forgot Password?</a> </div>
                 </div >
                 <button class="btn btn-block text-center my-3" id = "login-btn">Log in</button>
 
@@ -72,7 +72,7 @@
                     </div>
                 </div>
 
-                <div class="text-center pt-3 text-muted">Not a member? <a href="#">JOIN NOW</a></div>
+                <div class="text-center pt-3 text-muted">Not a member? <a href="../register/register_form.php">JOIN NOW</a></div>
             </form>
 
 

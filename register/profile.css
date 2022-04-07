@@ -33,7 +33,7 @@ body {
 }
 
 .labels {
-    font-size: 11px
+    font-size: 15px
 }
 
 .add-experience:hover {
@@ -41,4 +41,13 @@ body {
     color: #fff;
     cursor: pointer;
     border: solid 1px #BA68C8
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid white;
+    cursor: pointer;
 }

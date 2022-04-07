@@ -33,42 +33,58 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         include '../nav_bar/navigation_bar.php';
         ?>
         <br>
-        <div class="container rounded bg-white mt-5 mb-5 text-white">
+        <div class="container rounded mt-5 mb-5 text-white">
             <div class="row">
-                <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU"><span class="font-weight-bold">Amelly</span><span class="text-black-50">amelly12@bbb.com</span><span> </span></div>
-                </div>
                 <div class="col-md-5 border-right">
-                    <div class="p-3 py-5">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="avatar rounded-circle mt-5" src="./img/avatar0.png"><span class="font-weight-bold text-white"><input type="file" id="imgupload" style="display:none"/><button class="btn btn-primary mt-4" id="OpenImgUpload">Change Avatar</button></span><span> </span></div>
+                </div>
+                <div class="col-md-6 border-left ps-5">
+                    <div class="p-3 pt-5 pb-3">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Profile Settings</h4>
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                            <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
-                        </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                            <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address" value=""></div>
-                            <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                            <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                            <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                            <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" value=""></div>
+                            <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="tel" class="form-control" value=""></div>
+                            <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" value=""></div>
+                            <div class="col-md-12"><label class="labels">Password</label>
+                                <div class="row">
+                                    <input type="password" id="password" class="form-control col-9 ms-3" value="">
+                                    <button class="btn bg-white text-muted col-2 ms-2" onclick="password_show_hide();">
+                                        <i class="fas fa-eye" id="show_eye"></i>
+                                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i> 
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                        <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                        <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
-                    </div>
+                    <hr>
+                    <div class="my-4 text-center"><button class="btn btn-primary profile-button" type="button">View My Purchase</button></div>
                 </div>
             </div>
         </div>
+        
+        <script>
+            $('#OpenImgUpload').click(function(){ $('#imgupload').trigger('click'); });
+            
+            function password_show_hide() {
+                var x = document.getElementById("password");
+                var show_eye = document.getElementById("show_eye");
+                var hide_eye = document.getElementById("hide_eye");
+                hide_eye.classList.remove("d-none");
+                if (x.type === "password") {
+                    x.type = "text";
+                    show_eye.style.display = "none";
+                    hide_eye.style.display = "block";
+                } else {
+                    x.type = "password";
+                    show_eye.style.display = "block";
+                    hide_eye.style.display = "none";
+                }
+            }
+        </script>
+        
         <?php
         include '../nav_bar/footer.php';
         ?>        

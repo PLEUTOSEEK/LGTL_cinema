@@ -120,7 +120,7 @@
                     By submitting this form, I agree to LGTL Cineplex's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I hereby confirm that the information provided is accurate, complete and up-to-date.
                 </div>
                 <button class="btn btn-block text-center my-3 fs-5" id = "submit-registerform-btn" >Submit</button>
-                <div class="text-center pt-3 text-muted">Already Member? <a href="#">Login here</a></div>
+                <div class="text-center pt-3 text-muted">Already Member? <a href="../log_in/login_form.php">Login here</a></div>
             </form>
         </div>
 
