@@ -122,7 +122,8 @@ session_start();
                 },
                 success: function (result, status, xhr) {
                     alert("you have been logged out");
-                    location.reload();
+                    window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/home_page/home_page.php";
+
                 }
             });
         } else {
