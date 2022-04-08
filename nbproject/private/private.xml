@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/movie_details/connection.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/home_page.php</file>
@@ -23,6 +24,19 @@
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectFood.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectSeat.css</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/connection.php</file>
+=======
+<<<<<<< HEAD
+        <group/>
+=======
+        <group>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/login_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profile.css</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profile.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/forget_password_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profileBackEnd.php</file>
+>>>>>>> 81e2343c2efaba0c7a3202361b2e362eae10a8b4
         </group>
+>>>>>>> bf2a74dcac7021d5c3091ca90dfd172c9b7c675e
     </open-files>
 </project-private>

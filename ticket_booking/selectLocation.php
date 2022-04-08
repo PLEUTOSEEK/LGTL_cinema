@@ -6,10 +6,7 @@ and open the template in the editor.
 -->
 <html>
 
-    <?php
-    // Initialize the session
-    session_start();
-    ?>
+
     <head>
         <meta charset="UTF-8">
         <title></title>
@@ -25,10 +22,10 @@ and open the template in the editor.
         <?php
         $movieID = $_POST['movie_id'];
         $scheduleList = getSchedule($movieID, 'Available');
-
         //get unique date
         $showDates = array();
         $showDates = getUniqueList($scheduleList, 'show_date');
+        asort($showDates);
         ?>
 
         <div class="container-fluid  py-3 ">
@@ -54,6 +51,9 @@ and open the template in the editor.
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script>
+                    $(function () {
+                        alert(<?php json_encode($scheduleList) ?>);
+                    })
                     $('#date-selection').ready(function () {
                         dynamicFilter();
                     })

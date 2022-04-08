@@ -165,10 +165,15 @@ and open the template in the editor.
         <div class="row" id = "movie_carts">
 
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 81e2343c2efaba0c7a3202361b2e362eae10a8b4
         <?php
         include '../nav_bar/footer.php';
         ?>
+
+
 
         <script>
             $("#serch-btn").on("click", function () {

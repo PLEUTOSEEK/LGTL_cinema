@@ -3,32 +3,31 @@
     <head>
         <title>title</title>
         <?php
-        include 'paypalSuccessPageBackEnd.php';
-
-        $orderID = $_GET['order_id'];
+        include 'invoiceDetailsBackEnd.php';
+//        $orderID = $_POST['order_id'];
+        $orderID = $_POST['order_id'];
         $orderDtls = retrieveOrderDtls($orderID);
         $orderListFoodDtls = retrieveOrderListFoodDtls($orderID);
         $orderListSeatDtls = retrieveOrderListSeatDtls($orderID);
         ?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <script>
             var orderDtls;
             var orderListSeatDtls;
             var orderListFoodDtls;
             $(function () {
                 orderDtls = <?php echo json_encode($orderDtls); ?>;
-                console.log(orderDtls);
+                console.log("as");
+
                 orderListSeatDtls = <?php echo json_encode($orderListSeatDtls); ?>;
                 orderListFoodDtls = <?php echo json_encode($orderListFoodDtls); ?>;
-
                 createTable(document.getElementById('seat-table'), orderListSeatDtls);
                 createTable(document.getElementById('food-table'), orderListFoodDtls);
             });
-
             // dynamic function to cteate table out of 2d arrays
             function createTable(table, tableData) {
 
@@ -46,13 +45,13 @@
                     }
                     // adding each row to table body
                     tableBody.appendChild(row);
-                });
+                }
+                );
                 // adding table body to table
                 table.appendChild(tableBody);
             }
         </script>
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
         <style type="text/css">
 
             body
@@ -156,13 +155,10 @@
                 <div class="col-md-12 mx-auto mt-5">
                     <div class="payment">
                         <div class="payment_header">
-                            <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
+                            <h1 class="text-center">Invoice Details</h1>
                         </div>
 
                         <div class="content container-fluid pb-4">
-                            <h1>Payment Success !</h1>
-
-
                             <div class=" container-fluid justify-content-end align-items-right clearfix" onclick="window.print();">
                                 <button class="btn btn-outline-primary float-right font-weight-bold text-uppercase col-lg-3 col-sm-3 col-3 my-lg-3 my-sm-3 my-3 rounded" id="next-btn">
                                     Print
@@ -290,20 +286,70 @@
                                         </tr>
                                     </thead>
                                 </table>
-
-                                <div class= "d-flex justify-content-end clearfix col-12 text-left px-0 py-3 ">
+                                <div class= "d-flex justify-content-between clearfix col-12 text-right px-0 py-3 ">
+                                    <button  class= "btn btn-danger rounded p-2 mr-auto font-weight-bold" id="request-refund-btn">Request Refund</button>
                                     <p  class= "label rounded px-3 py-2 mx-0  font-weight-bold m-0 text-white bg-dark">Total Price&emsp;<span>RM&ensp;<?php echo number_format($orderDtls[0]['TOTAL_PRICE'], 2); ?></span></p>
+
                                 </div>
 
                             </div>
                             <hr>
-                            <a href="http://localhost/LGTL_Cineplex/LGTL_cinema/home_page/home_page.php" class = "h5 px-4">Go to Home</a>
+                            <a href="http://localhost/LGTL_Cineplex/LGTL_cinema/ticket_booking/refundsOverview.php" class = "h5 px-4">Go Back</a>
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
+
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+
+                                $("#request-refund-btn").on("click", function (e) {
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "invoiceDetailsBackEnd.php",
+                                        data: {
+                                            "action": "checkRefundQualificationFunc",
+                                            "order_ID": '<?php echo $orderID; ?>',
+                                            "order_date": '<?php echo $orderDtls[0]['ORDER_DATE']; ?>'
+                                        },
+                                        error: function (xhr, status, error) {
+                                            console.log("Error: " + error);
+                                        },
+                                        success: function (result, status, xhr) {
+                                            var catchAssocList;
+                                            catchAssocList = JSON.parse(result);
+                                            alert(catchAssocList);
+                                            if (catchAssocList != null) {
+                                                sendEmail(catchAssocList);
+                                                reset();
+                                                return false;
+                                            }
+                                        }
+                                    });
+                                })
+
+        </script>
+        <script>
+            function sendEmail(data) {
+                alert(data['email']);
+                alert(data['subj']);
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "teezx-wm19@student.tarc.edu.my",
+                    Password: "sgxdjzbeaiqqvgim",
+                    To: data['email'],
+                    From: "teezx-wm19@student.tarc.edu.my",
+                    Subject: data['subj'],
+                    Body: data['msgBody']
+                            //+"<br> Rate : " + document.getElementById("comment").value
+                }).then(
+                        message => alert("Message Sent Successfully")
+                );
+            }
+        </script>
     </body>
 </html>
 
