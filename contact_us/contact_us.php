@@ -90,21 +90,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         ?>
 
         <div class="formdesign container-fluid justify-content-center col-md-5 bg-dark">
-                <h3 class="m-1 text-white pt-3">Service Rating</h3><br/>
-            
-            <form  method="POST" id="serviceCommentForm">
-
-                <div class="form-group">
-                    <big  class="form-text text-white ">Email :</big>
-                    <input id="email" name="email" class="form-control form-control-lg" type="text" placeholder="Please enter your email.">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-text text-white">Comment :</label>
-                    <textarea class="form-control" id="comment" name="comment" rows="5"></textarea>
-                </div>
-
-                <big class="form-text form-check-inline text-muted"></big>
+                <h3 class="m-1 text-white text-center pt-3">Rate Your Experience</h3><br/>
+                
                 <div class="rateOptionBox">
                     <label>
 
@@ -129,6 +116,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <img src="start_uncheck.png">
                     </label>
                 </div>
+            
+            <form  method="POST" id="serviceCommentForm">
+
+                <div class="form-group">
+                    <big  class="form-text text-white ">Email :</big>
+                    <input id="email" name="email" class="form-control form-control-lg" type="text" placeholder="Please enter your email.">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-text text-white">Comment :</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="5"></textarea>
+                </div>
+
+                <big class="form-text form-check-inline text-muted"></big>
+                
                 <input  name="ratingStar" value="1" type="hidden" id="ratingStar"/>
                 <div class="buttonPosition col-md-12 ml-12 m-1">
                     <button  type="submit" form="serviceCommentForm" class="buttonStyle btn btn-primary btn-block col-md-7 ml-auto mr-auto rounded-pill" id="formSubmitBtn">Submit</button>

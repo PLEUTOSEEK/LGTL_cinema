@@ -140,12 +140,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
             </div>
                  <fieldset class="float-left col-12">
-                <div class="comment-area"> <textarea class="form-control" placeholder="Type your comment here" id="comment"name="comment"></textarea> </div>
+                <div class="comment-area"> <textarea rows="5" class="form-control" placeholder="Type your comment here" id="comment"name="comment"></textarea> </div>
                  </fieldset>
             </div>
                 <input  name="ratingStar" value="1" type='hidden' id="ratingStar"/>
             <div class="col-11">
-            <button type="submit" form="serviceCommentForm" class="buttonStyle btn btn-primary btn-block col-3 float-right"id="commentBtn"name="commentBtn">Comment</button>
+            <button type="submit" form="serviceCommentForm" class=" buttonStyle btn btn-primary btn-block col-3 float-right"id="commentBtn"name="commentBtn" >Comment</button>
             </div>
             </form>
             
