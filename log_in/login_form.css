@@ -129,13 +129,13 @@ a:hover {
 
 .btn.btn-block {
     border-radius: 20px;
-    background-color: red;
+    background-color: blue;
     color: #fff
 }
 
 .btn.btn-block:hover {
     background-color: white;
-    color: red;
+    color: blue;
 }
 
 @media(max-width: 575px) {

@@ -1,55 +1,53 @@
 body {
-  margin: 0;
-  font-family: "Lato", sans-serif;
+    background: rgb(99, 39, 120)
 }
 
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
 }
 
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
-}
- 
-.sidebar a.active {
-  background-color: #04AA6D;
-  color: white;
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
 }
 
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
+.profile-button:hover {
+    background: #682773
 }
 
-div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 100%;
-  background: darkslategray
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
 }
 
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
 }
 
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 15px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid white;
+    cursor: pointer;
 }

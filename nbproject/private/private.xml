@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/nav_bar/foodsample.jpg</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/nav_bar/navBar_backend.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/selectLocation.php</file>
@@ -14,6 +15,13 @@
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/log_in/login_form_backend.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paypalEnv/response.php</file>
+=======
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/login_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profile.css</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.css</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profile.php</file>
+>>>>>>> e66cbba964cd68f705f68caa8c2147c13cc8c447
         </group>
     </open-files>
 </project-private>
