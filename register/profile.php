@@ -11,7 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
-        
+
         <!-- font awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
@@ -21,7 +21,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title>LGTL Cineplex - Profile</title>
     </head>
     <body>
-        
+
         <?php
         include '../nav_bar/navigation_bar.php';
         ?>
@@ -37,49 +37,69 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <h4 class="text-right">Profile Settings</h4>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" value="" disabled="true"></div>
-                            <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="tel" class="form-control" value="" disabled="true"></div>
-                            <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" value="" disabled="true"></div>
+                            <div class="col-md-12"><label class="labels">Username</label><input type="text" id="user-name"class="form-control" value="" disabled="true"></div>
+                            <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="tel" id="phone-number" class="form-control" value="" disabled="true"></div>
+                            <div class="col-md-12"><label class="labels">Email</label><input type="email" id = "email" class="form-control" value="" disabled="true"></div>
                             <div class="col-md-12"><label class="labels">Password</label>
                                 <div class="row">
                                     <input type="password" id="password" class="pw form-control col-9 ms-3" value="" disabled="true">
                                     <button class="btn bg-white text-muted col-2 ms-2 show-hide-btn" onclick="password_show_hide();" disabled="true">
                                         <i class="fas fa-eye" id="show_eye"></i>
-                                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i> 
+                                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
+                        <div class="mt-5 text-center"><button id = "edit-btn" class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
                     </div>
                     <hr style="background: white">
                     <div class="my-4 text-center"><button class="btn btn-primary profile-button" type="button">View My Order</button></div>
                 </div>
             </div>
         </div>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script>
-            $('#OpenImgUpload').click(function(){ $('#imgupload').trigger('click'); });
-            
-            function password_show_hide() {
-                var x = document.getElementById("password");
-                var show_eye = document.getElementById("show_eye");
-                var hide_eye = document.getElementById("hide_eye");
-                hide_eye.classList.remove("d-none");
-                if (x.type === "password") {
-                    x.type = "text";
-                    show_eye.style.display = "none";
-                    hide_eye.style.display = "block";
-                } else {
-                    x.type = "password";
-                    show_eye.style.display = "block";
-                    hide_eye.style.display = "none";
-                }
-            }
+                                        $('#OpenImgUpload').click(function () {
+                                            $('#imgupload').trigger('click');
+                                        });
+
+                                        function password_show_hide() {
+                                            var x = document.getElementById("password");
+                                            var show_eye = document.getElementById("show_eye");
+                                            var hide_eye = document.getElementById("hide_eye");
+                                            hide_eye.classList.remove("d-none");
+                                            if (x.type === "password") {
+                                                x.type = "text";
+                                                show_eye.style.display = "none";
+                                                hide_eye.style.display = "block";
+                                            } else {
+                                                x.type = "password";
+                                                show_eye.style.display = "block";
+                                                hide_eye.style.display = "none";
+                                            }
+                                        }
+
+                                        //imgupload
+                                        //user-name
+                                        //phone-number
+                                        //email
+                                        //password
+
+                                        $("#edit-btn").on('click', function (e) {
+                                            var self = $(this);
+                                            if (self.text().toUpperCase() == "EDIT PROFILE") {
+                                                self.text("Save Profile");
+                                            } else {
+                                                $("#cancel-btn").css('visibility', 'hidden');
+                                                self.text("Edit Profile");
+                                            }
+                                        })
         </script>
-        
+
         <?php
         include '../nav_bar/footer.php';
-        ?>        
+        ?>
     </body>
 </html>
