@@ -102,9 +102,9 @@
                                         <input class="me-3 text-center form-control rounded" type="text" id="fifth" maxlength="1" />
                                         <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" />
                                     </div>
-                                </div>
-                                <div class="justify-content-start resend-otp-container">
-                                    <a href="#" id="resend-otp-link">resend OTP</a>
+                                    <div class="justify-content-start resend-otp-container mt-2">
+                                        <a href="#" id="resend-otp-link">resend OTP</a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
