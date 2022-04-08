@@ -51,3 +51,10 @@ body {
     border: 1px solid white;
     cursor: pointer;
 }
+
+.pw {
+    margin-left: 15px;
+}
+.show-hide-btn{
+    margin-left: 10px;
+}
