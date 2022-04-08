@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form-group py-2">
-                    <div class="input-field bg-white"> <span class="fas fa-user p-2"></span> <input type="text"  id ="userName" name = "userName" placeholder="Enter your Username" required class=""> </div>
+                    <div class="input-field bg-white"> <span class="fas fa-user p-2"></span> <input type="text"  id ="userName" name = "userName" placeholder="Enter your Username" required> </div>
                 </div>
                 <div class="form-group py-2">
                     <div class="input-field bg-white"> <span class="fas fa-envelope p-2"></span> <input type="email" id ="email" name = "email" placeholder="Enter your Email Address" required class=""> </div>
@@ -123,43 +123,7 @@
                 <div class="text-center pt-3 text-muted">Already Member? <a href="../log_in/login_form.php">Login here</a></div>
             </form>
         </div>
-
-
-        <script>
-            function password_show_hide() {
-                var x = document.getElementById("password");
-                var show_eye = document.getElementById("show_eye");
-                var hide_eye = document.getElementById("hide_eye");
-                hide_eye.classList.remove("d-none");
-                if (x.type === "password") {
-                    x.type = "text";
-                    show_eye.style.display = "none";
-                    hide_eye.style.display = "block";
-                } else {
-                    x.type = "password";
-                    show_eye.style.display = "block";
-                    hide_eye.style.display = "none";
-                }
-            }
-            function retypepassword_show_hide() {
-                var y = document.getElementById("retypepassword");
-                var show_eye2 = document.getElementById("show_eye2");
-                var hide_eye2 = document.getElementById("hide_eye2");
-                hide_eye2.classList.remove("d-none");
-                if (y.type === "password") {
-                    y.type = "text";
-                    show_eye2.style.display = "none";
-                    hide_eye2.style.display = "block";
-                } else {
-                    y.type = "password";
-                    show_eye2.style.display = "block";
-                    hide_eye2.style.display = "none";
-                }
-            }
-        </script>
-
-
-
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -239,6 +203,36 @@
                 sendEmail(dataObj);
                 $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".");
             }
+            
+            function checkInputEmpty(){
+                var userName  = document.getElementById("userName");
+                var email = document.getElementById("email");
+                var phone = document.getElementById("phone");
+                var password = document.getElementById("password");
+                var retypepassword =document.getElementById("retypepassword");
+                let checkInput = false;
+
+                if(userName.values==="" || email==="" || phone==="" || password==="" || retypepassword===""){
+                    checkInput=true;
+                }
+
+                if(checkInput){
+
+                }else{
+                    alert("No empty value allowed, please fill up all text box");
+                }
+            }
+            
+            function checkPassword(){
+                var password = document.getElementById("password");
+                var retypepassword =document.getElementById("retypepassword");
+                
+                if(retypepassword == password){
+                    
+                }else{
+                    alert(retypepassword.value+"    "+password.value+"Warning! Retype password does not match with your password.");
+                }
+            }
 
             $("#submit-registerform-btn").on('click', function (e) {
                 e.preventDefault();
@@ -257,6 +251,8 @@
                             $("#staticBackdrop").modal('show');
                             readySendEmail();
                         } else {
+                            checkInputEmpty();
+                            checkPassword();
                             alert("Email existed, please try again...");
                         }
                     }
