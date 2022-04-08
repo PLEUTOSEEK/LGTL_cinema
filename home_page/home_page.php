@@ -35,28 +35,6 @@ and open the template in the editor.
                 color: #314CAA;
 
             }
-            /*
-                        .h1{
-                            color: #314CAA;
-                        }*/
-
-
-            @media screen and (min-width: 544px){
-                h5 { font-size: calc( 20px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
-            }
-
-            /*Safari <8 and IE <11*/
-            @media screen and (min-width: 768px){
-                h5 { font-size: calc( 1px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
-            }
-
-            @media screen and (min-width: 1200px){
-                h5 { font-size: calc( 30px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
-            }
-
-            @media screen and (min-width: 50em){
-                h5 { font-size: calc( 5px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
-            }
 
         </style>
     </head>
@@ -96,8 +74,8 @@ and open the template in the editor.
                 <ul class="carousel-indicators">
                     <?php
                     $image_query1 = mysqli_query($result, "select * from movie WHERE available_status = 'Now Showing' ORDER BY RAND()");
-//                        if (mysqli_num_rows($image_query1) > 0) {
                     while ($rows = mysqli_fetch_array($image_query1)) {
+                        $img_id = $rows['movie_id'];
                         $img_name = $rows['movie_name'];
                         $img_src = $rows['movie_image'];
                         $videourl = $rows['video_link'];
@@ -112,7 +90,6 @@ and open the template in the editor.
                             <?php
                             $i++;
                         }
-//                            }
                     }
                     ?>
                 </ul>
@@ -133,27 +110,21 @@ and open the template in the editor.
                             <img src="data:image/jpg;charset=utf8;base64, <?= base64_encode($row['movie_banner']) ?>" style = "width: 100%; height:500px;">
                             <div class="carousel-caption">
                                 <h1 class="mt-lg-2 mt-sm-3 mt-md-2 text-responsive py-2 font-weight-bold text-white"><?= $row['movie_name'] ?></h1>
-                                <button type="button" id="trailer" class="btn btn-outline-primary btn-circle btn-xl fa fa-play" style=" margin-top:5px;" data-toggle="modal" data-target="#myModal2<?= $videourl ?>"></button>
-                                <div class="modal fade" id="myModal2<?= $videourl ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-xl-1140" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title text-info" id="exampleModalLabel"><?= $img_name ?></h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-
-                                            </div>
-                                            <iframe class="ml-lg-2 mt-lg-8 mt-4 mt-md-2 my-sm-3 mr-2" height="400px" src="https://www.youtube.com/embed/<?= $videourl ?>?autoplay=1&autohide=1&controls=1&showinfo=0&modestbranding=1&rel=0"></iframe>
-                                        </div>
+                                <div class="form-row justify-content-center">
+                                    <div class="col-auto">
+                                        <form action = "../movie_details/movie_page.php" method ="post">
+                                            <input type = "hidden" name = "movie_id" value ="<?= $row['movie_id'] ?>"/>
+                                            <input type = "submit" style = "margin-top:5px;" class = "btn btn-primary" value = "Movie Detail"/>
+                                        </form>
+                                    </div>
+                                    <div class="col-auto">
+                                        <form action = "../ticket_booking/selectLocation.php" method = "post">
+                                            <input type = "hidden" name = "movie_id" value = "<?= $row['movie_id'] ?>"/>
+                                            <input type = "submit" style = "margin-top:5px;" class = "btn btn-success" value = "  Book Now  "/>
+                                        </form>
                                     </div>
                                 </div>
-                                <input id="mdetail" onclick="mdetails()" type="submit" style="margin-top:5px;" class="btn btn-primary" value="Movie Detail"/>
-                                <input type="submit" name="Book_now" style="margin-top:5px; " class="btn btn-success" value="  Book Now  "/>
                             </div>
-
                         </div>
                         <?php
                         $i++;
@@ -170,18 +141,16 @@ and open the template in the editor.
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <!--</div>-->
         </div>
 
 
         <div class="col-lg-12 input-group mt-3 justify-content-center">
             <input type="search" class="form-control rounded mr-3 col-lg-4 srchBar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id = "search-text"/>
             <button type="button" class="btn btn-outline-primary srchBtn  " id="serch-btn">search</button>
-            <!--<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">-->
         </div>
 
-        <div class="row col-7">
-            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light">Now Showing</h2>
+        <div class="row col-5">
+            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light" onclick="window.location.href = 'home_page.php'">Now Showing</h2>
             <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light" onclick="window.location.href = 'comingSoon_page.php'">Coming Soon</h2>
 
         </div>
@@ -196,11 +165,6 @@ and open the template in the editor.
         <div class="row" id = "movie_carts">
 
         </div>
-
-        <script>
-
-
-        </script>
 
         <?php
         include '../nav_bar/footer.php';
