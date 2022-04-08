@@ -9,31 +9,35 @@ $host = "localhost";
         
         if(mysqli_connect_error()){
             die("connection failed".mysqli_connect_error());
+            echo'failure add';
         }
         else{
             echo "connected to database ($dbname)";
-            if(isset($_POST['commentBtn'])){
-                $movie_comment_id = "CM0001";
+            
+            $sql = "insert into movie_comment(customer_id,movie_id,rating,comment,date_modified) Values(?,?,?,?,?)";
+            
+                $movie_comment_id = 1;
                 $customer_id = "C0001";
                 $movie_id = "MV001";
-                $name = "Gan Wei Han";
-                $status = "test";
-                $contactNumber = 1222222;
-                $rating = 1;
+                $rating = $_POST['ratingStar'];
                 $comment = $_POST['comment'];
-                //$getDate = current_timestamp();
-                 $dateModify = date_format($date,"U = Y-m-d H:i:s");
+//                $comment ="suck";
+                $currentDate = date("Y-m-d H:i:s");
                 
-                $query ="INSERT INTO `movie_comment` (`movie_comment_id`, `customer_id`, `movie_id`, `name`, `status`, `contact_number`, `rating`, `comment`, `date_modified`) VALUES('CM0001', NULL, 'MV001', NULL, 'test', NULL, '1', '$comment',current_timestamp())";
-                $run = mysqli_query($conn,$query) or die(mysqli_error($conn));
-                
-                if($run){
-                    echo "Add successfully";
-                }else{
-                    echo"Failure add";
-                }
-            }else{
-                echo"Failure add";
-            }
+//                $query ="INSERT INTO `movie_comment` (`customer_id`, `movie_id`, `rating`, `comment`, `date_modified`) VALUES('C0001', 'MV001', $rating, $comment, 'current_timestamp()')";
+//                $run = mysqli_query($conn,$query) or die(mysqli_error($conn));
+//                
+//                if($run){
+//                    echo "Add successfully";
+//                }else{
+//                    echo"Failure add";
+//                }
+                 
+                 
+                 $stmt = $conn->prepare($sql);
+                 $stmt->bind_param('sssss', $customer_id,$movie_id, $rating, $comment, $currentDate);
+                 $stmt->execute();  
+                 
+                 header("Location: comment_section.php");
         }
 ?>

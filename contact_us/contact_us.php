@@ -11,11 +11,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <style>
             /* HIDE RADIO */
             .rateOption{
-                position: absolute;
-                opacity: 0;
-                width: 0;
-                height: 0;
-            }
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .rateOption1{
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .rateOption2{
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .rateOption3{
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .rateOption4{
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .rateOption5{
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
 
             /* IMAGE STYLES */
             [type=radio] + img {
@@ -57,73 +87,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         include '../nav_bar/navigation_bar.php';
         //include 'connection.php';
-        //email or add data only can perform either one
-        //cannot perform checkRate() function
         ?>
 
-        <div class="formdesign container-fluid justify-content-center col-md-5">
-            <h3 class="m-1">Service Rating</h3><br/>
+        <div class="formdesign container-fluid justify-content-center col-md-5 bg-dark">
+                <h3 class="m-1 text-white text-center pt-3">Rate Your Experience</h3><br/>
+                
+                <div class="rateOptionBox">
+                    <label>
+
+                        <input type="radio" name="rateOption1"id="rateOption1" class="rateOption"/>
+                        <img src="start_uncheck.png">
+                    </label>
+                    <label>
+                        <input type="radio" name="rateOption2"id="rateOption2" class="rateOption"/>
+                        <img src="start_uncheck.png">
+                    </label>
+                    <label>
+                        <input type="radio" name="rateOption3"id="rateOption3" class="rateOption"/>
+                        <img src="start_uncheck.png">
+                    </label>
+                    <label>
+                        <input type="radio" name="rateOption4"id="rateOption4" class="rateOption" />
+                        <img src="start_uncheck.png">
+                    </label>
+                    <label>
+                        <input type="radio" name="rateOption5"id="rateOption5" class="rateOption"  />
+
+                        <img src="start_uncheck.png">
+                    </label>
+                </div>
+            
             <form  method="POST" id="serviceCommentForm">
-                <div class="form-group">
-                    <big class="form-text text-muted">Customer ID :</big>
-                    <input id="customer_ID" name ="customer_ID" class="form-control form-control-lg" type="text" placeholder="Customer ID">
-                </div>
 
-                <big class="form-text text-muted form-check-inline">Status :</big>
-                <div class="form-check form-check-inline form-text text-muted col-md-4 text-center">
-                    <input class="form-check-input" type="radio" name="statusOption" id="anonymous" onclick="EnableDisableTB()">
-                    <label class="form-check-label w-100 p-3 form-check-label">Anonymous</label>
-                </div>
-                <div class="form-check form-check-inline form-text text-muted col-md-4 text-center">
-                    <input class="form-check-input" type="radio" name="statusOption" id="realName" name="realName" onclick="EnableDisableTB()">
-                    <label class="form-check-label w-100 p-3">Real Name</label>
+                <div class="form-group">
+                    <big  class="form-text text-white ">Email :</big>
+                    <input id="email" name="email" class="form-control form-control-lg" type="text" placeholder="Please enter your email.">
                 </div>
 
                 <div class="form-group">
-                    <big  class="form-text text-muted ">Name :</big>
-                    <input id="customer_name" name="customer_name" class="form-control form-control-lg" type="text" placeholder="*Optional" disabled="disabled">
-                </div>
-
-                <div class="form-group">
-                    <big  class="form-text text-muted ">Email :</big>
-                    <input id="email" name="email" class="form-control form-control-lg" type="text" placeholder="Email">
-                </div>
-
-                <div class="form-group">
-                    <big class="form-text text-muted">Contact Number :</big>
-                    <input id="contact_number" name="contact_number" class="form-control form-control-lg" type="number" placeholder="*Optional (e.g.0142227837)">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-text text-muted">Comment :</label>
+                    <label class="form-text text-white">Comment :</label>
                     <textarea class="form-control" id="comment" name="comment" rows="5"></textarea>
                 </div>
 
                 <big class="form-text form-check-inline text-muted"></big>
-                <div class="rateOptionBox">
-                    <label>
-
-                        <input type="radio" name="rateOption"id="rateOption1" class="rateOption"/>
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption"id="rateOption2" class="rateOption"/>
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption"id="rateOption3" class="rateOption"/>
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption"id="rateOption4" class="rateOption" />
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption"id="rateOption5" class="rateOption"  />
-
-                        <img src="start_uncheck.png">
-                    </label>
-                </div>
+                
                 <input  name="ratingStar" value="1" type="hidden" id="ratingStar"/>
                 <div class="buttonPosition col-md-12 ml-12 m-1">
                     <button  type="submit" form="serviceCommentForm" class="buttonStyle btn btn-primary btn-block col-md-7 ml-auto mr-auto rounded-pill" id="formSubmitBtn">Submit</button>
@@ -131,7 +138,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </form>
         </div>
         <script src="https://smtpjs.com/v3/smtp.js"></script>
-
+        
+        
+        
         <?php
         include '../nav_bar/footer.php';
         ?>
@@ -168,12 +177,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     To: 'weihangan0@gmail.com',
                     From: document.getElementById("email").value,
                     Subject: "This is the subject",
-                    Body: "Customer ID : " + document.getElementById("customer_ID").value
-                            + "<br>Name : " + document.getElementById("customer_name").value
-                            + "<br> Email : " + document.getElementById("email").value
-                            + "<br> Contact Number : " + document.getElementById("contact_number").value
+                     Body: "<br> Email : " + document.getElementById("email").value
                             + "<br> Comment : " + document.getElementById("comment").value
-                            //+"<br> Rate : " + document.getElementById("comment").value
+                            +"<br> Rate : " + document.getElementById("ratingStar").value
+                           
+//                            Body: "Customer ID : " + document.getElementById("customer_ID").value
+////                            + "<br>Name : " + document.getElementById("customer_name").value
+//                             "<br> Email : " + document.getElementById("email").value
+////                            + "<br> Contact Number : " + document.getElementById("contact_number").value
+//                            + "<br> Comment : " + document.getElementById("comment").value
+//                            //+"<br> Rate : " + document.getElementById("comment").value
                 }).then(
                         message => alert("Message Sent Successfully")
                 );
@@ -203,16 +216,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 var rating = document.getElementById("ratingStar");
                 if (rateOption1.checked) {
                     rating.value = "1";
+                    rateOption2.checked=false ;
+                    rateOption3.checked=false;
+                    rateOption4.checked=false;
+                    rateOption5.checked=false;
+                    
+                    
                 } else if (rateOption2.checked) {
                     rating.value = "2";
+                    rateOption1.checked=true;
+                    rateOption3.checked=false;
+                    rateOption4.checked=false;
+                    rateOption5.checked=false;
                 } else if (rateOption3.checked) {
                     rating.value = "3";
+                    rateOption1.checked=true;
+                    rateOption2.checked=true;
+                    rateOption4.checked=false;
+                    rateOption5.checked=false;
                 } else if (rateOption4.checked) {
                     rating.value = "4";
+                    rateOption1.checked=true;
+                    rateOption2.checked=true;
+                    rateOption3.checked=true;
+                    rateOption5.checked=false;
                 }else if(rateOption5.checked){
                     rating.value = "5";
+                    rateOption1.checked=true;
+                    rateOption2.checked=true;
+                    rateOption3.checked=true;
+                    rateOption4.checked=true;
                 }
-            })
+            });
         </script>
     </body>
 </html>
