@@ -28,6 +28,8 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script>
             $(function () {
+                alert('<?php echo $_SESSION['logInCustomer']['cust_id']; ?>');
+
                 $.ajax({
                     url: "refundsOverviewBackEnd.php",
                     type: "POST",

@@ -11,51 +11,45 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <style>
             /* HIDE RADIO */
             .rateOption{
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .rateOption1{
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .rateOption2{
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .rateOption3{
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .rateOption4{
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .rateOption5{
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            .rateOption1{
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            .rateOption2{
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            .rateOption3{
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            .rateOption4{
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            .rateOption5{
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
 
             /* IMAGE STYLES */
             [type=radio] + img {
                 cursor: pointer;
-            }
-
-            /* CHECKED STYLES */
-            [type=radio]:checked + img {
-                /*outline: 2px solid #f00;*/
-                background-image: url(start_check.png);
             }
 
             .rateOptionBox{
@@ -90,33 +84,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         ?>
 
         <div class="formdesign container-fluid justify-content-center col-md-5 bg-dark">
-                <h3 class="m-1 text-white text-center pt-3">Rate Your Experience</h3><br/>
-                
-                <div class="rateOptionBox">
-                    <label>
+            <h3 class="m-1 text-white text-center pt-3">Rate Your Experience</h3><br/>
 
-                        <input type="radio" name="rateOption1"id="rateOption1" class="rateOption"/>
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption2"id="rateOption2" class="rateOption"/>
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption3"id="rateOption3" class="rateOption"/>
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption4"id="rateOption4" class="rateOption" />
-                        <img src="start_uncheck.png">
-                    </label>
-                    <label>
-                        <input type="radio" name="rateOption5"id="rateOption5" class="rateOption"  />
+            <div class="rateOptionBox">
+                <label>
+                    <input type="radio" value="1"name="rateOption" class="rateOption"/>
+                    <img src="start_uncheck.png" class="rateImg">
+                </label>
+                <label>
+                    <input type="radio" value="2"name="rateOption" class="rateOption"/>
+                    <img src="start_uncheck.png" class="rateImg">
+                </label>
+                <label>
+                    <input type="radio" value="3"name="rateOption" class="rateOption"/>
+                    <img src="start_uncheck.png" class="rateImg">
+                </label>
+                <label>
+                    <input type="radio" value="4"name="rateOption" class="rateOption" />
+                    <img src="start_uncheck.png" class="rateImg">
+                </label>
+                <label>
+                    <input type="radio" value="5"name="rateOption" class="rateOption"  />
 
-                        <img src="start_uncheck.png">
-                    </label>
-                </div>
-            
+                    <img src="start_uncheck.png" class="rateImg">
+                </label>
+            </div>
+
             <form  method="POST" id="serviceCommentForm">
 
                 <div class="form-group">
@@ -130,7 +123,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
 
                 <big class="form-text form-check-inline text-muted"></big>
-                
+
                 <input  name="ratingStar" value="1" type="hidden" id="ratingStar"/>
                 <div class="buttonPosition col-md-12 ml-12 m-1">
                     <button  type="submit" form="serviceCommentForm" class="buttonStyle btn btn-primary btn-block col-md-7 ml-auto mr-auto rounded-pill" id="formSubmitBtn">Submit</button>
@@ -138,9 +131,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </form>
         </div>
         <script src="https://smtpjs.com/v3/smtp.js"></script>
-        
-        
-        
+
         <?php
         include '../nav_bar/footer.php';
         ?>
@@ -148,24 +139,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script>
-                        $("#serviceCommentForm").on("submit", function (e) {
-                            e.preventDefault();
-                            $.ajax({
-                                url: "insertServiceComment.php",
-                                type: "POST",
-                                data: {
+            $("#serviceCommentForm").on("submit", function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "insertServiceComment.php",
+                    type: "POST",
+                    data: {
+                        "action": "insertCommentFunc",
+                        "data": JSON.stringify(
+                                {
                                     "comment": $("#comment").val(),
                                     "ratingStar": $("#ratingStar").val()
-                                },
-                                error: function (xhr, status, error) {
-                                    console.log("Error: " + error);
                                 }
-                                ,
-                                success: function (result, status, xhr) {
-                                    sendEmail();
-                                }
-                            });
-                        })
+                        )
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error: " + error);
+                    }
+                    ,
+                    success: function (result, status, xhr) {
+                        alert(result);
+                        sendEmail();
+                    }
+                });
+            })
 
         </script>
         <script>
@@ -177,10 +174,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     To: 'weihangan0@gmail.com',
                     From: document.getElementById("email").value,
                     Subject: "This is the subject",
-                     Body: "<br> Email : " + document.getElementById("email").value
+                    Body: "<br> Email : " + document.getElementById("email").value
                             + "<br> Comment : " + document.getElementById("comment").value
-                            +"<br> Rate : " + document.getElementById("ratingStar").value
-                           
+                            + "<br> Rate : " + document.getElementById("ratingStar").value
+
 //                            Body: "Customer ID : " + document.getElementById("customer_ID").value
 ////                            + "<br>Name : " + document.getElementById("customer_name").value
 //                             "<br> Email : " + document.getElementById("email").value
@@ -208,45 +205,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <script>
             $(".rateOption").on('click', function (e) {
-                var rateOption1 = document.getElementById("rateOption1");
-                var rateOption2 = document.getElementById("rateOption2");
-                var rateOption3 = document.getElementById("rateOption3");
-                var rateOption4 = document.getElementById("rateOption4");
-                var rateOption5 = document.getElementById("rateOption5");
-                var rating = document.getElementById("ratingStar");
-                if (rateOption1.checked) {
-                    rating.value = "1";
-                    rateOption2.checked=false ;
-                    rateOption3.checked=false;
-                    rateOption4.checked=false;
-                    rateOption5.checked=false;
-                    
-                    
-                } else if (rateOption2.checked) {
-                    rating.value = "2";
-                    rateOption1.checked=true;
-                    rateOption3.checked=false;
-                    rateOption4.checked=false;
-                    rateOption5.checked=false;
-                } else if (rateOption3.checked) {
-                    rating.value = "3";
-                    rateOption1.checked=true;
-                    rateOption2.checked=true;
-                    rateOption4.checked=false;
-                    rateOption5.checked=false;
-                } else if (rateOption4.checked) {
-                    rating.value = "4";
-                    rateOption1.checked=true;
-                    rateOption2.checked=true;
-                    rateOption3.checked=true;
-                    rateOption5.checked=false;
-                }else if(rateOption5.checked){
-                    rating.value = "5";
-                    rateOption1.checked=true;
-                    rateOption2.checked=true;
-                    rateOption3.checked=true;
-                    rateOption4.checked=true;
-                }
+                $("#ratingStar").attr("value", $(this).val());
+
+                $(".rateImg").each(function () {//refresh all img to uncheck first
+                    $(this).attr("src", "start_uncheck.png");
+                })
+
+                $(".rateImg").each(function (index, obj) {
+                    if (index < $("#ratingStar").val()) {
+                        $(this).attr("src", "start_check.png");
+                    }
+                })
             });
         </script>
     </body>

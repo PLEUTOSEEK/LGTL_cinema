@@ -12,34 +12,6 @@ if (isset($_POST['action'])) {
     }
 }
 
-function setSeatsBooked() {
-    $conn = OpenCon();
-
-    $scheduleSeats = json_decode($_COOKIE['seatsSelected'], true);
-    $justsSchIDs = array();
-
-    foreach ($scheduleSeats as $scheduleSeat) {
-        array_push($justsSchIDs, $scheduleSeat['sch_id']);
-    }
-
-    $scheIDsInStr = implode("', '", $justsSchIDs);
-    $scheIDsInStr = "'" . $scheIDsInStr . "'";
-
-    $sql = "
-            UPDATE
-                SCHEDULE
-            SET
-                STATUS = 'Booked'
-            WHERE
-                SCHEDULE_ID IN ($scheIDsInStr)";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $showDate, $showTime, $movieID);
-    $stmt->execute();
-
-    CloseCon($conn);
-}
-
 function getSeats($cinemaRoomID, $showDate, $showTime, $movieID) {
     $conn = OpenCon();
 

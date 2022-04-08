@@ -171,6 +171,7 @@ function completeOrderList($newOrderID, $seatsSelected, $foodsSelected) {
         addOrderList($data);
     }
 
+    setSeatsBooked($seatsSelected);
 
     foreach ($foodsSelected as $foodSelected) {
         $data = [
@@ -268,4 +269,30 @@ function generateOrderID() {
     CloseCon($conn);
 
     return $newOrderID;
+}
+
+function setSeatsBooked($seatsSelected) {
+    $conn = OpenCon();
+
+    $justsSchIDs = array();
+
+    foreach ($seatsSelected as $scheduleSeat) {
+        array_push($justsSchIDs, $scheduleSeat['sch_id']);
+    }
+
+    $scheIDsInStr = implode("', '", $justsSchIDs);
+    $scheIDsInStr = "'" . $scheIDsInStr . "'";
+
+    $sql = "
+            UPDATE
+                SCHEDULE
+            SET
+                STATUS = 'Booked'
+            WHERE
+                SCHEDULE_ID IN ($scheIDsInStr)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+
+    CloseCon($conn);
 }
