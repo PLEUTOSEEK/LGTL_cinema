@@ -18,7 +18,7 @@ function getSchedule($movieID, $status) {
     $conn = OpenCon();
     $scheduleList = array();
 
-    $sql = "SELECT L.location_id, L.location_name, CR.cinema_room_id,M.movie_id, SCH.show_date, SCH.show_time, SCH.schedule_id
+    $sql = "SELECT L.location_id, L.location_name, L.geo_location, CR.cinema_room_id,M.movie_id, SCH.show_date, SCH.show_time, SCH.schedule_id
 
                     FROM movie M, schedule SCH, seat S, cinema_room CR, location L
 
@@ -29,7 +29,7 @@ function getSchedule($movieID, $status) {
                             AND M.movie_id = ?
                             AND SCH.status = ?
 
-                    ORDER BY L.location_name ASC;";
+                    ORDER BY L.location_name ASC, SCH.show_time ASC;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $movieID, $status);
     $stmt->execute();
@@ -69,33 +69,40 @@ function dynamicFilter() {
 
     foreach ($scheduleList as $schedule) {
         if ($schedule['show_date'] == $dateSelected) {
-            array_push($locationNames, $schedule['location_name']);
+            array_push($locationNames, array(
+                "locationID" => $schedule['location_id'],
+                "locationName" => $schedule['location_name'],
+                "locationGeo" => $schedule['geo_location'],
+            ));
         }
     }
 
-    $locationNames = array_unique($locationNames);
+    $locationNames = array_values(array_column($locationNames, null, 'locationID'));
 
     $htmlCode = "";
     foreach ($locationNames as $location) {
-        $htmlCode .= " <button class=\"btn btn-outline-primary  h-10 btn-block py-3 my-3 rounded-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#timeSlotsBox$counter\" aria-controls=\"timeSlotsBox$counter\" aria-expanded=\"false\" aria-label=\"Toggle time slots\">";
+        $htmlCode .= " <button class = \"btn btn-outline-primary  h-10 btn-block py-3 my-3 rounded-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#timeSlotsBox$counter\" aria-controls=\"timeSlotsBox$counter\" aria-expanded=\"false\" aria-label=\"Toggle time slots\">";
 
-        $htmlCode .= " <h4 class = \"float-left font-weight-bold text-uppercase text-left my-auto\">$location</h4>";
+        $htmlCode .= " <h4 class = \"float-left font-weight-bold text-uppercase text-left my-auto\">" . $location['locationName'] . "</h4>";
 
         $htmlCode .= " <h4 class = \"float-right font-weight-bold my-auto\">+</h4>";
 
         $htmlCode .= " </button>";
 
         $htmlCode .= "<div class=\"collapse  rounded-0 p-lg-3 text-center\" id=\"timeSlotsBox$counter\" >";
-        $htmlCode .= "<button class = \"btn btn-outline-primary font-weight-bold text-uppercase float-right my-3\">";
-        $htmlCode .= "location ";
+
+        $htmlCode .= "<a href = '" . $location['locationGeo'] . "' target='_blank'>";
+        $htmlCode .= "<button class ='btn btn-outline-primary font-weight-bold text-uppercase float-right my-3'>";
+        $htmlCode .= "location";
         $htmlCode .= "</button>";
+        $htmlCode .= "</a>";
 
         $htmlCode .= "<div class=\"row  align-items-center justify-content-center w-100 mx-auto\">";
         $uniTimes = array();
 
         foreach ($scheduleList as $schedule) {
 
-            if ($schedule['show_date'] == $dateSelected && $schedule['location_name'] == $location) {
+            if ($schedule['show_date'] == $dateSelected && $schedule['location_id'] == $location['locationID']) {
 
                 if (in_array($schedule['show_time'], $uniTimes) == false) {
                     $uniFormID = uniqid();

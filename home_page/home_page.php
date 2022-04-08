@@ -196,15 +196,11 @@ and open the template in the editor.
         <div class="row" id = "movie_carts">
 
         </div>
-
-        <script>
-
-
-        </script>
-
         <?php
         include '../nav_bar/footer.php';
         ?>
+
+
 
         <script>
             $("#serch-btn").on("click", function () {

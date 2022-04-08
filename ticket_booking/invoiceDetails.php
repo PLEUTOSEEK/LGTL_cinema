@@ -4,6 +4,7 @@
         <title>title</title>
         <?php
         include 'invoiceDetailsBackEnd.php';
+//        $orderID = $_POST['order_id'];
         $orderID = $_POST['order_id'];
         $orderDtls = retrieveOrderDtls($orderID);
         $orderListFoodDtls = retrieveOrderListFoodDtls($orderID);
@@ -11,23 +12,22 @@
         ?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <script>
             var orderDtls;
             var orderListSeatDtls;
             var orderListFoodDtls;
             $(function () {
                 orderDtls = <?php echo json_encode($orderDtls); ?>;
-                console.log(orderDtls);
+                console.log("as");
+
                 orderListSeatDtls = <?php echo json_encode($orderListSeatDtls); ?>;
                 orderListFoodDtls = <?php echo json_encode($orderListFoodDtls); ?>;
-
                 createTable(document.getElementById('seat-table'), orderListSeatDtls);
                 createTable(document.getElementById('food-table'), orderListFoodDtls);
             });
-
             // dynamic function to cteate table out of 2d arrays
             function createTable(table, tableData) {
 
@@ -39,19 +39,19 @@
                     for (var key in rowData) {
                         var col = document.createElement('td');
                         var value = rowData[key];
-                        col.appendChil d(document.createTextNode(value));
+                        col.appendChild(document.createTextNode(value));
                         col.classList.add("text-truncate");
                         row.appendChild(col);
                     }
                     // adding each row to table body
                     tableBody.appendChild(row);
-                });
+                }
+                );
                 // adding table body to table
                 table.appendChild(tableBody);
             }
         </script>
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
         <style type="text/css">
 
             body
@@ -149,19 +149,6 @@
         </style>
     </head>
     <body>
-        <form onsubmit="" id="sendEmailForm">
-            <button type="submit" form="sendEmailForm">This is submti button</button>
-        </form>
-        <script>
-
-            $("#sendEmailForm").on("submit", function (e) {
-                e.preventDefault();
-                sendEmail();
-                reset();
-                return false;
-            })
-
-        </script>
 
         <div class="container">
             <div class="row">
@@ -299,12 +286,12 @@
                                         </tr>
                                     </thead>
                                 </table>
-                                <div class= "d-flex justify-content-start clearfix col-12 text-right px-0 py-3 ">
-                                    <p  class= "label rounded px-3 py-2 mx-0  font-weight-bold m-0 text-white bg-dark">Total Price</p>
-                                </div>
-                                <div class= "d-flex justify-content-end clearfix col-12 text-left px-0 py-3 ">
+                                <div class= "d-flex justify-content-between clearfix col-12 text-right px-0 py-3 ">
+                                    <button  class= "btn btn-danger rounded p-2 mr-auto font-weight-bold" id="request-refund-btn">Request Refund</button>
                                     <p  class= "label rounded px-3 py-2 mx-0  font-weight-bold m-0 text-white bg-dark">Total Price&emsp;<span>RM&ensp;<?php echo number_format($orderDtls[0]['TOTAL_PRICE'], 2); ?></span></p>
+
                                 </div>
+
                             </div>
                             <hr>
                             <a href="http://localhost/LGTL_Cineplex/LGTL_cinema/ticket_booking/refundsOverview.php" class = "h5 px-4">Go Back</a>
@@ -316,26 +303,52 @@
         </div>
 
         <script src="https://smtpjs.com/v3/smtp.js"></script>
-
         <script>
-                                function sendEmail() {
-                                    Email.send({
-                                        Host: "smtp.gmail.com",
-                                        Username: "teezx-wm19@student.tarc.edu.my",
-                                        Password: "pashchyxtrtfopav",
-                                        To: 'ABC@gmail.com',
-                                        From: "Tee Zhuo Xuan",
-                                        Subject: "This is the subject",
-                                        Body: "Customer ID : " + "NONE"
-                                                + "<br>Name : " + "NONE"
-                                                + "<br> Email : " + "NONE"
-                                                + "<br> Contact Number : " + "NONE"
-                                                + "<br> Comment : " + "NONE"
-                                                //+"<br> Rate : " + document.getElementById("comment").value
-                                    }).then(
-                                            message => alert("Message Sent Successfully")
-                                    );
-                                }
+
+                                $("#request-refund-btn").on("click", function (e) {
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "invoiceDetailsBackEnd.php",
+                                        data: {
+                                            "action": "checkRefundQualificationFunc",
+                                            "order_ID": '<?php echo $orderID; ?>',
+                                            "order_date": '<?php echo $orderDtls[0]['ORDER_DATE']; ?>'
+                                        },
+                                        error: function (xhr, status, error) {
+                                            console.log("Error: " + error);
+                                        },
+                                        success: function (result, status, xhr) {
+                                            var catchAssocList;
+                                            catchAssocList = JSON.parse(result);
+                                            alert(catchAssocList);
+                                            if (catchAssocList != null) {
+                                                sendEmail(catchAssocList);
+                                                reset();
+                                                return false;
+                                            }
+                                        }
+                                    });
+                                })
+
+        </script>
+        <script>
+            function sendEmail(data) {
+                alert(data['email']);
+                alert(data['subj']);
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "teezx-wm19@student.tarc.edu.my",
+                    Password: "sgxdjzbeaiqqvgim",
+                    To: data['email'],
+                    From: "teezx-wm19@student.tarc.edu.my",
+                    Subject: data['subj'],
+                    Body: data['msgBody']
+                            //+"<br> Rate : " + document.getElementById("comment").value
+                }).then(
+                        message => alert("Message Sent Successfully")
+                );
+            }
         </script>
     </body>
 </html>

@@ -44,7 +44,7 @@ function retrieveAllOrdersByCust() {
                         O.ORDER_ID;
             ";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $_SESSION['logInCustomer']);
+        $stmt->bind_param("s", $_SESSION['logInCustomer']['cust_id']);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -97,7 +97,7 @@ function retrieveAllOrdersByCustAndCondition($srchText) {
             ";
         $stmt = $conn->prepare($sql);
         $srchText = "%" . $srchText . "%";
-        $stmt->bind_param("ssssss", $_SESSION['logInCustomer'], $srchText, $srchText, $srchText, $srchText, $srchText);
+        $stmt->bind_param("ssssss", $_SESSION['logInCustomer']['cust_id'], $srchText, $srchText, $srchText, $srchText, $srchText);
         $stmt->execute();
         $result = $stmt->get_result();
 
