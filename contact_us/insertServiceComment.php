@@ -1,5 +1,5 @@
 <?php
-$host = "localhost";
+        $host = "localhost";
         $dbuser = "root";
         $pass = "";
         $dbname ="lgtl_cinema";
@@ -18,7 +18,7 @@ $host = "localhost";
         //date("Y-m-d H:i:s"); currrent date
         // $date=date_create("2013-03-15");
         //echo date_format($date,"Y/m/d H:i:s"); self-made date
-        $customer_id = !empty ($_SESSION["logInCustomer"]) ? $_SESSION["logInCustomer"] : null;
+                    $customer_id = !empty ($_SESSION["logInCustomer"]) ? $_SESSION["logInCustomer"] : null;
                     $comment = $_POST['comment'];
                     $rating = $_POST['ratingStar'];
                     $currentDate = date("Y-m-d H:i:s");
