@@ -144,13 +144,13 @@ function retrieveAllMovies($img_id, $img_name, $img_src, $videourl) {
     $htmlcode .= "</div>";
     $htmlcode .= "</div>";
     
-    $htmlcode .= "<div class='form-group col-auto col-xl-6'>";
+    $htmlcode .= "<div class='form-group col-aut'>";
     $htmlcode .= "<form action = '../movie_details/movie_page.php' method = 'post'>";
     $htmlcode .= "<input type = 'hidden' name = 'movie_id' value = '" . $img_id . "'/>";
     $htmlcode .= "<input type = 'submit' style = 'margin-top:5px;' class = 'btn btn-outline-primary' value = 'Movie Detail'/>";
     $htmlcode .= "</form>";
     $htmlcode .= "</div>";
-    $htmlcode .= "<div class='form-group col-auto col-xl-9'>";
+    $htmlcode .= "<div class='form-group col-auto'>";
     $htmlcode .= "<form action = '../ticket_booking/selectLocation.php' method = 'post'>";
     $htmlcode .= "<input type = 'hidden' name = 'movie_id' value = '" . $img_id . "'/>";
     $htmlcode .= "<input type = 'submit' style = 'margin-top:5px; ' class = 'btn btn-outline-success' value = '  Book Now  '/>";
