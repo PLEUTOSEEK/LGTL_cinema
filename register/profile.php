@@ -50,7 +50,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
+                        <div class="row px-3">
+                            <div class="mt-5 text-left"><button class="btn btn-primary profile-button" type="button">Cancel Edit</button></div>
+                            <div class="ml-auto mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
+                        </div>
                     </div>
                     <hr style="background: white">
                     <div class="my-4 text-center"><button class="btn btn-primary profile-button" type="button">View My Order</button></div>
