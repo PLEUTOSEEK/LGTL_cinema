@@ -48,7 +48,7 @@
                             <div class="modal-body">
                                 <p id = "otp-msg">We will be sending your LGTL OTP code to the email address, example@gmail.com.</p>
 
-                                <div class="card p-2 text-center mb-3 mt-1 bg-dark text-white">
+                                <div class="card p-2 text-center mb-3 mt-1">
                                     <div class="form-text text-left">Verification</div>
                                     <div id="otp" class="inputs d-flex flex-row justify-content-center">
                                         <input class="ms-5 me-3 text-center form-control rounded" type="text" id="first" maxlength="1" />
@@ -58,10 +58,10 @@
                                         <input class="me-3 text-center form-control rounded" type="text" id="fifth" maxlength="1" />
                                         <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" />
                                     </div>
+                                    <div class="justify-content-start resend-otp-container mt-2">
+                                        <a href="#" id="resend-otp-link">resend OTP</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="justify-content-start resend-otp-container">
-                                <a id="resend-otp-link">resend OTP</a>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -173,8 +173,8 @@
                             OTP = Math.floor(100000 + Math.random() * 900000);
                             var dataObj = {
                                 "email": dtls['email'],
-                                "subj": "LGTL Account activation",
-                                "msgBody": "Dear : " + dtls['cust_name'] + " Your OTP is " + OTP
+                                "subj": "Verify Your Login",
+                                "msgBody": "Hello " + dtls['cust_name'] + ",\n\nThank you for sign in at LGTL Cineplex.\nPlease verify your login.\nYour OTP number is " + OTP + ".\n\nThank you."
                             };
                             sendEmail(dataObj);
                             $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + dtls['email'] + ".");

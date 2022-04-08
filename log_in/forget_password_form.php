@@ -43,7 +43,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body">
-                                please check your email to get your new password.
+                                <p id="otp-msg">please check your email to get your new password.</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="ok-btn" class="btn btn-primary"data-bs-dismiss="modal" >OK</button>
@@ -102,10 +102,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 var dataObj = {
                     "email": dtls['email'],
                     "subj": "LGTL Reset Password",
-                    "msgBody": "Dear : " + dtls['cust_name'] + " Your new password is " + dtls['newPass']
+                    "msgBody": "Hello " + dtls['cust_name'] + ",\n\nThank you for using LGTL Cineplex.\nPlease enter the below mentioned password for logging into LGTL Cineplex.\nYour new password is " + dtls['newPass'] + ".\n\nThank you."
                 };
                 sendEmail(dataObj);
-                $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + dtls['email'] + ".");
+                $("#otp-msg").text("Please check your email to get your new password.");
             }
 
             function sendEmail(data) {

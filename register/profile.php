@@ -63,12 +63,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> d74434fa2eac196ccf27f7ea37d72bc9bb828137
                         <div class="row px-3">
                             <div class="mt-5 text-left" id = "show-up-conditional" style="visibility: hidden;"><button id = "cancel-btn" class="btn btn-primary profile-button" type="button">Cancel Edit</button></div>
                             <div class="ml-auto mt-5 text-right"><button id = "edit-btn" class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
                         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> d74434fa2eac196ccf27f7ea37d72bc9bb828137
                     </div>
                     <hr style="background: white">
                     <div class="my-4 text-center"><button class="btn btn-primary profile-button" id = "view-order-btn" type="button">View My Order</button></div>
