@@ -50,14 +50,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
                         <div class="mt-5 text-center"><button id = "edit-btn" class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
-=======
-                        <div class="row px-3">
-                            <div class="mt-5 text-left"><button class="btn btn-primary profile-button" type="button">Cancel Edit</button></div>
-                            <div class="ml-auto mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
-                        </div>
->>>>>>> 9db2732ed68b899f9a28af928fd854037b4a91be
                     </div>
                     <hr style="background: white">
                     <div class="my-4 text-center"><button class="btn btn-primary profile-button" type="button">View My Order</button></div>
@@ -97,6 +90,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         $("#edit-btn").on('click', function (e) {
                                             var self = $(this);
                                             if (self.text().toUpperCase() == "EDIT PROFILE") {
+
                                                 self.text("Save Profile");
                                             } else {
                                                 $("#cancel-btn").css('visibility', 'hidden');
