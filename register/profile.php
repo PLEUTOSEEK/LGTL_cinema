@@ -69,11 +69,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div>
                             </div>
 
+<<<<<<< HEAD
                             <div class="row px-3">
                                 <div class="mt-5 text-left" id = "show-up-conditional" style="visibility: hidden;"><button id = "cancel-btn" class="btn btn-primary profile-button" type="button">Cancel Edit</button></div>
                                 <div class="ml-auto mt-5 text-right"><button id = "edit-btn" class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
                             </div>
                         </form>
+=======
+                        <div class="row px-3">
+                            <div class="mt-5 text-left" id = "show-up-conditional" style="visibility: hidden;"><button id = "cancel-btn" class="btn btn-primary profile-button" type="button">Cancel Edit</button></div>
+                            <div class="ml-auto mt-5 text-right"><button id = "edit-btn" class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
+                        </div>
+                        
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p id = "otp-msg">We will be sending your LGTL OTP code to the email address, example@gmail.com.</p>
+
+                                        <div class="card p-2 text-center mb-3 mt-1">
+                                            <div class="form-text text-left">Verification</div>
+                                            <div id="otp" class="inputs d-flex flex-row justify-content-center">
+                                                <input class="ms-5 me-3 text-center form-control rounded" type="text" id="first" maxlength="1" />
+                                                <input class="me-3 text-center form-control rounded" type="text" id="second" maxlength="1" />
+                                                <input class="me-3 text-center form-control rounded" type="text" id="third" maxlength="1" />
+                                                <input class="me-3 text-center form-control rounded" type="text" id="fourth" maxlength="1" />
+                                                <input class="me-3 text-center form-control rounded" type="text" id="fifth" maxlength="1" />
+                                                <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" />
+                                            </div>
+                                            <div class="justify-content-start resend-otp-container mt-2">
+                                                <a href="#" id="resend-otp-link">resend OTP</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-warning" id="otp-confirm">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+>>>>>>> b9342cd8d7acef085d8898c30e6249438edb048c
 
                     </div>
                     <hr style="background: white">
@@ -84,6 +120,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
         <script>
+<<<<<<< HEAD
                                             $('#OpenImgUpload').click(function () {
                                                 $('#imgupload').trigger('click');
                                             });
@@ -92,6 +129,121 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                             $("#imgupload").change(function () {
                                                 readURL(this);
                                             });
+=======
+            var OTP = "";
+            
+            $('#OpenImgUpload').click(function () {
+                $('#imgupload').trigger('click');
+
+            });
+
+
+            $("#imgupload").change(function () {
+                readURL(this);
+            });
+            
+            $("#resend-otp-link").on('click', function (e) {
+                e.preventDefault();
+                readySendEmail();
+            })
+            
+            $("#otp-confirm").on('click', function (e) {
+                e.preventDefault();
+                var completeOTPInput = "";
+                completeOTPInput = completeOTPInput.concat(
+                        $("#first").val(),
+                        $("#second").val(),
+                        $("#third").val(),
+                        $("#fourth").val(),
+                        $("#fifth").val(),
+                        $("#sixth").val());
+                if (completeOTPInput == OTP && OTP != "") {
+
+                    var custObj = {
+                        "cust_img": $("#avatar-img").attr('src'),
+                        "user_name": $("#userName").val(),
+                        "email": $("#email").val(),
+                        "pass": $("#password").val(),
+                        "phone": $("#phone").val()
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "register_form_backend.php",
+                        data: {
+                            "action": "insertNewRegisterCustFunc",
+                            "custDtls": JSON.stringify(custObj)
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Error: " + error);
+                        },
+                        success: function (result, status, xhr) {
+                            alert("Register successfully");
+                            window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php";
+                        }
+                    });
+                } else {
+                    alert("OTP incorrect, please try again.");
+                }
+            })
+
+            function readySendEmail() {
+                OTP = Math.floor(100000 + Math.random() * 900000);
+                var dataObj = {
+                    "email": $("#email").val(),
+                    "subj": "Verify Your Email",
+                    "msgBody": "Hello " + $("#userName").val() + ",\n\nThank you for sign up at LGTL Cineplex.\nPlease verify your email.\nYour OTP number is " + OTP + ".\n\nThank you."
+                };
+                sendEmail(dataObj);
+                $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".");
+            }
+            
+            document.addEventListener("DOMContentLoaded", function (event) {
+
+                function OTPInput() {
+                    const inputs = document.querySelectorAll('#otp > *[id]');
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].addEventListener('keydown', function (event) {
+                            if (event.key === "Backspace") {
+                                inputs[i].value = '';
+                                if (i !== 0)
+                                    inputs[i - 1].focus();
+                            } else {
+                                if (i === inputs.length - 1 && inputs[i].value !== '') {
+                                    return true;
+                                } else if (event.keyCode > 47 && event.keyCode < 58) {
+                                    inputs[i].value = event.key;
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
+                                } else if (event.keyCode > 64 && event.keyCode < 91) {
+                                    inputs[i].value = String.fromCharCode(event.keyCode);
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
+                                }
+                            }
+                        });
+                    }
+                }
+                OTPInput();
+            });
+
+            function sendEmail(data) {
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "teezx-wm19@student.tarc.edu.my",
+                    Password: "sgxdjzbeaiqqvgim",
+                    To: data['email'],
+                    From: "teezx-wm19@student.tarc.edu.my",
+                    Subject: data['subj'],
+                    Body: data['msgBody']
+                            //+"<br> Rate : " + document.getElementById("comment").value
+                }).then(
+                        message => alert("Message Sent Successfully")
+                );
+            }
+>>>>>>> b9342cd8d7acef085d8898c30e6249438edb048c
 
                                             function readURL(input) {
                                                 if (input.files && input.files[0]) {
