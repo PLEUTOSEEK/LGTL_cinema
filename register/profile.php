@@ -68,6 +68,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div class="mt-5 text-left" id = "show-up-conditional" style="visibility: hidden;"><button id = "cancel-btn" class="btn btn-primary profile-button" type="button">Cancel Edit</button></div>
                             <div class="ml-auto mt-5 text-right"><button id = "edit-btn" class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
                         </div>
+                        
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p id = "otp-msg">We will be sending your LGTL OTP code to the email address, example@gmail.com.</p>
+
+                                        <div class="card p-2 text-center mb-3 mt-1">
+                                            <div class="form-text text-left">Verification</div>
+                                            <div id="otp" class="inputs d-flex flex-row justify-content-center">
+                                                <input class="ms-5 me-3 text-center form-control rounded" type="text" id="first" maxlength="1" />
+                                                <input class="me-3 text-center form-control rounded" type="text" id="second" maxlength="1" />
+                                                <input class="me-3 text-center form-control rounded" type="text" id="third" maxlength="1" />
+                                                <input class="me-3 text-center form-control rounded" type="text" id="fourth" maxlength="1" />
+                                                <input class="me-3 text-center form-control rounded" type="text" id="fifth" maxlength="1" />
+                                                <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" />
+                                            </div>
+                                            <div class="justify-content-start resend-otp-container mt-2">
+                                                <a href="#" id="resend-otp-link">resend OTP</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-warning" id="otp-confirm">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <hr style="background: white">
