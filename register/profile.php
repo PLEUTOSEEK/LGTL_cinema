@@ -45,7 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <br>
         <div class="container rounded mt-5 mb-5 text-white">
             <div class="row">
-                <div class="col-                md-5 border-right">
+                <div class="col-md-5 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img id="avatar-img" class="avatar rounded-circle mt-5" src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['logInCustomer']['customer_image'] ?>"><span class="font-weight-bold text-white"><input type="file" accept="image/*" id="imgupload" class = "" style="display:none" value = ""/><button class="btn btn-primary mt-4 editable-input" id="OpenImgUpload" disabled="">Change Avatar</button></span><span> </span></div>
                 </div>
                 <div class="col-md-6 border-left ps-5">
