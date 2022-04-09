@@ -10,11 +10,11 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == "retrieveAllMoviesBasedOnGenreFunc") {
         retrieveAllMoviesBasedOnGenre($_POST['movie_genre_search']);
     }
-    
+
     if ($_POST['action'] == "retrieveAllMoviesFuncCS") {
         retrieveAllMoviessCS();
     }
-    
+
     if ($_POST['action'] == "retrieveAllMoviesBasedOnGenreFuncCS") {
         retrieveAllMoviesBasedOnGenreCS($_POST['movie_genre_search']);
     }
@@ -109,7 +109,7 @@ function retrieveAllMoviesBasedOnGenreCS($genre) {
             $img_src = $rows['movie_image'];
             $videourl = $rows['video_link'];
 
-            $htmlcode .= retrieveAllMovies($img_id, $img_name, $img_src, $videourl);
+            $htmlcode .= retrieveAllMoviesCS($img_id, $img_name, $img_src, $videourl);
         }
     }
 
@@ -124,7 +124,7 @@ function retrieveAllMovies($img_id, $img_name, $img_src, $videourl) {
     $htmlcode .= "<div style = 'border:1px; solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;' align = 'center' class = 'rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11 '>";
     $htmlcode .= "<img src = 'data:image/jpg;charset=utf8;base64, " . base64_encode($img_src) . "' alt = '' title = '" . $img_name . "' class = 'img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start ' <br>";
     $htmlcode .= "<h5 class = 'text-info mt-lg-2 mt-sm-3 mt-md-2 text-responsive'>" . $img_name . "</h5>";
-    
+
     $htmlcode .= "<div class='form-row'>";
     $htmlcode .= "<button type = 'button' id = 'trailer' class = 'btn btn-outline-primary btn-circle btn-xl fa fa-play' style = ' margin-top:5px;' data-toggle = 'modal' data-target = '#myModal2" . $videourl . "'></button>";
     $htmlcode .= "<div class = 'modal fade' id = 'myModal2" . $videourl . "' tabindex = '-1' role = 'dialog' aria-labelledby = 'exampleModalLabel' aria-hidden = 'true'>";
@@ -143,14 +143,14 @@ function retrieveAllMovies($img_id, $img_name, $img_src, $videourl) {
     $htmlcode .= "</div>";
     $htmlcode .= "</div>";
     $htmlcode .= "</div>";
-    
-    $htmlcode .= "<div class='form-group col-aut'>";
+
+    $htmlcode .= "<div class='form-group col-xl-auto col-xs-auto col-sm-auto col-lg-12 col-md-12 col-auto btn-md-block'>";
     $htmlcode .= "<form action = '../movie_details/movie_page.php' method = 'post'>";
     $htmlcode .= "<input type = 'hidden' name = 'movie_id' value = '" . $img_id . "'/>";
     $htmlcode .= "<input type = 'submit' style = 'margin-top:5px;' class = 'btn btn-outline-primary' value = 'Movie Detail'/>";
     $htmlcode .= "</form>";
     $htmlcode .= "</div>";
-    $htmlcode .= "<div class='form-group col-auto'>";
+    $htmlcode .= "<div class='form-group col-xl-auto col-xs-auto col-sm-auto col-lg-12 col-md-12 col-auto btn-md-block'>";
     $htmlcode .= "<form action = '../ticket_booking/selectLocation.php' method = 'post'>";
     $htmlcode .= "<input type = 'hidden' name = 'movie_id' value = '" . $img_id . "'/>";
     $htmlcode .= "<input type = 'submit' style = 'margin-top:5px; ' class = 'btn btn-outline-success' value = '  Book Now  '/>";
@@ -159,7 +159,6 @@ function retrieveAllMovies($img_id, $img_name, $img_src, $videourl) {
     $htmlcode .= "</div>";
     $htmlcode .= "</div>";
     $htmlcode .= "</div>";
-    
 
     return $htmlcode;
 }
@@ -170,7 +169,7 @@ function retrieveAllMoviesCS($img_id, $img_name, $img_src, $videourl) {
     $htmlcode .= "<div style = 'border:1px; solid #333; background-color:white; border-radius:6px; padding:14px; border-width:1px;' align = 'center' class = 'rounded mt-lg-3 mt-4 mt-md-2 my-sm-3 col-lg-11 '>";
     $htmlcode .= "<img src = 'data:image/jpg;charset=utf8;base64, " . base64_encode($img_src) . "' alt = '' title = '" . $img_name . "' class = 'img card-img-top img-fluid mt-md-2 mt-lg-2 mt-sm-4 rounded float-lg-start ' <br>";
     $htmlcode .= "<h5 class = 'text-info mt-lg-2 mt-sm-3 mt-md-2 text-responsive'>" . $img_name . "</h5>";
-    
+
     $htmlcode .= "<div class='form-row justify-content-center'>";
     $htmlcode .= "<button type = 'button' id = 'trailer' class = 'btn btn-outline-primary btn-circle btn-xl fa fa-play' style = ' margin-top:5px;' data-toggle = 'modal' data-target = '#myModal2" . $videourl . "'></button>";
     $htmlcode .= "<div class = 'modal fade' id = 'myModal2" . $videourl . "' tabindex = '-1' role = 'dialog' aria-labelledby = 'exampleModalLabel' aria-hidden = 'true'>";
@@ -189,7 +188,7 @@ function retrieveAllMoviesCS($img_id, $img_name, $img_src, $videourl) {
     $htmlcode .= "</div>";
     $htmlcode .= "</div>";
     $htmlcode .= "</div>";
-    
+
     $htmlcode .= "<div class='form-group col-auto'>";
     $htmlcode .= "<form action = '../movie_details/movie_page.php' method = 'post'>";
     $htmlcode .= "<input type = 'hidden' name = 'movie_id' value = '" . $img_id . "'/>";
@@ -205,9 +204,6 @@ function retrieveAllMoviesCS($img_id, $img_name, $img_src, $videourl) {
     $htmlcode .= "</div>";
     $htmlcode .= "</div>";
     $htmlcode .= "</div>";
-   
+
     return $htmlcode;
 }
-
-
-

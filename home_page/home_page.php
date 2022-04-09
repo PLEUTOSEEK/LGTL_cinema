@@ -36,6 +36,30 @@ and open the template in the editor.
 
             }
 
+            /* Small devices (landscape phones, 544px and up) */
+            @media (max-width: 544px) {
+                .main-category {
+                    font-size: 1.5rem !important;
+                } /*1rem = 16px*/
+            }
+
+            /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+            @media (min-width: 768px) {
+                .main-category {
+                    font-size:1.5rem !important; ;
+                } /*1rem = 16px*/
+            }
+
+            /* Large devices (desktops, 992px and up) */
+            @media (min-width: 992px) {
+                .main-category {font-size:1.5rem !important;;} /*1rem = 16px*/
+            }
+
+            /* Extra large devices (large desktops, 1200px and up) */
+            @media (min-width: 1200px) {
+                .main-category {font-size:2rem !important; ;} /*1rem = 16px*/
+            }
+
         </style>
     </head>
     <body>
@@ -73,7 +97,17 @@ and open the template in the editor.
                 <!-- Indicators/dots -->
                 <ul class="carousel-indicators">
                     <?php
-                    $image_query1 = mysqli_query($result, "select * from movie WHERE available_status = 'Now Showing' ORDER BY RAND()");
+                    $image_query1 = mysqli_query($result, "SELECT
+                                                                    *
+                                                            FROM
+                                                                    MOVIE
+                                                            WHERE
+                                                                    MOVIE_ID IN(
+                                                                            SELECT
+                                                                                movie_id
+                                                                            FROM
+                                                                                hotshowingmoviesbasedonrate
+                                                                                    );");
                     while ($rows = mysqli_fetch_array($image_query1)) {
                         $img_id = $rows['movie_id'];
                         $img_name = $rows['movie_name'];
@@ -149,9 +183,9 @@ and open the template in the editor.
             <button type="button" class="btn btn-outline-primary srchBtn  " id="serch-btn">search</button>
         </div>
 
-        <div class="row col-5">
-            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light" onclick="window.location.href = 'home_page.php'">Now Showing</h2>
-            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light" onclick="window.location.href = 'comingSoon_page.php'">Coming Soon</h2>
+        <div class="row col-xl-5 col-lg-6 col-md-12">
+            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 text-light col main-category" onclick="window.location.href = 'home_page.php'">Now Showing</h2>
+            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 text-light col main-category" onclick="window.location.href = 'comingSoon_page.php'">Coming Soon</h2>
 
         </div>
 
@@ -165,10 +199,10 @@ and open the template in the editor.
         <div class="row" id = "movie_carts">
 
         </div>
-<<<<<<< HEAD
+        <<<<<<< HEAD
 
-=======
->>>>>>> 81e2343c2efaba0c7a3202361b2e362eae10a8b4
+        =======
+        >>>>>>> 81e2343c2efaba0c7a3202361b2e362eae10a8b4
         <?php
         include '../nav_bar/footer.php';
         ?>
