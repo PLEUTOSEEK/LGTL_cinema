@@ -3,11 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/login_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/contact_us/contact_us.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profile.css</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profile.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/forget_password_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profileBackEnd.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form_backend.php</file>
+=======
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/contact_us/viewMovieComment.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/selectLocation.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/nav_bar/navigation_bar.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/contact_us/contact_us.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php</file>
+>>>>>>> c20fb174536114c7136f658f653744d1b951688f
         </group>
     </open-files>
 </project-private>
