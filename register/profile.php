@@ -14,11 +14,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
-
+        <link rel="stylesheet" href=".css"/>
+        
         <!-- font awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
-        <!-- login form CSS -->
         <link rel="stylesheet" href="profile.css?v=<?php echo time(); ?>">
 
         <title>LGTL Cineplex - Profile</title>
@@ -58,7 +58,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-md-12"><label class="labels">Username</label><input type="text" id="user-name" name = "user-name" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['cust_name'] ?>" disabled="true"></div>
                                 <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="tel" id="phone-number" name = "phone-number" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['phone_no'] ?>" disabled="true"></div>
                                 <div class="col-md-12"><label class="labels">Email</label><input type="email" id = "email" name = "email" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['email'] ?>" disabled="true"></div>
-                                <div class="col-md-12"><label class="labels">Password</label><input type="password" id="password" name = "password" pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['password'] ?>" disabled="true"></div>
+                                <div class="col-md-12"><label class="labels">Password</label>
+                                    <div class="input-field bg-white">
+                                        <input type="password" id="password" name = "password" pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['password'] ?>" disabled="true">
+                                        <span class="btn bg-white text-muted" onclick="password_show_hide();">
+                                            <i class="fas fa-eye" id="show_eye"></i>
+                                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i> 
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                         <div class="row px-3">
