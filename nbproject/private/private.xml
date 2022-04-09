@@ -2,50 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/nbproject/private/private.xml</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/nav_bar/navigation_bar.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/register/profile.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/log_in/login_form_backend.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php</file>
-=======
-<<<<<<< HEAD
-        <group>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/movie_details/connection.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/home_page.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectFoodBackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectSeatBackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/home_page.css</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectLocation.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/db_connection.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/paymentbackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectLocationBackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectSeat.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/nav_bar/navigation_bar.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/comingSoon_page.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/movie_details/movie_page.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectLocation.css</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/payment.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/homePageBackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/dragADrop.js</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectFood.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/ticket_booking/selectSeat.css</file>
-            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/home_page/connection.php</file>
-=======
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/login_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/contact_us/contact_us.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profile.css</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profile.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/log_in/forget_password_form.php</file>
             <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/profileBackEnd.php</file>
->>>>>>> 81e2343c2efaba0c7a3202361b2e362eae10a8b4
->>>>>>> 3fafda3a530632e2f356e2d6a29246dcafaa10e6
+            <file>file:/C:/xampp/htdocs/LGTL/LGTL_cinema/register/register_form_backend.php</file>
         </group>
->>>>>>> bf2a74dcac7021d5c3091ca90dfd172c9b7c675e
     </open-files>
 </project-private>
