@@ -112,9 +112,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <form  method="POST" id="serviceCommentForm">
 
-                <div class="form-group">
+                <div class="form-group" >
                     <big  class="form-text text-white ">Email :</big>
-                    <input id="email" name="email" class="form-control form-control-lg" type="text" placeholder="Please enter your email.">
+
+                    <?php
+                    if (isset($_SESSION['logInCustomer'])) {
+                        ?>
+                        <input id = "email" name = "email" class = "form-control form-control-lg" type = "text" value ="<?php echo $_SESSION['logInCustomer']['email']; ?>" disabled>
+                        <?php
+                    } else {
+                        ?>
+                        <input id = "email" name = "email" class = "form-control form-control-lg" type = "text" placeholder = "Please enter your email.">
+                        <?php
+                    }
+                    ?>
                 </div>
 
                 <div class="form-group">
@@ -124,7 +135,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 <big class="form-text form-check-inline text-muted"></big>
 
-                <input  name="ratingStar" value="1" type="hidden" id="ratingStar"/>
+                <input  name="ratingStar" value="0" type="hidden" id="ratingStar"/>
                 <div class="buttonPosition col-md-12 ml-12 m-1">
                     <button  type="submit" form="serviceCommentForm" class="buttonStyle btn btn-primary btn-block col-md-7 ml-auto mr-auto rounded-pill" id="formSubmitBtn">Submit</button>
                 </div>
@@ -158,7 +169,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     }
                     ,
                     success: function (result, status, xhr) {
-                        alert(result);
                         sendEmail();
                     }
                 });

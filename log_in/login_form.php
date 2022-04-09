@@ -150,7 +150,7 @@
 
                         $("#resend-otp-link").on('click', function (e) {
                             e.preventDefault();
-                            readySendEmail();
+                            readySendEmail(fetchAssockList);
                         })
 
                         function password_show_hide() {

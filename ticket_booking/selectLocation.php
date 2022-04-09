@@ -52,7 +52,6 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script>
                     $(function () {
-                        alert(<?php json_encode($scheduleList) ?>);
                     })
                     $('#date-selection').ready(function () {
                         dynamicFilter();
