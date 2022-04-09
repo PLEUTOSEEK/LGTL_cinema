@@ -210,6 +210,9 @@
                         var form = $("#custDtlsForm");
                         form.validate({
                             rules: {
+                                'userName': {
+                                    required: true
+                                },
                                 'retypepassword': {
                                     required: true,
                                     RetypePasswordValidation: true
@@ -221,12 +224,18 @@
                                 'phone': {
                                     required: true,
                                     phoneValidation: true
+                                },
+                                'email': {
+                                    required: true,
+                                    emailValidation: true
                                 }
                             },
                             messages: {
-                                'password': "Password not meeting the requirement",
-                                'retypepassword': "Password not match",
-                                'phone': 'this is not a phone number'
+                                'userName': "This field required",
+                                'email': "Incorrect email format",
+                                'password': "Incorrect password format",
+                                'retypepassword': "Please match with the password",
+                                'phone': 'Incorrect phone number format'
                             }
                         });
 
@@ -244,6 +253,12 @@
                             var rg = /^(\+?6?01)[0|1|2|3|4|6|7|8|9]\-*[0-9]{7,8}$/;
 
                             return $("#phone").val().match(rg);
+                        });
+                        
+                        $.validator.addMethod("emailValidation", function (value, element) {
+                            var rg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+                            return $("#email").val().match(rg);
                         });
 
                         $("#submit-registerform-btn").on('click', function (e) {
