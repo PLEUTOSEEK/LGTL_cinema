@@ -319,9 +319,10 @@
                                             console.log("Error: " + error);
                                         },
                                         success: function (result, status, xhr) {
+                                            console.log(result);
+
                                             var catchAssocList;
                                             catchAssocList = JSON.parse(result);
-                                            alert(catchAssocList);
                                             if (catchAssocList != null) {
                                                 sendEmail(catchAssocList);
                                                 reset();
@@ -334,8 +335,7 @@
         </script>
         <script>
             function sendEmail(data) {
-                alert(data['email']);
-                alert(data['subj']);
+
                 Email.send({
                     Host: "smtp.gmail.com",
                     Username: "teezx-wm19@student.tarc.edu.my",

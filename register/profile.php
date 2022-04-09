@@ -12,10 +12,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href=".css"/>
-        
+
         <!-- font awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
@@ -28,14 +25,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         include '../nav_bar/navigation_bar.php';
         ?>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-        <script src="https://smtpjs.com/v3/smtp.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <script>
             $(function () {
@@ -45,7 +40,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <br>
         <div class="container rounded mt-5 mb-5 text-white">
             <div class="row">
-                <div class="col-                md-5 border-right">
+                <div class="col-md-5 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img id="avatar-img" class="avatar rounded-circle mt-5" src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['logInCustomer']['customer_image'] ?>"><span class="font-weight-bold text-white"><input type="file" accept="image/*" id="imgupload" class = "" style="display:none" value = ""/><button class="btn btn-primary mt-4 editable-input" id="OpenImgUpload" disabled="">Change Avatar</button></span><span> </span></div>
                 </div>
                 <div class="col-md-6 border-left ps-5">
@@ -61,10 +56,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-md-12"><label class="labels">Password</label>
                                     <div class="input-field bg-white">
                                         <input type="password" id="password" name = "password" pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['password'] ?>" disabled="true">
-                                        <span class="btn bg-white text-muted" onclick="password_show_hide();">
+                                        <button class="btn bg-white text-muted editable-input" id ="eye-trigger-btn" disabled = "true">
                                             <i class="fas fa-eye" id="show_eye"></i>
-                                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i> 
-                                        </span>
+                                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +71,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
+                                <div class="modal-content" style="color: grey">
                                     <div class="modal-body">
                                         <p id = "otp-msg">We will be sending your LGTL OTP code to the email address, example@gmail.com.</p>
 
@@ -109,7 +104,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </div>
+
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
 
         <script>
             var OTP = "";
@@ -140,40 +137,62 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         $("#sixth").val());
                 if (completeOTPInput == OTP && OTP != "") {
 
-                    var custObj = {
-                        "cust_img": $("#avatar-img").attr('src'),
-                        "user_name": $("#userName").val(),
+                    $("#show-up-conditional").css('visibility', 'hidden');
+                    $(".editable-input").attr('disabled', 'true');
+                    $("#edit-btn").text("Edit Profile");
+                    var custData = {
+                        "cust_name": $("#user-name").val(),
                         "email": $("#email").val(),
-                        "pass": $("#password").val(),
-                        "phone": $("#phone").val()
-                    };
+                        "password": $("#password").val(),
+                        "customer_image": $("#avatar-img").attr('src'),
+                        "phone_no": $("#phone-number").val()
+                    }
 
                     $.ajax({
+                        //update data
                         type: "POST",
-                        url: "register_form_backend.php",
+                        url: "profileBackEnd.php",
                         data: {
-                            "action": "insertNewRegisterCustFunc",
-                            "custDtls": JSON.stringify(custObj)
+                            "action": "updateProfileFunc",
+                            "data": JSON.stringify(custData)
                         },
                         error: function (xhr, status, error) {
                             console.log("Error: " + error);
                         },
                         success: function (result, status, xhr) {
-                            alert("Register successfully");
-                            window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php";
+                            $("#staticBackdrop").modal('hide');
                         }
                     });
+
                 } else {
                     alert("OTP incorrect, please try again.");
                 }
             })
+
+            $("#eye-trigger-btn").on('click', function (e) {
+                e.preventDefault();
+                var x = document.getElementById("password");
+                var show_eye = document.getElementById("show_eye");
+                var hide_eye = document.getElementById("hide_eye");
+                hide_eye.classList.remove("d-none");
+                if (x.type === "password") {
+                    x.type = "text";
+                    show_eye.style.display = "none";
+                    hide_eye.style.display = "block";
+                } else {
+                    x.type = "password";
+                    show_eye.style.display = "block";
+                    hide_eye.style.display = "none";
+                }
+            })
+
 
             function readySendEmail() {
                 OTP = Math.floor(100000 + Math.random() * 900000);
                 var dataObj = {
                     "email": $("#email").val(),
                     "subj": "Verify Your Email",
-                    "msgBody": "Hello " + $("#userName").val() + ",\n\nThank you for sign up at LGTL Cineplex.\nPlease verify your email.\nYour OTP number is " + OTP + ".\n\nThank you."
+                    "msgBody": "Hello " + $("#user-name").val() + ",\n\nThank you for sign up at LGTL Cineplex.\nPlease verify your email.\nYour OTP number is " + OTP + ".\n\nThank you."
                 };
                 sendEmail(dataObj);
                 $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".");
@@ -242,23 +261,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/ticket_booking/refundsOverview.php";
             })
 
-            function password_show_hide() {
-                var x = document.getElementById("password");
-                var show_eye = document.getElementById("show_eye");
-                var hide_eye = document.getElementById("hide_eye");
-                hide_eye.classList.remove("d-none");
-                if (x.type === "password") {
-                    x.type = "text";
-                    show_eye.style.display = "none";
-                    hide_eye.style.display = "block";
-                } else {
-                    x.type = "password";
-                    show_eye.style.display = "block";
-                    hide_eye.style.display = "none";
-                }
-            }
-
-
             var form = $("#custDtlsForm");
             form.validate({
                 rules: {
@@ -315,33 +317,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     self.text("Save Profile");
                 } else {
                     if (form.valid()) {
-                        $("#show-up-conditional").css('visibility', 'hidden');
-                        $(".editable-input").attr('disabled', 'true');
-                        self.text("Edit Profile");
-                        var custData = {
-                            "cust_name": $("#user-name").val(),
-                            "email": $("#email").val(),
-                            "password": $("#password").val(),
-                            "customer_image": $("#avatar-img").attr('src'),
-                            "phone_no": $("#phone-number").val()
-                        }
-
-                        console.log(custData);
-                        $.ajax({
-                            //update data
-                            type: "POST",
-                            url: "profileBackEnd.php",
-                            data: {
-                                "action": "updateProfileFunc",
-                                "data": JSON.stringify(custData)
-                            },
-                            error: function (xhr, status, error) {
-                                console.log("Error: " + error);
-                            },
-                            success: function (result, status, xhr) {
-
-                            }
-                        });
+                        $("#staticBackdrop").modal('show');
+                        readySendEmail();
                     } else {
                         alert("fields not match");
                     }

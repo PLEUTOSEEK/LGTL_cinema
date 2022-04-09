@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 

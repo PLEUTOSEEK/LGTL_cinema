@@ -20,7 +20,6 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        session_start();
         include '../nav_bar/navigation_bar.php';
         ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -28,8 +27,6 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script>
             $(function () {
-                alert('<?php echo $_SESSION['logInCustomer']['cust_id']; ?>');
-
                 $.ajax({
                     url: "refundsOverviewBackEnd.php",
                     type: "POST",
@@ -118,7 +115,6 @@ and open the template in the editor.
 
         <script>
             $("#serch-btn").on('click', function () {
-                alert($("#search-text").val());
                 $.ajax({
                     url: "refundsOverviewBackEnd.php",
                     type: "POST",

@@ -138,6 +138,19 @@ a:hover {
     color: blue;
 }
 
+.card {
+    border: none;
+    border-bottom: 1px solid;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0
+}
+
 @media(max-width: 575px) {
     .wrapper {
         margin: 10px

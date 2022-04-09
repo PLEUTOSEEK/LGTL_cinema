@@ -118,8 +118,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     Body: data['msgBody']
                             //+"<br> Rate : " + document.getElementById("comment").value
                 }).then(
-                        message => alert("Message Sent Successfully")
-                );
+                        );
             }
         </script>
     </body>

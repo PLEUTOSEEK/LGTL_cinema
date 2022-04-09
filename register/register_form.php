@@ -108,7 +108,7 @@
                                         <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" />
                                     </div>
                                     <div class="justify-content-start resend-otp-container mt-2">
-                                        <a href="#" id="resend-otp-link">resend OTP</a>
+                                        <a href="#" id="resend-otp-link" style="color: blue">resend OTP</a>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,6 @@
             $(".avatar").on('click', function (e) {
                 e.preventDefault();
                 selectImg = e.target.getAttribute('src');
-                console.log(selectImg);
             })
 
             $("#img-confirm").on('click', function (e) {

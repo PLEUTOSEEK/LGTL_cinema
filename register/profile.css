@@ -81,3 +81,16 @@ input {
     outline: none;
     box-shadow: none
 }
+
+.card {
+    border: none;
+    border-bottom: 1px solid;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0
+}
