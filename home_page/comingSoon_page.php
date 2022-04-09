@@ -29,6 +29,30 @@
 
             }
 
+
+            /* Small devices (landscape phones, 544px and up) */
+            @media (max-width: 544px) {
+                .main-category {
+                    font-size: 1.5rem !important;
+                } /*1rem = 16px*/
+            }
+
+            /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+            @media (min-width: 768px) {
+                .main-category {
+                    font-size:1.5rem !important; ;
+                } /*1rem = 16px*/
+            }
+
+            /* Large devices (desktops, 992px and up) */
+            @media (min-width: 992px) {
+                .main-category {font-size:1.5rem !important;;} /*1rem = 16px*/
+            }
+
+            /* Extra large devices (large desktops, 1200px and up) */
+            @media (min-width: 1200px) {
+                .main-category {font-size:2rem !important; ;} /*1rem = 16px*/
+            }
         </style>
     </head>
     <body>
@@ -67,7 +91,17 @@
                 <!-- Indicators/dots -->
                 <ul class="carousel-indicators">
                     <?php
-                    $image_query1 = mysqli_query($result, "select * from movie WHERE available_status = 'Coming Soon' ORDER BY RAND()");
+                    $image_query1 = mysqli_query($result, "SELECT
+                                                                    *
+                                                            FROM
+                                                                    MOVIE
+                                                            WHERE
+                                                                    MOVIE_ID IN(
+                                                                            SELECT
+                                                                                movie_id
+                                                                            FROM
+                                                                                hotssoonmoviesbasedonrate
+                                                                                    );");
                     while ($rows = mysqli_fetch_array($image_query1)) {
                         $img_name = $rows['movie_name'];
                         $img_src = $rows['movie_image'];
@@ -108,12 +142,12 @@
                                             <input type = "submit" style = "margin-top:5px;" class = "btn btn-primary" value = "Movie Detail"/>
                                         </form>
                                     </div>
-<!--                                    <div class="col-auto">
-                                        <form action = "../ticket_booking/selectLocation.php" method = "post">
-                                            <input type = "hidden" name = "movie_id" value = "<?= $row['movie_id'] ?>"/>
-                                            <input type = "submit" style = "margin-top:5px;" class = "btn btn-success" value = "  Book Now  "/>
-                                        </form>
-                                    </div>-->
+                                    <!--                                    <div class="col-auto">
+                                                                            <form action = "../ticket_booking/selectLocation.php" method = "post">
+                                                                                <input type = "hidden" name = "movie_id" value = "<?= $row['movie_id'] ?>"/>
+                                                                                <input type = "submit" style = "margin-top:5px;" class = "btn btn-success" value = "  Book Now  "/>
+                                                                            </form>
+                                                                        </div>-->
                                 </div>
                             </div>
 
@@ -137,14 +171,13 @@
         </div>
 
         <div class="col-lg-12 input-group mt-3 justify-content-center">
-            <input type="search" class="form-control rounded mr-3 col-lg-4 srchBar" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id = "search-text"/>
-            <button type="button" class="btn btn-outline-primary srchBtn  " id="serch-btn">search</button>
+            <input type="search" class="form-control rounded mr-3 col-lg-4 srchBar " placeholder="Search" aria-label="Search" aria-describedby="search-addon" id = "search-text"/>
+            <button type="button" class="btn btn-outline-primary srchBtn   " id="serch-btn">search</button>
         </div>
 
-        <div class="row col-5">
-            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light" onclick="window.location.href = 'home_page.php'">Now Showing</h2>
-            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 col text-light" onclick="window.location.href = 'comingSoon_page.php'">Coming Soon</h2>
-
+        <div class="row  col-xl-5 col-lg-6 col-md-12">
+            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 text-light col main-category" onclick="window.location.href = 'home_page.php'">Now Showing</h2>
+            <h2 class="position-relative mx-2 mt-3 mt-md-3 mt-sm-6 text-light col main-category" onclick="window.location.href = 'comingSoon_page.php'">Coming Soon</h2>
         </div>
 
         <div class="py-2 my-1 text-center position-relative mx-2">
