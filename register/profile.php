@@ -65,7 +65,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div class="mt-5 text-left" id = "show-up-conditional" style="visibility: hidden;"><button id = "cancel-btn" class="btn btn-primary profile-button" type="button">Cancel Edit</button></div>
                             <div class="ml-auto mt-5 text-right"><button id = "edit-btn" class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
                         </div>
-                        
+
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -105,22 +105,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <script>
             var OTP = "";
-            
+
             $('#OpenImgUpload').click(function () {
                 $('#imgupload').trigger('click');
 
             });
 
-
             $("#imgupload").change(function () {
                 readURL(this);
             });
-            
+
             $("#resend-otp-link").on('click', function (e) {
                 e.preventDefault();
                 readySendEmail();
             })
-            
+
             $("#otp-confirm").on('click', function (e) {
                 e.preventDefault();
                 var completeOTPInput = "";
@@ -171,7 +170,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 sendEmail(dataObj);
                 $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".");
             }
-            
+
             document.addEventListener("DOMContentLoaded", function (event) {
 
                 function OTPInput() {

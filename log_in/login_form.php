@@ -32,9 +32,12 @@
                     <div class="input-field bg-white"> <span class="fas fa-envelope p-2"></span> <input type="email" id = "email" placeholder="Enter your Email Address" required class=""> </div>
                 </div>
                 <div class="form-group py-1 pb-2">
-                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="password"  placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
+                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span>
+                        <input type="password" id="password"  placeholder="Enter your Password" required class="">
+                        <button class="btn bg-white text-muted" id="eye-trigger-btn">
                             <i class="fas fa-eye" id="show_eye"></i>
-                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i> </button>
+                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="d-flex align-items-start">
@@ -84,147 +87,148 @@
         <script src="https://smtpjs.com/v3/smtp.js"></script>
 
         <script>
-                        var OTP = "";
-                        var fetchAssockList;
-                        $("#login-btn").on('click', function (e) {
-                            e.preventDefault();
-                            var loginDtls = {
-                                "email": $("#email").val(),
-                                "pass": $("#password").val()
-                            }
+            var OTP = "";
+            var fetchAssockList;
+            $("#login-btn").on('click', function (e) {
+                e.preventDefault();
+                var loginDtls = {
+                    "email": $("#email").val(),
+                    "pass": $("#password").val()
+                }
 
-                            $.ajax({
-                                type: "POST",
-                                url: "login_form_backend.php",
-                                data: {
-                                    "action": "validateLogInFunc",
-                                    "loginDtls": JSON.stringify(loginDtls)
-                                },
-                                error: function (xhr, status, error) {
-                                    console.log("Error: " + error);
-                                },
-                                success: function (result, status, xhr) {
-                                    fetchAssockList = JSON.parse(result);
-                                    if (fetchAssockList != "null") {
-                                        readySendEmail(fetchAssockList);
-                                        $("#staticBackdrop").modal('show');
-                                    } else {
-                                        alert("Email or password incorrect, please try again");
-                                    }
-                                }
-                            });
-                        })
-
-                        $("#otp-confirm").on('click', function (e) {
-                            e.preventDefault();
-
-                            var completeOTPInput = "";
-
-                            completeOTPInput = completeOTPInput.concat(
-                                    $("#first").val(),
-                                    $("#second").val(),
-                                    $("#third").val(),
-                                    $("#fourth").val(),
-                                    $("#fifth").val(),
-                                    $("#sixth").val());
-                            if (OTP == completeOTPInput && OTP != "") {
-                                $.ajax({
-                                    url: "login_form_backend.php",
-                                    type: "POST",
-                                    data: {
-                                        "action": "openCustomerSessionFunc",
-                                        "custDtls": JSON.stringify(fetchAssockList)
-                                    },
-                                    error: function (xhr, status, error) {
-                                        console.log("Error: " + error);
-                                    },
-                                    success: function (result, status, xhr) {
-                                        alert("Welcome back " + fetchAssockList['cust_name']);
-                                        window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/home_page/home_page.php";
-                                    }
-                                })
-                            } else {
-                                alert("OTP incorrect, please try again.");
-                            }
-                        })
-
-                        $("#resend-otp-link").on('click', function (e) {
-                            e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "login_form_backend.php",
+                    data: {
+                        "action": "validateLogInFunc",
+                        "loginDtls": JSON.stringify(loginDtls)
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error: " + error);
+                    },
+                    success: function (result, status, xhr) {
+                        fetchAssockList = JSON.parse(result);
+                        if (fetchAssockList != "null") {
                             readySendEmail(fetchAssockList);
-                        })
+                            $("#staticBackdrop").modal('show');
+                        } else {
+                            alert("Email or password incorrect, please try again");
+                        }
+                    }
+                });
+            })
 
-                        function password_show_hide() {
-                            var x = document.getElementById("password");
-                            var show_eye = document.getElementById("show_eye");
-                            var hide_eye = document.getElementById("hide_eye");
-                            hide_eye.classList.remove("d-none");
-                            if (x.type === "password") {
-                                x.type = "text";
-                                show_eye.style.display = "none";
-                                hide_eye.style.display = "block";
+            $("#otp-confirm").on('click', function (e) {
+                e.preventDefault();
+
+                var completeOTPInput = "";
+
+                completeOTPInput = completeOTPInput.concat(
+                        $("#first").val(),
+                        $("#second").val(),
+                        $("#third").val(),
+                        $("#fourth").val(),
+                        $("#fifth").val(),
+                        $("#sixth").val());
+                if (OTP == completeOTPInput && OTP != "") {
+                    $.ajax({
+                        url: "login_form_backend.php",
+                        type: "POST",
+                        data: {
+                            "action": "openCustomerSessionFunc",
+                            "custDtls": JSON.stringify(fetchAssockList)
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Error: " + error);
+                        },
+                        success: function (result, status, xhr) {
+                            alert("Welcome back " + fetchAssockList['cust_name']);
+                            window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/home_page/home_page.php";
+                        }
+                    })
+                } else {
+                    alert("OTP incorrect, please try again.");
+                }
+            })
+
+            $("#resend-otp-link").on('click', function (e) {
+                e.preventDefault();
+                readySendEmail(fetchAssockList);
+            })
+
+            $("#eye-trigger-btn").on('click', function (e) {
+                e.preventDefault();
+                var x = document.getElementById("password");
+                var show_eye = document.getElementById("show_eye");
+                var hide_eye = document.getElementById("hide_eye");
+                hide_eye.classList.remove("d-none");
+                if (x.type === "password") {
+                    x.type = "text";
+                    show_eye.style.display = "none";
+                    hide_eye.style.display = "block";
+                } else {
+                    x.type = "password";
+                    show_eye.style.display = "block";
+                    hide_eye.style.display = "none";
+                }
+            })
+
+            function readySendEmail(dtls) {
+                OTP = Math.floor(100000 + Math.random() * 900000);
+                var dataObj = {
+                    "email": dtls['email'],
+                    "subj": "Verify Your Login",
+                    "msgBody": "Hello " + dtls['cust_name'] + ",\n\nThank you for sign in at LGTL Cineplex.\nPlease verify your login.\nYour OTP number is " + OTP + ".\n\nThank you."
+                };
+                sendEmail(dataObj);
+                $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + dtls['email'] + ".");
+            }
+
+            function sendEmail(data) {
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "teezx-wm19@student.tarc.edu.my",
+                    Password: "sgxdjzbeaiqqvgim",
+                    To: data['email'],
+                    From: "teezx-wm19@student.tarc.edu.my",
+                    Subject: data['subj'],
+                    Body: data['msgBody']
+                            //+"<br> Rate : " + document.getElementById("comment").value
+                }).then(
+                        message => alert("Message Sent Successfully")
+                );
+            }
+
+            document.addEventListener("DOMContentLoaded", function (event) {
+
+                function OTPInput() {
+                    const inputs = document.querySelectorAll('#otp > *[id]');
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].addEventListener('keydown', function (event) {
+                            if (event.key === "Backspace") {
+                                inputs[i].value = '';
+                                if (i !== 0)
+                                    inputs[i - 1].focus();
                             } else {
-                                x.type = "password";
-                                show_eye.style.display = "block";
-                                hide_eye.style.display = "none";
-                            }
-                        }
-
-                        function readySendEmail(dtls) {
-                            OTP = Math.floor(100000 + Math.random() * 900000);
-                            var dataObj = {
-                                "email": dtls['email'],
-                                "subj": "Verify Your Login",
-                                "msgBody": "Hello " + dtls['cust_name'] + ",\n\nThank you for sign in at LGTL Cineplex.\nPlease verify your login.\nYour OTP number is " + OTP + ".\n\nThank you."
-                            };
-                            sendEmail(dataObj);
-                            $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + dtls['email'] + ".");
-                        }
-
-                        function sendEmail(data) {
-                            Email.send({
-                                Host: "smtp.gmail.com",
-                                Username: "teezx-wm19@student.tarc.edu.my",
-                                Password: "sgxdjzbeaiqqvgim",
-                                To: data['email'],
-                                From: "teezx-wm19@student.tarc.edu.my",
-                                Subject: data['subj'],
-                                Body: data['msgBody']
-                                        //+"<br> Rate : " + document.getElementById("comment").value
-                            }).then(
-                                    message => alert("Message Sent Successfully")
-                            );
-                        }
-
-                        document.addEventListener("DOMContentLoaded", function (event) {
-
-                            function OTPInput() {
-                                const inputs = document.querySelectorAll('#otp > *[id]');
-                                for (let i = 0; i < inputs.length; i++) {
-                                    inputs[i].addEventListener('keydown', function (event) {
-                                        if (event.key === "Backspace") {
-                                            inputs[i].value = '';
-                                            if (i !== 0)
-                                                inputs[i - 1].focus();
-                                        } else {
-                                            if (i === inputs.length - 1 && inputs[i].value !== '') {
-                                                return true;
-                                            } else if (event.keyCode > 47 && event.keyCode < 58) {
-                                                inputs[i].value = event.key;
-                                                if (i !== inputs.length - 1)
-                                                    inputs[i + 1].focus();
-                                                event.preventDefault();
-                                            } else if (event.keyCode > 64 && event.keyCode < 91) {
-                                                inputs[i].value = String.fromCharCode(event.keyCode);
-                                                if (i !== inputs.length - 1)
-                                                    inputs[i + 1].focus();
-                                                event.preventDefault();
-                                            }
-                                        }
-                                    });
+                                if (i === inputs.length - 1 && inputs[i].value !== '') {
+                                    return true;
+                                } else if (event.keyCode > 47 && event.keyCode < 58) {
+                                    inputs[i].value = event.key;
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
+                                } else if (event.keyCode > 64 && event.keyCode < 91) {
+                                    inputs[i].value = String.fromCharCode(event.keyCode);
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
                                 }
                             }
-                            OTPInput();
                         });
+                    }
+                }
+                OTPInput();
+            });
         </script>
     </body>
 </html>

@@ -69,15 +69,21 @@
                     <div class="input-field bg-white"> <span class="fa fa-phone p-2"></span> <input type="tel" id ="phone" name = "phone" placeholder="Enter your Phone Number" required class="" > </div>
                 </div>
                 <div class="form-group py-2 pb-2">
-                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="password" name="password" placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
-                            <i class="fas fa-eye" id="show_eye"></i>
-                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i> </button>
+                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span>
+                        <input type="password" id="password" name="password" placeholder="Enter your Password" required class="password-input">
+                        <button class="btn bg-white text-muted eye-trigger-btn">
+                            <i class="fas fa-eye eye-img" id="show_eye"></i>
+                            <i class="fas fa-eye-slash d-none eye-img" id="hide_eye"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="form-group py-2 pb-2">
-                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="retypepassword" name="retypepassword"  placeholder="Repeat your Password" required class=""> <button class="btn bg-white text-muted" onclick="retypepassword_show_hide();">
-                            <i class="fas fa-eye" id="show_eye2"></i>
-                            <i class="fas fa-eye-slash d-none" id="hide_eye2"></i> </button>
+                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span>
+                        <input type="password" id="retypepassword" name="retypepassword"  placeholder="Repeat your Password" required class="password-input">
+                        <button class="btn bg-white text-muted eye-trigger-btn">
+                            <i class="fas fa-eye eye-img" id="show_eye2"></i>
+                            <i class="fas fa-eye-slash d-none eye-img" id="hide_eye2"></i>
+                        </button>
                     </div>
                 </div>
                 <div id="passwordHelpBlock" class="form-text">
@@ -134,238 +140,227 @@
 
         <?php include "register_form_backend.php" ?>
         <script>
-                        var OTP = "";
-                        var selectImg = $("#avatar-img").attr('src');
+            var OTP = "";
+            var selectImg = $("#avatar-img").attr('src');
 
 
 
-                        $(".avatar").on('click', function (e) {
-                            e.preventDefault();
-                            selectImg = e.target.getAttribute('src');
-                            console.log(selectImg);
-                        })
+            $(".avatar").on('click', function (e) {
+                e.preventDefault();
+                selectImg = e.target.getAttribute('src');
+                console.log(selectImg);
+            })
 
-                        $("#img-confirm").on('click', function (e) {
-                            e.preventDefault();
+            $("#img-confirm").on('click', function (e) {
+                e.preventDefault();
 
-                            $("#avatar-img").attr('src', selectImg);
-                        })
+                $("#avatar-img").attr('src', selectImg);
+            })
 
-                        $("#resend-otp-link").on('click', function (e) {
-                            e.preventDefault();
-                            readySendEmail();
-                        })
+            $("#resend-otp-link").on('click', function (e) {
+                e.preventDefault();
+                readySendEmail();
+            })
 
-                        $("#otp-confirm").on('click', function (e) {
-                            e.preventDefault();
-                            var completeOTPInput = "";
-                            completeOTPInput = completeOTPInput.concat(
-                                    $("#first").val(),
-                                    $("#second").val(),
-                                    $("#third").val(),
-                                    $("#fourth").val(),
-                                    $("#fifth").val(),
-                                    $("#sixth").val());
-                            if (completeOTPInput == OTP && OTP != "") {
+            $("#otp-confirm").on('click', function (e) {
+                e.preventDefault();
+                var completeOTPInput = "";
+                completeOTPInput = completeOTPInput.concat(
+                        $("#first").val(),
+                        $("#second").val(),
+                        $("#third").val(),
+                        $("#fourth").val(),
+                        $("#fifth").val(),
+                        $("#sixth").val());
+                if (completeOTPInput == OTP && OTP != "") {
 
-                                var custObj = {
-                                    "cust_img": $("#avatar-img").attr('src'),
-                                    "user_name": $("#userName").val(),
-                                    "email": $("#email").val(),
-                                    "pass": $("#password").val(),
-                                    "phone": $("#phone").val()
-                                };
+                    var custObj = {
+                        "cust_img": $("#avatar-img").attr('src'),
+                        "user_name": $("#userName").val(),
+                        "email": $("#email").val(),
+                        "pass": $("#password").val(),
+                        "phone": $("#phone").val()
+                    };
 
-                                $.ajax({
-                                    type: "POST",
-                                    url: "register_form_backend.php",
-                                    data: {
-                                        "action": "insertNewRegisterCustFunc",
-                                        "custDtls": JSON.stringify(custObj)
-                                    },
-                                    error: function (xhr, status, error) {
-                                        console.log("Error: " + error);
-                                    },
-                                    success: function (result, status, xhr) {
-                                        alert("Register successfully");
-                                        window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php";
-                                    }
-                                });
-                            } else {
-                                alert("OTP incorrect, please try again.");
-                            }
-                        })
-
-                        function readySendEmail() {
-                            OTP = Math.floor(100000 + Math.random() * 900000);
-                            var dataObj = {
-                                "email": $("#email").val(),
-                                "subj": "Verify Your Email",
-                                "msgBody": "Hello " + $("#userName").val() + ",\n\nThank you for sign up at LGTL Cineplex.\nPlease verify your email.\nYour OTP number is " + OTP + ".\n\nThank you."
-                            };
-                            sendEmail(dataObj);
-                            $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".");
+                    $.ajax({
+                        type: "POST",
+                        url: "register_form_backend.php",
+                        data: {
+                            "action": "insertNewRegisterCustFunc",
+                            "custDtls": JSON.stringify(custObj)
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Error: " + error);
+                        },
+                        success: function (result, status, xhr) {
+                            alert("Register successfully");
+                            window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php";
                         }
+                    });
+                } else {
+                    alert("OTP incorrect, please try again.");
+                }
+            })
 
-                        var form = $("#custDtlsForm");
-                        form.validate({
-                            rules: {
-                                'userName': {
-                                    required: true
-                                },
-                                'retypepassword': {
-                                    required: true,
-                                    RetypePasswordValidation: true
-                                },
-                                'password': {
-                                    required: true,
-                                    passwordrequirement: true
-                                },
-                                'phone': {
-                                    required: true,
-                                    phoneValidation: true
-                                },
-                                'email': {
-                                    required: true,
-                                    emailValidation: true
-                                }
-                            },
-                            messages: {
-                                'userName': "This field required",
-                                'email': "Incorrect email format",
-                                'password': "Incorrect password format",
-                                'retypepassword': "Please match with the password",
-                                'phone': 'Incorrect phone number format'
-                            }
-                        });
+            function readySendEmail() {
+                OTP = Math.floor(100000 + Math.random() * 900000);
+                var dataObj = {
+                    "email": $("#email").val(),
+                    "subj": "Verify Your Email",
+                    "msgBody": "Hello " + $("#userName").val() + ",\n\nThank you for sign up at LGTL Cineplex.\nPlease verify your email.\nYour OTP number is " + OTP + ".\n\nThank you."
+                };
+                sendEmail(dataObj);
+                $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".");
+            }
 
-                        $.validator.addMethod("RetypePasswordValidation", function (value, element) {
-                            return $("#password").val() === $("#retypepassword").val();
-                        });
+            var form = $("#custDtlsForm");
+            form.validate({
+                rules: {
+                    'userName': {
+                        required: true
+                    },
+                    'retypepassword': {
+                        required: true,
+                        RetypePasswordValidation: true
+                    },
+                    'password': {
+                        required: true,
+                        passwordrequirement: true
+                    },
+                    'phone': {
+                        required: true,
+                        phoneValidation: true
+                    },
+                    'email': {
+                        required: true,
+                        emailValidation: true
+                    }
+                },
+                messages: {
+                    'userName': "This field required",
+                    'email': "Incorrect email format",
+                    'password': "Incorrect password format",
+                    'retypepassword': "Please match with the password",
+                    'phone': 'Incorrect phone number format'
+                }
+            });
 
-                        $.validator.addMethod("passwordrequirement", function (value, element) {
-                            var rg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+            $.validator.addMethod("RetypePasswordValidation", function (value, element) {
+                return $("#password").val() === $("#retypepassword").val();
+            });
 
-                            return $("#password").val().match(rg);
-                        });
+            $.validator.addMethod("passwordrequirement", function (value, element) {
+                var rg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
-                        $.validator.addMethod("phoneValidation", function (value, element) {
-                            var rg = /^(\+?6?01)[0|1|2|3|4|6|7|8|9]\-*[0-9]{7,8}$/;
+                return $("#password").val().match(rg);
+            });
 
-                            return $("#phone").val().match(rg);
-                        });
-                        
-                        $.validator.addMethod("emailValidation", function (value, element) {
-                            var rg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            $.validator.addMethod("phoneValidation", function (value, element) {
+                var rg = /^(\+?6?01)[0|1|2|3|4|6|7|8|9]\-*[0-9]{7,8}$/;
 
-                            return $("#email").val().match(rg);
-                        });
+                return $("#phone").val().match(rg);
+            });
 
-                        $("#submit-registerform-btn").on('click', function (e) {
-                            e.preventDefault();
+            $.validator.addMethod("emailValidation", function (value, element) {
+                var rg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-                            if (form.valid()) {
-                                $.ajax({
-                                    type: "POST",
-                                    url: "register_form_backend.php",
-                                    data: {
-                                        "action": "checkUniqueEmailFunc",
-                                        "email": $("#email").val()
-                                    },
-                                    error: function (xhr, status, error) {
-                                        console.log("Error: " + error);
-                                    },
-                                    success: function (result, status, xhr) {
-                                        if (result == 0) {
-                                            $("#staticBackdrop").modal('show');
-                                            readySendEmail();
-                                        } else {
-                                            alert("Email existed, please try again...");
-                                        }
-                                    }
-                                });
+                return $("#email").val().match(rg);
+            });
+
+            $("#submit-registerform-btn").on('click', function (e) {
+                e.preventDefault();
+
+                if (form.valid()) {
+                    $.ajax({
+                        type: "POST",
+                        url: "register_form_backend.php",
+                        data: {
+                            "action": "checkUniqueEmailFunc",
+                            "email": $("#email").val()
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Error: " + error);
+                        },
+                        success: function (result, status, xhr) {
+                            if (result == 0) {
+                                $("#staticBackdrop").modal('show');
+                                readySendEmail();
                             } else {
-                                alert("fields not match");
-                            }
-                        })
-
-                        function password_show_hide() {
-                            var x = document.getElementById("password");
-                            var show_eye = document.getElementById("show_eye");
-                            var hide_eye = document.getElementById("hide_eye");
-                            hide_eye.classList.remove("d-none");
-                            if (x.type === "password") {
-                                x.type = "text";
-                                show_eye.style.display = "none";
-                                hide_eye.style.display = "block";
-                            } else {
-                                x.type = "password";
-                                show_eye.style.display = "block";
-                                hide_eye.style.display = "none";
+                                alert("Email existed, please try again...");
                             }
                         }
+                    });
+                } else {
+                    alert("fields not match");
+                }
+            })
 
-                        function retypepassword_show_hide() {
-                            var y = document.getElementById("retypepassword");
-                            var show_eye2 = document.getElementById("show_eye2");
-                            var hide_eye2 = document.getElementById("hide_eye2");
-                            hide_eye2.classList.remove("d-none");
-                            if (y.type === "password") {
-                                y.type = "text";
-                                show_eye2.style.display = "none";
-                                hide_eye2.style.display = "block";
+            $(".eye-trigger-btn").on('click', function (e) {
+                e.preventDefault();
+                var x = $(this).siblings('.password-input');
+                var show_eye = $(this).children(":first-child");
+                var hide_eye = $(this).children(":last-child");
+                hide_eye.removeClass("d-none");
+                show_eye.removeClass("d-none");
+
+                if (x.prop('type') === "password") {
+                    x.attr("type", "text");
+                    show_eye.attr("display", "none");
+                    show_eye.addClass("d-none");
+                    hide_eye.attr("display", "block");
+                } else {
+                    x.attr("type", "password");
+                    show_eye.attr("display", "block");
+                    hide_eye.attr("display", "none");
+                    hide_eye.addClass("d-none");
+                }
+            })
+
+            document.addEventListener("DOMContentLoaded", function (event) {
+
+                function OTPInput() {
+                    const inputs = document.querySelectorAll('#otp > *[id]');
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].addEventListener('keydown', function (event) {
+                            if (event.key === "Backspace") {
+                                inputs[i].value = '';
+                                if (i !== 0)
+                                    inputs[i - 1].focus();
                             } else {
-                                y.type = "password";
-                                show_eye2.style.display = "block";
-                                hide_eye2.style.display = "none";
-                            }
-                        }
-
-                        document.addEventListener("DOMContentLoaded", function (event) {
-
-                            function OTPInput() {
-                                const inputs = document.querySelectorAll('#otp > *[id]');
-                                for (let i = 0; i < inputs.length; i++) {
-                                    inputs[i].addEventListener('keydown', function (event) {
-                                        if (event.key === "Backspace") {
-                                            inputs[i].value = '';
-                                            if (i !== 0)
-                                                inputs[i - 1].focus();
-                                        } else {
-                                            if (i === inputs.length - 1 && inputs[i].value !== '') {
-                                                return true;
-                                            } else if (event.keyCode > 47 && event.keyCode < 58) {
-                                                inputs[i].value = event.key;
-                                                if (i !== inputs.length - 1)
-                                                    inputs[i + 1].focus();
-                                                event.preventDefault();
-                                            } else if (event.keyCode > 64 && event.keyCode < 91) {
-                                                inputs[i].value = String.fromCharCode(event.keyCode);
-                                                if (i !== inputs.length - 1)
-                                                    inputs[i + 1].focus();
-                                                event.preventDefault();
-                                            }
-                                        }
-                                    });
+                                if (i === inputs.length - 1 && inputs[i].value !== '') {
+                                    return true;
+                                } else if (event.keyCode > 47 && event.keyCode < 58) {
+                                    inputs[i].value = event.key;
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
+                                } else if (event.keyCode > 64 && event.keyCode < 91) {
+                                    inputs[i].value = String.fromCharCode(event.keyCode);
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
                                 }
                             }
-                            OTPInput();
                         });
+                    }
+                }
+                OTPInput();
+            });
 
-                        function sendEmail(data) {
-                            Email.send({
-                                Host: "smtp.gmail.com",
-                                Username: "teezx-wm19@student.tarc.edu.my",
-                                Password: "sgxdjzbeaiqqvgim",
-                                To: data['email'],
-                                From: "teezx-wm19@student.tarc.edu.my",
-                                Subject: data['subj'],
-                                Body: data['msgBody']
-                                        //+"<br> Rate : " + document.getElementById("comment").value
-                            }).then(
-                                    message => alert("Message Sent Successfully")
-                            );
-                        }
+            function sendEmail(data) {
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "teezx-wm19@student.tarc.edu.my",
+                    Password: "sgxdjzbeaiqqvgim",
+                    To: data['email'],
+                    From: "teezx-wm19@student.tarc.edu.my",
+                    Subject: data['subj'],
+                    Body: data['msgBody']
+                            //+"<br> Rate : " + document.getElementById("comment").value
+                }).then(
+                        message => alert("Message Sent Successfully")
+                );
+            }
         </script>
     </body>
 </html>
