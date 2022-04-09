@@ -71,24 +71,34 @@ session_start();
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<?php
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = "default";
+}
+?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark align-items-center pr-lg-0">
-    <a class="navbar-brand   " href="#">LGTL Cineplex</a>
+    <a class="navbar-brand   " id="main-home-list" href="#">LGTL Cineplex</a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class=" collapse navbar-collapse col-lg justify-content-center pr-lg-0" id="navbarSupportedContent">
         <ul class="nav nav-pills  navbar-nav col-lg-9 " id="pills-tab" role="tablist">
-            <li class="nav-item mr-lg col-lg ">
-                <a class="nav-link active  mt-lg-1 mt-sm-3 mt-3 text-lg-center  pl-2 pl-lg-0" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+            <li class="nav-item mr-lg col-lg" id = "home-list">
+                <a class="nav-link  mt-lg-1 mt-sm-3 mt-3 text-lg-center  pl-2 pl-lg-0" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected = "false">Home</a>
             </li>
-            <li class="nav-item mr-lg col-lg ">
-                <a class="nav-link   mt-lg-1 mt-sm-3 mt-3 text-lg-center pl-2 pl-lg-0" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+            <li class="nav-item mr-lg col-lg " id = "profile-list">
+                <a class="nav-link   mt-lg-1 mt-sm-3 mt-3 text-lg-center pl-2 pl-lg-0" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected = "false">Profile</a>
             </li>
-            <li class="nav-item mr-lg col-lg ">
-                <a class="nav-link    mt-lg-1 mt-sm-3 mt-3 text-lg-center pl-2 pl-lg-0" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+            <li class="nav-item mr-lg col-lg" id ="contact-us-list">
+                <a  class="nav-link    mt-lg-1 mt-sm-3 mt-3 text-lg-center pl-2 pl-lg-0" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected = "false">Contact Us</a>
             </li>
-
         </ul>
         <div class="col-lg-3 col-sm-6 align-self-lg-end float-lg-right" >
             <button type="button" id="log-in-btn" class=" btn btn-light float-lg-right  mt-lg-0 mt-sm-3 mt-3 col-sm-4 col-4 d-sm-block ">
@@ -103,10 +113,46 @@ session_start();
         </div>
     </div>
 </nav>
+<script>
+    $(function () {
+        var currentPage = "<?php echo $page; ?>";
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        $(".nav-link").each(function () {
+            $(this).attr("aria-selected", false);
+        });
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        if (currentPage.trim() === "home" || currentPage.trim() === "default") {
+            $("#pills-home-tab").attr("aria-selected", true);
+            $("#pills-home-tab").addClass("active");
+        } else if (currentPage === "profile") {
+            $("#pills-profile-tab").attr("aria-selected", true);
+            $("#pills-profile-tab").addClass("active");
+        } else if (currentPage === "contact us") {
+            $("#pills-contact-tab").attr("aria-selected", true);
+            $("#pills-contact-tab").addClass("active");
+        }
+    })
+
+</script>
+
+<script>
+    $("#home-list, #main-home-list").on('click', function () {
+        window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/home_page/home_page.php?page=home";
+    })
+
+    $("#profile-list").on('click', function () {
+        var isLogIn = '<?php echo isset($_SESSION['logInCustomer']); ?>';
+        if (isLogIn)
+            window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/register/profile.php?page=profile";
+        else
+            alert("You must log in first, before access this page.");
+    })
+
+    $("#contact-us-list").on('click', function () {
+        window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/contact_us/contact_us.php?page=contact us";
+    })
+
+</script>
 
 <script>
     $("#log-in-btn").on('click', function (e) {
@@ -123,7 +169,6 @@ session_start();
                 success: function (result, status, xhr) {
                     alert("you have been logged out");
                     window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/home_page/home_page.php";
-
                 }
             });
         } else {

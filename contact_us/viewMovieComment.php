@@ -15,6 +15,7 @@ function loadMvComment($mvID) {
 
     $query = "select "
             . "C.cust_id, "
+            . "C.cust_name, "
             . "C.customer_image, "
             . "MC.rating, "
             . "MC.comment "
@@ -31,8 +32,8 @@ function loadMvComment($mvID) {
         $htmlCode .= '<div class="container-fluid justify-content-center col-md-7 text-muted">';
         $htmlCode .= '<div class="comment-box ml-12 justify-content-center float-left col-11 m-3">';
         $htmlCode .= '<div class="m-2 mt-2 md-9 float-left"> <img src="data:image/jpg;charset=utf8;base64,' . base64_encode($rows['customer_image']) . '" width="45"class="rounded-circle"> </div>';
-        $htmlCode .= '<div class="m-3 justify-content-center text-white fs-5">';
-        $htmlCode .= $rows['cust_id'];
+        $htmlCode .= '<div class="m-3 justify-content-center text-white fs-5 text-uppercase">';
+        $htmlCode .= $rows['cust_name'];
         $htmlCode .= '</div>';
         $htmlCode .= '<div class="col-9 float-left">';
         $htmlCode .= '<div class="rateOptionBox">';

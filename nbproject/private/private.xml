@@ -4,21 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/contact_us/viewMovieComment.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/contact_us/insertServiceComment.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/movie_details/movie_page.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/contact_us/comment_section.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/contact_us/insertMovieComment.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paypalEnv/response.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/movie_details/connection.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/paymentbackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/home_page/homePageBackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/register/register_form.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/selectLocation.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/nav_bar/navigation_bar.php</file>
             <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/contact_us/contact_us.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/register/profile.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/invoiceDetailsBackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/refundsOverview.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/ticket_booking/refundsOverviewBackEnd.php</file>
-            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/home_page/connection.php</file>
+            <file>file:/C:/xampp/htdocs/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php</file>
         </group>
     </open-files>
 </project-private>
