@@ -106,6 +106,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
 
         <script>
+            var OTP = "";
+            
             $('#OpenImgUpload').click(function () {
                 $('#imgupload').trigger('click');
 
@@ -115,6 +117,108 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             $("#imgupload").change(function () {
                 readURL(this);
             });
+            
+            $("#resend-otp-link").on('click', function (e) {
+                e.preventDefault();
+                readySendEmail();
+            })
+            
+            $("#otp-confirm").on('click', function (e) {
+                e.preventDefault();
+                var completeOTPInput = "";
+                completeOTPInput = completeOTPInput.concat(
+                        $("#first").val(),
+                        $("#second").val(),
+                        $("#third").val(),
+                        $("#fourth").val(),
+                        $("#fifth").val(),
+                        $("#sixth").val());
+                if (completeOTPInput == OTP && OTP != "") {
+
+                    var custObj = {
+                        "cust_img": $("#avatar-img").attr('src'),
+                        "user_name": $("#userName").val(),
+                        "email": $("#email").val(),
+                        "pass": $("#password").val(),
+                        "phone": $("#phone").val()
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "register_form_backend.php",
+                        data: {
+                            "action": "insertNewRegisterCustFunc",
+                            "custDtls": JSON.stringify(custObj)
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Error: " + error);
+                        },
+                        success: function (result, status, xhr) {
+                            alert("Register successfully");
+                            window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/log_in/login_form.php";
+                        }
+                    });
+                } else {
+                    alert("OTP incorrect, please try again.");
+                }
+            })
+
+            function readySendEmail() {
+                OTP = Math.floor(100000 + Math.random() * 900000);
+                var dataObj = {
+                    "email": $("#email").val(),
+                    "subj": "Verify Your Email",
+                    "msgBody": "Hello " + $("#userName").val() + ",\n\nThank you for sign up at LGTL Cineplex.\nPlease verify your email.\nYour OTP number is " + OTP + ".\n\nThank you."
+                };
+                sendEmail(dataObj);
+                $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".");
+            }
+            
+            document.addEventListener("DOMContentLoaded", function (event) {
+
+                function OTPInput() {
+                    const inputs = document.querySelectorAll('#otp > *[id]');
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].addEventListener('keydown', function (event) {
+                            if (event.key === "Backspace") {
+                                inputs[i].value = '';
+                                if (i !== 0)
+                                    inputs[i - 1].focus();
+                            } else {
+                                if (i === inputs.length - 1 && inputs[i].value !== '') {
+                                    return true;
+                                } else if (event.keyCode > 47 && event.keyCode < 58) {
+                                    inputs[i].value = event.key;
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
+                                } else if (event.keyCode > 64 && event.keyCode < 91) {
+                                    inputs[i].value = String.fromCharCode(event.keyCode);
+                                    if (i !== inputs.length - 1)
+                                        inputs[i + 1].focus();
+                                    event.preventDefault();
+                                }
+                            }
+                        });
+                    }
+                }
+                OTPInput();
+            });
+
+            function sendEmail(data) {
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "teezx-wm19@student.tarc.edu.my",
+                    Password: "sgxdjzbeaiqqvgim",
+                    To: data['email'],
+                    From: "teezx-wm19@student.tarc.edu.my",
+                    Subject: data['subj'],
+                    Body: data['msgBody']
+                            //+"<br> Rate : " + document.getElementById("comment").value
+                }).then(
+                        message => alert("Message Sent Successfully")
+                );
+            }
 
             function readURL(input) {
                 if (input.files && input.files[0]) {
