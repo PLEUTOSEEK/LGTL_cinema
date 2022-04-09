@@ -28,10 +28,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         include '../nav_bar/navigation_bar.php';
         ?>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
 
         <script>
             $(function () {
@@ -49,25 +53,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Profile Settings</h4>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Username</label><input type="text" id="user-name" class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['cust_name'] ?>" disabled="true"></div>
-                            <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="tel" id="phone-number" class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['phone_no'] ?>" disabled="true"></div>
-                            <div class="col-md-12"><label class="labels">Email</label><input type="email" id = "email" class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['email'] ?>" disabled="true"></div>
-                            <div class="col-md-12"><label class="labels">Password</label>
-                                <div class="row">
-                                    <input type="password" id="password" class="pw form-control col-9 ms-3 editable-input" value="<?php echo $_SESSION['logInCustomer']['password'] ?>" disabled="true">
-                                    <button class="btn bg-white text-muted col-2 ms-2 show-hide-btn editable-input" onclick="password_show_hide();" disabled="true">
-                                        <i class="fas fa-eye" id="show_eye"></i>
-                                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
-                                    </button>
+                        <form id ="custDtlsForm">
+                            <div class="row mt-3">
+                                <div class="col-md-12"><label class="labels">Username</label><input type="text" id="user-name" name = "user-name" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['cust_name'] ?>" disabled="true"></div>
+                                <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="tel" id="phone-number" name = "phone-number" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['phone_no'] ?>" disabled="true"></div>
+                                <div class="col-md-12"><label class="labels">Email</label><input type="email" id = "email" name = "email" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['email'] ?>" disabled="true"></div>
+                                <div class="col-md-12"><label class="labels">Password</label>
+                                    <div class="row">
+                                        <input type="password" id="password" name = "password" pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/" required class="pw form-control col-9 ms-3 editable-input" value="<?php echo $_SESSION['logInCustomer']['password'] ?>" disabled="true">
+                                        <button class="btn bg-white text-muted col-2 ms-2 show-hide-btn editable-input" onclick="password_show_hide();" disabled="true">
+                                            <i class="fas fa-eye" id="show_eye"></i>
+                                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row px-3">
-                            <div class="mt-5 text-left" id = "show-up-conditional" style="visibility: hidden;"><button id = "cancel-btn" class="btn btn-primary profile-button" type="button">Cancel Edit</button></div>
-                            <div class="ml-auto mt-5 text-right"><button id = "edit-btn" class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
-                        </div>
+                            <div class="row px-3">
+                                <div class="mt-5 text-left" id = "show-up-conditional" style="visibility: hidden;"><button id = "cancel-btn" class="btn btn-primary profile-button" type="button">Cancel Edit</button></div>
+                                <div class="ml-auto mt-5 text-right"><button id = "edit-btn" class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
+                            </div>
+                        </form>
 
                     </div>
                     <hr style="background: white">
@@ -75,101 +81,157 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </div>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
         <script>
-            $('#OpenImgUpload').click(function () {
-                $('#imgupload').trigger('click');
+                                            $('#OpenImgUpload').click(function () {
+                                                $('#imgupload').trigger('click');
+                                            });
 
-            });
+
+                                            $("#imgupload").change(function () {
+                                                readURL(this);
+                                            });
+
+                                            function readURL(input) {
+                                                if (input.files && input.files[0]) {
+                                                    var reader = new FileReader();
+
+                                                    reader.onload = function (e) {
+                                                        //alert(e.target.result);
+                                                        $('#avatar-img').attr('src', e.target.result);
+                                                    }
+
+                                                    reader.readAsDataURL(input.files[0]);
+                                                }
+                                            }
+
+                                            $("#view-order-btn").on('click', function () {
+                                                window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/ticket_booking/refundsOverview.php";
+                                            })
+
+                                            function password_show_hide() {
+                                                var x = document.getElementById("password");
+                                                var show_eye = document.getElementById("show_eye");
+                                                var hide_eye = document.getElementById("hide_eye");
+                                                hide_eye.classList.remove("d-none");
+                                                if (x.type === "password") {
+                                                    x.type = "text";
+                                                    show_eye.style.display = "none";
+                                                    hide_eye.style.display = "block";
+                                                } else {
+                                                    x.type = "password";
+                                                    show_eye.style.display = "block";
+                                                    hide_eye.style.display = "none";
+                                                }
+                                            }
+
+                                            var form = $("#custDtlsForm");
+
+                                            var form = $("#custDtlsForm");
+                                            form.validate({
+                                                rules: {
+                                                    'user-name': {
+                                                        required: true
+                                                    },
+                                                    'password': {
+                                                        required: true,
+                                                        passwordrequirement: true
+                                                    },
+                                                    'phone-number': {
+                                                        required: true,
+                                                        phoneValidation: true
+                                                    },
+                                                    'email': {
+                                                        required: true,
+                                                        emailValidation: true
+                                                    }
+                                                },
+                                                messages: {
+                                                    'user-name': "This field required",
+                                                    'email': "This is not a email",
+                                                    'password': "Password not meeting the requirement",
+                                                    'phone-number': 'this is not a phone number'
+                                                }
+                                            });
+
+                                            $.validator.addMethod("passwordrequirement", function (value, element) {
+                                                var rg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+
+                                                return $("#password").val().match(rg);
+                                            });
+
+                                            $.validator.addMethod("phoneValidation", function (value, element) {
+                                                var rg = /^(\+?6?01)[0|1|2|3|4|6|7|8|9]\-*[0-9]{7,8}$/;
+
+                                                return $("#phone-number").val().match(rg);
+                                            });
+
+                                            $.validator.addMethod("emailValidation", function (value, element) {
+                                                var rg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+                                                return $("#email").val().match(rg);
+                                            });
 
 
-            $("#imgupload").change(function () {
-                readURL(this);
-            });
+                                            $("#edit-btn").on('click', function (e) {
+                                                e.preventDefault();
 
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
+                                                var self = $(this);
+                                                if (self.text().toUpperCase() == "EDIT PROFILE") {
+                                                    $(".editable-input").removeAttr('disabled');
+                                                    $("#show-up-conditional").css('visibility', 'visible');
+                                                    self.text("Save Profile");
+                                                } else {
+                                                    if (form.valid()) {
+                                                        $("#show-up-conditional").css('visibility', 'hidden');
+                                                        $(".editable-input").attr('disabled', 'true');
+                                                        self.text("Edit Profile");
+                                                        var custData = {
+                                                            "cust_name": $("#user-name").val(),
+                                                            "email": $("#email").val(),
+                                                            "password": $("#password").val(),
+                                                            "customer_image": $("#avatar-img").attr('src'),
+                                                            "phone_no": $("#phone-number").val()
+                                                        }
 
-                    reader.onload = function (e) {
-                        //alert(e.target.result);
-                        $('#avatar-img').attr('src', e.target.result);
-                    }
+                                                        console.log(custData);
+                                                        $.ajax({
+                                                            //update data
+                                                            type: "POST",
+                                                            url: "profileBackEnd.php",
+                                                            data: {
+                                                                "action": "updateProfileFunc",
+                                                                "data": JSON.stringify(custData)
+                                                            },
+                                                            error: function (xhr, status, error) {
+                                                                console.log("Error: " + error);
+                                                            },
+                                                            success: function (result, status, xhr) {
 
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
+                                                            }
+                                                        });
+                                                    } else {
+                                                        alert("fields not match");
+                                                    }
+                                                }
 
-            $("#view-order-btn").on('click', function () {
-                window.location.href = "http://localhost/LGTL_Cineplex/LGTL_cinema/ticket_booking/refundsOverview.php";
-            })
+                                            })
 
-            function password_show_hide() {
-                var x = document.getElementById("password");
-                var show_eye = document.getElementById("show_eye");
-                var hide_eye = document.getElementById("hide_eye");
-                hide_eye.classList.remove("d-none");
-                if (x.type === "password") {
-                    x.type = "text";
-                    show_eye.style.display = "none";
-                    hide_eye.style.display = "block";
-                } else {
-                    x.type = "password";
-                    show_eye.style.display = "block";
-                    hide_eye.style.display = "none";
-                }
-            }
+                                            $("#cancel-btn").on('click', function (e) {
+                                                $("#show-up-conditional").css('visibility', 'hidden');
+                                                $(".editable-input").attr('disabled', 'true');
+                                                $("#edit-btn").text("Edit Profile");
 
-            $("#edit-btn").on('click', function (e) {
-                var self = $(this);
-                if (self.text().toUpperCase() == "EDIT PROFILE") {
-                    $(".editable-input").removeAttr('disabled');
-                    $("#show-up-conditional").css('visibility', 'visible');
-                    self.text("Save Profile");
-                } else {
-                    $("#show-up-conditional").css('visibility', 'hidden');
-                    $(".editable-input").attr('disabled', 'true');
-                    self.text("Edit Profile");
-                    var custData = {
-                        "cust_name": $("#user-name").val(),
-                        "email": $("#email").val(),
-                        "password": $("#password").val(),
-                        "customer_image": $("#avatar-img").attr('src'),
-                        "phone_no": $("#phone-number").val()
-                    }
+                                                $("#user-name").val('<?php echo $_SESSION['logInCustomer']['cust_name'] ?>');
+                                                $("#email").val('<?php echo $_SESSION['logInCustomer']['email'] ?>');
+                                                $("#password").val('<?php echo $_SESSION['logInCustomer']['password'] ?>');
+                                                $("#avatar-img").attr('src', '<?php echo $_SESSION['logInCustomer']['customer_image'] ?>');
+                                                $("#phone-number").val('<?php echo $_SESSION['logInCustomer']['phone_no'] ?>');
 
-                    console.log(custData);
-                    $.ajax({
-                        //update data
-                        type: "POST",
-                        url: "profileBackEnd.php",
-                        data: {
-                            "action": "updateProfileFunc",
-                            "data": JSON.stringify(custData)
-                        },
-                        error: function (xhr, status, error) {
-                            console.log("Error: " + error);
-                        },
-                        success: function (result, status, xhr) {
+                                                location.reload();
+                                            })
 
-                        }
-                    });
-                }
-            })
-
-            $("#cancel-btn").on('click', function (e) {
-                $("#show-up-conditional").css('visibility', 'hidden');
-                $(".editable-input").attr('disabled', 'true');
-                $("#edit-btn").text("Edit Profile");
-
-                $("#user-name").val('<?php echo $_SESSION['logInCustomer']['cust_name'] ?>');
-                $("#email").val('<?php echo $_SESSION['logInCustomer']['email'] ?>');
-                $("#password").val('<?php echo $_SESSION['logInCustomer']['password'] ?>');
-                $("#avatar-img").attr('src', '<?php echo $_SESSION['logInCustomer']['customer_image'] ?>');
-                $("#phone-number").val('<?php echo $_SESSION['logInCustomer']['phone_no'] ?>');
-
-                location.reload();
-            })
         </script>
 
         <?php
