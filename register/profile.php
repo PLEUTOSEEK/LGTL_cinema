@@ -58,11 +58,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-md-12"><label class="labels">Username</label><input type="text" id="user-name" name = "user-name" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['cust_name'] ?>" disabled="true"></div>
                                 <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="tel" id="phone-number" name = "phone-number" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['phone_no'] ?>" disabled="true"></div>
                                 <div class="col-md-12"><label class="labels">Email</label><input type="email" id = "email" name = "email" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['email'] ?>" disabled="true"></div>
-                                <div class="col-md-12"><label class="labels">Password</label><input type="password" id="password" name = "password" pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['password'] ?>" disabled="true">
-                                    <button class="btn bg-white text-muted" onclick="password_show_hide();">
-                                        <i class="fas fa-eye" id="show_eye"></i>
-                                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i> 
-                                    </button>
+                                <div class="col-md-12"><label class="labels">Password</label>
+                                    <div class="input-field bg-white">
+                                        <input type="password" id="password" name = "password" pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['password'] ?>" disabled="true">
+                                        <span class="btn bg-white text-muted" onclick="password_show_hide();">
+                                            <i class="fas fa-eye" id="show_eye"></i>
+                                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i> 
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </form>
