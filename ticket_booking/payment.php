@@ -45,14 +45,17 @@ and open the template in the editor.
                             if (returnPhp != null && returnPhp.length != 0) {
                                 createTable(document.getElementById('food-table'), returnPhp);
                                 // after source code do at here
-                                document.getElementById("total-price").innerHTML = "";
-                                document.getElementById("total-price").appendChild(document.createTextNode("RM " + ttlPrice.toFixed(2)));
+
                             } else {
                                 clearFoodTable();
                             }
+
                         } catch (err) {
                             clearFoodTable();
                         }
+
+                        document.getElementById("total-price").innerHTML = "";
+                        document.getElementById("total-price").appendChild(document.createTextNode("RM " + ttlPrice.toFixed(2)));
                     }
                 });
                 // dont put source code do at here, it will do here first just do the ajax
@@ -140,7 +143,8 @@ and open the template in the editor.
                         <div class= "d-flex justify-content-start clearfix col-12 text-left px-0 py-3 ">
                             <p  class= "label rounded px-3 py-2 mx-0  font-weight-bold m-0">Adult Ticket</p>
                         </div>
-                        <div class="row drag-zone  rounded content-div  mx-auto" id="qw1" ondrop="handleDrop(event); adjTtlPr(this, <?php echo $seatChildPrice; ?>, <?php echo $seatOriPrice; ?>);" ondragstart="onDragStart(event);setPrice(this, <?php echo $seatOriPrice; ?>);"ondragover="onDragOver(event);">
+                        <div class="row drag-zone  rounded content-div  mx-auto" id="qw1" ondrop="handleDrop(event);
+                                adjTtlPr(this, <?php echo $seatChildPrice; ?>, <?php echo $seatOriPrice; ?>);" ondragstart="onDragStart(event);setPrice(this, <?php echo $seatOriPrice; ?>);"ondragover="onDragOver(event);">
 
                             <?php
                             foreach ($seatsCompleteInfo as $row) {
@@ -155,7 +159,8 @@ and open the template in the editor.
                         <div class= "d-flex justify-content-start clearfix col-12 text-left px-0 py-3 ">
                             <p  class= "label rounded px-3 py-2 mx-0  font-weight-bold m-0">Child Ticket</p>
                         </div>
-                        <div class="row drag-zone  rounded content-div  mx-auto" id="qw2" ondrop="handleDrop(event); adjTtlPr(this, <?php echo $seatOriPrice; ?>, <?php echo $seatChildPrice; ?>);" ondragstart="onDragStart(event);setPrice(this, <?php echo $seatChildPrice; ?>);" ondragover="onDragOver(event);" style = "height:50px;">
+                        <div class="row drag-zone  rounded content-div  mx-auto" id="qw2" ondrop="handleDrop(event);
+                                adjTtlPr(this, <?php echo $seatOriPrice; ?>, <?php echo $seatChildPrice; ?>);" ondragstart="onDragStart(event);setPrice(this, <?php echo $seatChildPrice; ?>);" ondragover="onDragOver(event);" style = "height:50px;">
 
                         </div>
                     </div>

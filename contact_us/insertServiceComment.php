@@ -1,26 +1,26 @@
 <?php
-        $host = "localhost";
-        $dbuser = "root";
-        $pass = "";
-        $dbname ="lgtl_cinema";
-        $conn = mysqli_connect($host,$dbuser,$pass,$dbname);
-        $date=date_create();
-        
-        
-        if(mysqli_connect_error()){
-            die("connection failed".mysqli_connect_error());
-        }
-        else{
-            echo "connected to database ($dbname)";
 
-    $sql = "insert into service_comment(customer_id,rating,comment,date_modified) Values(?,?,?,?)";
+session_start();
 
-                    $customer_id = !empty ($_SESSION["logInCustomer"]) ? $_SESSION["logInCustomer"] : null;
-                    $comment = $_POST['comment'];
-                    $rating = $_POST['ratingStar'];
-                    $currentDate = date("Y-m-d H:i:s");
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssss",$customer_id , $rating, $comment, $currentDate);
-        $stmt->execute();      
-        }
+include "../db_connection.php";
+
+if (!empty($_POST['action'])) {
+    if ($_POST['action'] == "insertCommentFunc") {
+        insertComment($_POST['data']);
+    }
+}
+
+function insertComment($data) {
+    $data = json_decode($data, true);
+
+    $custID = isset($_SESSION["logInCustomer"]) ? $_SESSION["logInCustomer"]['cust_id'] : "00000";
+    $conn = OpenCon();
+    $sql = "insert into service_comment(cust_id,rating,comment,date_modified) Values(?,?,?,?)";
+    $currentDate = date("Y-m-d H:i:s");
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $custID, $data['ratingStar'], $data['comment'], $currentDate);
+    $stmt->execute();
+    CloseCon($conn);
+}
+
 ?>

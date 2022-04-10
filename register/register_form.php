@@ -12,7 +12,6 @@
         <!-- font awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
-        <!-- login form CSS -->
         <link rel="stylesheet" href="register_form.css?v=<?php echo time(); ?>">
 
         <title>LGTL Cineplex - Register</title>
@@ -26,7 +25,7 @@
         <div class="wrapper bg-dark">
             <div class="h2 text-center text-white">Sign Up</div>
             <div class="h4 text-muted text-center pt-2">Enter your account details</div>
-            <form class="pt-3">
+            <form class="pt-3" id="custDtlsForm">
                 <div class="text-center"><img src="./img/avatar0.png" alt="Avatar" class="avatar avatar0" id="avatar-img"/></div>
                 <!-- Button trigger modal -->
                 <div class="text-center"><button class="btn btn-outline-light text-center mt-3 px-4" data-bs-toggle="modal" data-bs-target="#staticPicture">Choose Profile Picture</button></div>
@@ -60,24 +59,30 @@
                 </div>
 
                 <div class="form-group py-2">
-                    <div class="input-field bg-white"> <span class="fas fa-user p-2"></span> <input type="text"  id ="userName" name = "userName" placeholder="Enter your Username" required class=""> </div>
+                    <div class="input-field bg-white"> <span class="fas fa-user p-2"></span> <input type="text"  id ="userName" name = "userName" placeholder="Enter your Username" required> </div>
                 </div>
                 <div class="form-group py-2">
                     <div class="input-field bg-white"> <span class="fas fa-envelope p-2"></span> <input type="email" id ="email" name = "email" placeholder="Enter your Email Address" required class=""> </div>
                 </div>
                 <div class="form-group py-2">
-                    <div class="input-field bg-white"> <span class="fa fa-phone p-2"></span> <input type="tel" id ="phone" name = "phone" placeholder="Enter your Phone Number" required class="" pattern="[0-9]{11}"> </div>
+                    <div class="input-field bg-white"> <span class="fa fa-phone p-2"></span> <input type="tel" id ="phone" name = "phone" placeholder="Enter your Phone Number" required class="" > </div>
                 </div>
                 <div class="form-group py-2 pb-2">
-                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your Password" required class=""> <button class="btn bg-white text-muted" onclick="password_show_hide();">
-                            <i class="fas fa-eye" id="show_eye"></i>
-                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i> </button>
+                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span>
+                        <input type="password" id="password" name="password" placeholder="Enter your Password" required class="password-input">
+                        <button class="btn bg-white text-muted eye-trigger-btn">
+                            <i class="fas fa-eye eye-img" id="show_eye"></i>
+                            <i class="fas fa-eye-slash d-none eye-img" id="hide_eye"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="form-group py-2 pb-2">
-                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span> <input type="password" id="retypepassword" name="retypepassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Repeat your Password" required class=""> <button class="btn bg-white text-muted" onclick="retypepassword_show_hide();">
-                            <i class="fas fa-eye" id="show_eye2"></i>
-                            <i class="fas fa-eye-slash d-none" id="hide_eye2"></i> </button>
+                    <div class="input-field bg-white"> <span class="fas fa-lock p-2"></span>
+                        <input type="password" id="retypepassword" name="retypepassword"  placeholder="Repeat your Password" required class="password-input">
+                        <button class="btn bg-white text-muted eye-trigger-btn">
+                            <i class="fas fa-eye eye-img" id="show_eye2"></i>
+                            <i class="fas fa-eye-slash d-none eye-img" id="hide_eye2"></i>
+                        </button>
                     </div>
                 </div>
                 <div id="passwordHelpBlock" class="form-text">
@@ -103,7 +108,7 @@
                                         <input class="me-5 text-center form-control rounded" type="text" id="sixth" maxlength="1" />
                                     </div>
                                     <div class="justify-content-start resend-otp-container mt-2">
-                                        <a href="#" id="resend-otp-link">resend OTP</a>
+                                        <a href="#" id="resend-otp-link" style="color: blue">resend OTP</a>
                                     </div>
                                 </div>
                             </div>
@@ -124,58 +129,24 @@
             </form>
         </div>
 
-
-        <script>
-            function password_show_hide() {
-                var x = document.getElementById("password");
-                var show_eye = document.getElementById("show_eye");
-                var hide_eye = document.getElementById("hide_eye");
-                hide_eye.classList.remove("d-none");
-                if (x.type === "password") {
-                    x.type = "text";
-                    show_eye.style.display = "none";
-                    hide_eye.style.display = "block";
-                } else {
-                    x.type = "password";
-                    show_eye.style.display = "block";
-                    hide_eye.style.display = "none";
-                }
-            }
-            function retypepassword_show_hide() {
-                var y = document.getElementById("retypepassword");
-                var show_eye2 = document.getElementById("show_eye2");
-                var hide_eye2 = document.getElementById("hide_eye2");
-                hide_eye2.classList.remove("d-none");
-                if (y.type === "password") {
-                    y.type = "text";
-                    show_eye2.style.display = "none";
-                    hide_eye2.style.display = "block";
-                } else {
-                    y.type = "password";
-                    show_eye2.style.display = "block";
-                    hide_eye2.style.display = "none";
-                }
-            }
-        </script>
-
-
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
         <script src="https://smtpjs.com/v3/smtp.js"></script>
 
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
         <?php include "register_form_backend.php" ?>
         <script>
             var OTP = "";
             var selectImg = $("#avatar-img").attr('src');
 
+
+
             $(".avatar").on('click', function (e) {
                 e.preventDefault();
                 selectImg = e.target.getAttribute('src');
-                console.log(selectImg);
             })
 
             $("#img-confirm").on('click', function (e) {
@@ -240,61 +211,108 @@
                 $("#otp-msg").text("We will be sending your LGTL OTP code to the email address, " + $("#email").val() + ".");
             }
 
+            var form = $("#custDtlsForm");
+            form.validate({
+                rules: {
+                    'userName': {
+                        required: true
+                    },
+                    'retypepassword': {
+                        required: true,
+                        RetypePasswordValidation: true
+                    },
+                    'password': {
+                        required: true,
+                        passwordrequirement: true
+                    },
+                    'phone': {
+                        required: true,
+                        phoneValidation: true
+                    },
+                    'email': {
+                        required: true,
+                        emailValidation: true
+                    }
+                },
+                messages: {
+                    'userName': "This field required",
+                    'email': "Incorrect email format",
+                    'password': "Incorrect password format",
+                    'retypepassword': "Please match with the password",
+                    'phone': 'Incorrect phone number format'
+                }
+            });
+
+            $.validator.addMethod("RetypePasswordValidation", function (value, element) {
+                return $("#password").val() === $("#retypepassword").val();
+            });
+
+            $.validator.addMethod("passwordrequirement", function (value, element) {
+                var rg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+
+                return $("#password").val().match(rg);
+            });
+
+            $.validator.addMethod("phoneValidation", function (value, element) {
+                var rg = /^(\+?6?01)[0|1|2|3|4|6|7|8|9]\-*[0-9]{7,8}$/;
+
+                return $("#phone").val().match(rg);
+            });
+
+            $.validator.addMethod("emailValidation", function (value, element) {
+                var rg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+                return $("#email").val().match(rg);
+            });
+
             $("#submit-registerform-btn").on('click', function (e) {
                 e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "register_form_backend.php",
-                    data: {
-                        "action": "checkUniqueEmailFunc",
-                        "email": $("#email").val()
-                    },
-                    error: function (xhr, status, error) {
-                        console.log("Error: " + error);
-                    },
-                    success: function (result, status, xhr) {
-                        if (result == 0) {
-                            $("#staticBackdrop").modal('show');
-                            readySendEmail();
-                        } else {
-                            alert("Email existed, please try again...");
-                        }
-                    }
-                });
 
+                if (form.valid()) {
+                    $.ajax({
+                        type: "POST",
+                        url: "register_form_backend.php",
+                        data: {
+                            "action": "checkUniqueEmailFunc",
+                            "email": $("#email").val()
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("Error: " + error);
+                        },
+                        success: function (result, status, xhr) {
+                            if (result == 0) {
+                                $("#staticBackdrop").modal('show');
+                                readySendEmail();
+                            } else {
+                                alert("Email existed, please try again...");
+                            }
+                        }
+                    });
+                } else {
+                    alert("fields not match");
+                }
             })
 
-            function password_show_hide() {
-                var x = document.getElementById("password");
-                var show_eye = document.getElementById("show_eye");
-                var hide_eye = document.getElementById("hide_eye");
-                hide_eye.classList.remove("d-none");
-                if (x.type === "password") {
-                    x.type = "text";
-                    show_eye.style.display = "none";
-                    hide_eye.style.display = "block";
-                } else {
-                    x.type = "password";
-                    show_eye.style.display = "block";
-                    hide_eye.style.display = "none";
-                }
-            }
+            $(".eye-trigger-btn").on('click', function (e) {
+                e.preventDefault();
+                var x = $(this).siblings('.password-input');
+                var show_eye = $(this).children(":first-child");
+                var hide_eye = $(this).children(":last-child");
+                hide_eye.removeClass("d-none");
+                show_eye.removeClass("d-none");
 
-            function retypepassword_show_hide() {
-                var y = document.getElementById("retypepassword");
-                var show_eye2 = document.getElementById("show_eye2");
-                var hide_eye2 = document.getElementById("hide_eye2");
-                hide_eye2.classList.remove("d-none");
-                if (y.type === "password") {
-                    y.type = "text";
-                    show_eye2.style.display = "none";
-                    hide_eye2.style.display = "block";
+                if (x.prop('type') === "password") {
+                    x.attr("type", "text");
+                    show_eye.attr("display", "none");
+                    show_eye.addClass("d-none");
+                    hide_eye.attr("display", "block");
                 } else {
-                    y.type = "password";
-                    show_eye2.style.display = "block";
-                    hide_eye2.style.display = "none";
+                    x.attr("type", "password");
+                    show_eye.attr("display", "block");
+                    hide_eye.attr("display", "none");
+                    hide_eye.addClass("d-none");
                 }
-            }
+            })
 
             document.addEventListener("DOMContentLoaded", function (event) {
 

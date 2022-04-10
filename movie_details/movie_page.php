@@ -48,7 +48,7 @@
             @media screen and (min-width: 50em){
                 h5 { font-size: calc( 5px + (24 - 16) * (10vw - 40px) / (800 - 400) ); }
             }
-          
+
         </style>
     </head>
     <body>
@@ -58,7 +58,8 @@
         ?>
 
         <?php
-        $image_query2 = mysqli_query($result, "select * from movie WHERE movie_id = '" . $_POST['movie_id'] . "'");
+        $mvID = $_POST['movie_id'];
+        $image_query2 = mysqli_query($result, "select * from movie WHERE movie_id = '" . $mvID . "'");
         if (mysqli_num_rows($image_query2) > 0) {
             while ($rows = mysqli_fetch_array($image_query2)) {
                 $img_name = $rows['movie_name'];
@@ -90,5 +91,7 @@
         <div class="row justify-content-center mt-lg-3 mt-4 mt-md-2 my-sm-3">
             <iframe width="750" height="400" src="https://www.youtube.com/embed/<?php echo $videourl; ?>?autoplay=1&autohide=1&controls=1&showinfo=0&modestbranding=1&rel=0"></iframe>
         </div>
+
+        <?php include "../contact_us/comment_section.php"; ?>
     </body>
 </html>

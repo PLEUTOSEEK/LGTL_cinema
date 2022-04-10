@@ -51,10 +51,46 @@ body {
     border: 1px solid white;
     cursor: pointer;
 }
-
-.pw {
-    margin-left: 15px;
+.input-field {
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #400485;
+    color: #400485
 }
-.show-hide-btn{
-    margin-left: 10px;
+
+.input-field:hover {
+    color: #7b4ca0;
+    border: 1px solid #7b4ca0;
+}
+
+input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+    padding: 0px 2px;
+    font-family: 'Poppins', sans-serif;
+    display: block;
+}
+
+.fa-eye-slash.btn {
+    border: none;
+    outline: none;
+    box-shadow: none
+}
+
+.card {
+    border: none;
+    border-bottom: 1px solid;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0
 }
