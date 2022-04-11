@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>title</title>
+        <title>LGTL Cineplex - Invoice Details</title>
         <?php
         include 'invoiceDetailsBackEnd.php';
 //        $orderID = $_POST['order_id'];

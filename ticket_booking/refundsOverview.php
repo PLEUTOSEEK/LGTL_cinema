@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Orders Overview</title>
+        <title>LGTL Cineplex - Orders Overciew</title>
         <script src="https://kit.fontawesome.com/bf82faea7e.js" crossorigin="anonymous"></script>
         <style>
             @media screen and (max-width: 992px){

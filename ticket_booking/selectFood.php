@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>LGTL Cineplex - Select Food</title>
         <link rel="stylesheet" href="selectFood.css"/>
         <link rel="stylesheet" href="./frameworks/bootstrap.min.css"></link>
         <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

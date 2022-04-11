@@ -9,7 +9,7 @@ and open the template in the editor.
 
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>LGTL Cineplex - Select Location</title>
         <link rel="stylesheet" href="selectLocation.css">
 
     </head>
