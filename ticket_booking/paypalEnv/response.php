@@ -143,7 +143,15 @@ function addOrder($data) {
                     . "                 VALUES (?,?,?,?,?,?,?,?);";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssdsssss", $newOrderID, $logInCustomerID, $data['payment_amount'], $data['order_date'], $data['payment_status'], $data['description'], $data['transaction_id'], $data['current_date']);
+            $stmt->bind_param("ssdsssss",
+                    $newOrderID,
+                    $logInCustomerID,
+                    $data['payment_amount'],
+                    $data['order_date'],
+                    $data['payment_status'],
+                    $data['description'],
+                    $data['transaction_id'],
+                    $data['current_date']);
             $stmt->execute();
 
             CloseCon($conn);

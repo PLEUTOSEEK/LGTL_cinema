@@ -41,7 +41,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div class="container rounded mt-5 mb-5 text-white">
             <div class="row">
                 <div class="col-md-5 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img id="avatar-img" class="avatar rounded-circle mt-5" src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['logInCustomer']['customer_image'] ?>"><span class="font-weight-bold text-white"><input type="file" accept="image/*" id="imgupload" class = "" style="display:none" value = ""/><button class="btn btn-primary mt-4 editable-input" id="OpenImgUpload" disabled="">Change Avatar</button></span><span> </span></div>
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img id="avatar-img" class="avatar rounded-circle mt-5" src="data:image/jpg;charset=utf8;base64,<?php echo $_SESSION['logInCustomer']['customer_image'] ?>">
+                        <span class="font-weight-bold text-white"><input type="file" accept="image/*" id="imgupload" class = "" style="display:none" value = ""/>
+                            <button class="btn btn-primary mt-4 editable-input" id="OpenImgUpload" disabled="">Change Avatar</button>
+                        </span>
+                        <span>
+                        </span>
+                    </div>
                 </div>
                 <div class="col-md-6 border-left ps-5">
                     <div class="p-3 pt-5 pb-3">
@@ -50,10 +57,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <form id ="custDtlsForm">
                             <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Username</label><input type="text" id="user-name" name = "user-name" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['cust_name'] ?>" disabled="true"></div>
-                                <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="tel" id="phone-number" name = "phone-number" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['phone_no'] ?>" disabled="true"></div>
-                                <div class="col-md-12"><label class="labels">Email</label><input type="email" id = "email" name = "email" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['email'] ?>" disabled="true"></div>
-                                <div class="col-md-12"><label class="labels">Password</label>
+                                <div class="col-md-12">
+                                    <label class="labels">Username</label>
+                                    <input type="text" id="user-name" name = "user-name" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['cust_name'] ?>" disabled="true">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="labels">PhoneNumber</label>
+                                    <input type="tel" id="phone-number" name = "phone-number" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['phone_no'] ?>" disabled="true">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="labels">Email</label>
+                                    <input type="email" id = "email" name = "email" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['email'] ?>" disabled="true">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="labels">Password</label>
                                     <div class="input-field bg-white">
                                         <input type="password" id="password" name = "password" pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/" required class="form-control editable-input" value="<?php echo $_SESSION['logInCustomer']['password'] ?>" disabled="true">
                                         <button class="btn bg-white text-muted editable-input" id ="eye-trigger-btn" disabled = "true">

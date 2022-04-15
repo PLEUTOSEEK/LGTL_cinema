@@ -82,15 +82,10 @@ function dynamicFilter() {
     $htmlCode = "";
     foreach ($locationNames as $location) {
         $htmlCode .= " <button class = \"btn btn-outline-primary  h-10 btn-block py-3 my-3 rounded-0\" type=\"button\" data-toggle=\"collapse\" data-target=\"#timeSlotsBox$counter\" aria-controls=\"timeSlotsBox$counter\" aria-expanded=\"false\" aria-label=\"Toggle time slots\">";
-
         $htmlCode .= " <h4 class = \"float-left font-weight-bold text-uppercase text-left my-auto\">" . $location['locationName'] . "</h4>";
-
         $htmlCode .= " <h4 class = \"float-right font-weight-bold my-auto\">+</h4>";
-
         $htmlCode .= " </button>";
-
         $htmlCode .= "<div class=\"collapse  rounded-0 p-lg-3 text-center\" id=\"timeSlotsBox$counter\" >";
-
         $htmlCode .= "<a href = '" . $location['locationGeo'] . "' target='_blank'>";
         $htmlCode .= "<button class ='btn btn-outline-primary font-weight-bold text-uppercase float-right my-3'>";
         $htmlCode .= "location";
@@ -123,8 +118,5 @@ function dynamicFilter() {
         $htmlCode .= "</div>";
         $counter++;
     }
-
-
-
     echo $htmlCode;
 }

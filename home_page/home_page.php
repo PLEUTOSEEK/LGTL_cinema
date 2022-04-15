@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Hello, world!</title>
+        <title>LGTL Cineplex - Home Page</title>
         <link rel="stylesheet" href="home_page.css"/>
 
         <style>
@@ -130,8 +130,6 @@ and open the template in the editor.
 
                 <!-- The slideshow/carousel -->
                 <div class="carousel-inner">
-
-
                     <?php
                     $i = 0;
                     foreach ($image_query1 as $row) {
@@ -199,15 +197,10 @@ and open the template in the editor.
         <div class="row" id = "movie_carts">
 
         </div>
-        <<<<<<< HEAD
 
-        =======
-        >>>>>>> 81e2343c2efaba0c7a3202361b2e362eae10a8b4
         <?php
         include '../nav_bar/footer.php';
         ?>
-
-
 
         <script>
             $("#serch-btn").on("click", function () {

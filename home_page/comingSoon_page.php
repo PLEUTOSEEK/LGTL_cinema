@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Hello, world!</title>
+        <title>LGTL Cineplex - Home Page</title>
         <link rel="stylesheet" href="home_page.css"/>
         <style>
 
@@ -150,7 +150,6 @@
                                                                         </div>-->
                                 </div>
                             </div>
-
                         </div>
                         <?php
                         $i++;

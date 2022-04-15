@@ -14,6 +14,7 @@ if (isset($_POST['action'])) {
     }
     if ($_POST['action'] == "openCustomerSessionFunc") {
         assignCustomerSESSION($_POST['custDtls']);
+        logCustomerIn();
     }
 }
 
@@ -48,4 +49,18 @@ function validateLogIn($loginDtls) {
 
 function assignCustomerSESSION($custDtls) {
     $_SESSION['logInCustomer'] = json_decode($custDtls, true);
+}
+
+function logCustomerIn() {
+    $conn = OpenCon();
+
+    $sql = "insert into log(cust_id,in_date_time,date_modified) Values(?,?,?)";
+
+    $currentDate = date("Y-m-d H:i:s");
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sss', $_SESSION['logInCustomer']['cust_id'], $currentDate, $currentDate);
+    $stmt->execute();
+
+    CloseCon($conn);
 }

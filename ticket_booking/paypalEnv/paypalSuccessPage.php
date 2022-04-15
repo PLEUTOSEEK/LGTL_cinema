@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>title</title>
+        <title>LGTL Cineplex - Payment Success</title>
         <?php
         include 'paypalSuccessPageBackEnd.php';
 
@@ -169,11 +169,8 @@
                                 </button>
                             </div>
 
-
                             <hr>
                             <div class="print-container mb-3">
-
-
 
                                 <div class= " col-12 text-left px-0 py-3 align-middle">
                                     <div class="d-flex container  col-12 mt-2" >

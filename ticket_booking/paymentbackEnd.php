@@ -47,6 +47,7 @@ function getInvoiceDetails($schID) {
             WHERE
                     S.SCHEDULE_ID = ?;
             ";
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $schID);
     $stmt->execute();

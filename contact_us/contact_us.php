@@ -179,11 +179,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             function sendEmail() {
                 Email.send({
                     Host: "smtp.gmail.com",
-                    Username: "ganwh-wm19@student.tarc.edu.my",
-                    Password: "fnlobujiqbdpvwcp",
-                    To: 'weihangan0@gmail.com',
+                    Username: "teezx-wm19@student.tarc.edu.my",
+                    Password: "sgxdjzbeaiqqvgim",
+                    To: 'teezx-wm19@student.tarc.edu.my',
                     From: document.getElementById("email").value,
-                    Subject: "This is the subject",
+                    Subject: "Service Comment From Customer",
                     Body: "<br> Email : " + document.getElementById("email").value
                             + "<br> Comment : " + document.getElementById("comment").value
                             + "<br> Rate : " + document.getElementById("ratingStar").value

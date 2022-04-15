@@ -39,13 +39,11 @@ and open the template in the editor.
         $borderDanger = " ";
         ?>
 
-
-
         <div class="container-fluid  py-3 <?php echo $borderDanger ?>  " >
-
-
             <div class=" d-flex flex-row-reverse  <?php echo $borderDanger ?>  " style="height:50px">
-                <button class="btn btn-outline-primary  position-fixed " id="toggle-panel-btn" data-toggle="collapse" data-target="#mySidepanel" aria-controls ="mySidepanel" class="mobile" style="z-index:112;">&#9776; Food Cart</button>
+                <button class="btn btn-outline-primary  position-fixed " id="toggle-panel-btn" data-toggle="collapse" data-target="#mySidepanel" aria-controls ="mySidepanel" class="mobile" style="z-index:112;">
+                    &#9776; Food Cart
+                </button>
 
                 <div id="mySidepanel" class="collapse  position-fixed  col-12 mt-5   add-on-foodCartPanel overflow-auto bg-dark"aria-expanded="false" style=" transition: 0.5s; ">
 
@@ -119,12 +117,8 @@ and open the template in the editor.
                         echo "</div>";
                     }
                     ?>
-
-
                 </div>
-
             </div>
-
         </div>
 
         <?php
@@ -190,7 +184,6 @@ and open the template in the editor.
             });
 
             $('.food-obj').on('submit', function (e) {
-
                 e.preventDefault();
                 const data = Object.fromEntries(new FormData(e.target).entries());
                 // add to table row

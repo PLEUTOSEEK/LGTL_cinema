@@ -21,7 +21,6 @@
             var orderListFoodDtls;
             $(function () {
                 orderDtls = <?php echo json_encode($orderDtls); ?>;
-                console.log("as");
 
                 orderListSeatDtls = <?php echo json_encode($orderListSeatDtls); ?>;
                 orderListFoodDtls = <?php echo json_encode($orderListFoodDtls); ?>;
@@ -149,7 +148,6 @@
         </style>
     </head>
     <body>
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mx-auto mt-5">
@@ -165,11 +163,8 @@
                                 </button>
                             </div>
 
-
                             <hr>
                             <div class="print-container mb-3">
-
-
 
                                 <div class= " col-12 text-left px-0 py-3 align-middle">
                                     <div class="d-flex container  col-12 mt-2" >
@@ -231,8 +226,6 @@
                                             <?php echo $orderDtls[0]['CINEMA_ROOM_ID']; ?>
                                         </div>
                                     </div>
-
-
 
                                     <div class="d-flex container  col-12 mt-2" >
                                         <p class="label col-lg-3 col-xs-2  px-3 py-2 mx-0  font-weight-bold m-0 text-white bg-dark align-middle">

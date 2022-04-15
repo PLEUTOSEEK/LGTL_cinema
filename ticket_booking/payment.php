@@ -101,8 +101,7 @@ and open the template in the editor.
 
         <link rel="stylesheet" type="text/css" href="payment.css"/>
 
-
-        <div class="container-fluid  ">
+        <div class="container-fluid">
             <div class="container-fluid  col-lg-8 invoice-box rounded p-3 mt-2" id = "invoice-container">
                 <form>
                     <div class="container-fluid /*border border-success*/ col-12 ">
@@ -235,7 +234,6 @@ and open the template in the editor.
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <script>
-
                             var oriZoneId;
                             var seatTicketType;
                             function setPrice(currZone, amount) {
